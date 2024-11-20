@@ -10,6 +10,8 @@
   <div class="login-container">
     <div class="candy-background">
       <div class="login-box">
+        <div id="message"></div>
+
         <h1 class="candy-text">PopCornBox</h1>
         <p>Sweeten your movie time!</p>
         <form>
@@ -19,14 +21,19 @@
           <div class="input-group">
             <input type="password" id="password" placeholder="Password" required>
           </div>
-          <button  type="submit" class="login-button">
-            <a href="../home page/homepage.html">Log In</a>
-            </button>
+          <button type="button" class="login-button" onclick="location.href='../home page/homepage.html';">
+            Log In
+          </button>
         </form>
-        <div class="help-text">
-          <p><a href="./forget.html">Forgot Password?</a></p>
+        
+          <div class="help-text">
+         
+            <p><a href="./forget.html">Forgot Password?</a></p>
+            
+          
           <p>New here? <a href="../signup page/signup.html">Sign up now</a>.</p>
         </div>
+        
         <!-- Dark Mode Toggle -->
         <div class="dark-mode-toggle">
           <label class="toggle-switch">
@@ -39,5 +46,32 @@
     </div>
   </div>
   <script src="script.js"></script>
+  <script>
+    // Function to get query parameters
+    function getQueryParams() {
+      const params = {};
+      window.location.search.substring(1).split("&").forEach(param => {
+          const [key, value] = param.split("=");
+          params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      });
+      return params;
+  }
+
+  // Check for the logout parameter
+  
+  const params = getQueryParams();
+  if (params.logout === 'success') {
+    
+      const msg=document.getElementById('message');
+      msg.innerText = 'Logout successful';
+      msg.style.color = 'green';
+      setTimeout(() => {
+        msg.innerText="";
+        console.log("work");
+        }, 3000);
+  }
+  
+  </script>
+  
 </body>
 </html>
