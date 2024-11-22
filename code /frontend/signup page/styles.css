@@ -142,4 +142,36 @@ body {
     background: linear-gradient(to left, #ff85a2, #ffb6c1);
     box-shadow: 0 5px 15px rgba(255, 133, 162, 0.6);
   }
-  
+  /* Dark Mode Styling */
+body.dark-mode {
+  background: linear-gradient(145deg, #101217, #181b21);
+  color: #b0b0b0;
+}
+
+body.dark-mode .candy-background {
+  background: radial-gradient(circle at top, #1a1c23, #242731, #2c2f38);
+}
+
+body.dark-mode .signup-box {
+  background: #181b21;
+  border-color: #282c34;
+}
+
+body.dark-mode .candy-text {
+  color: #ff6384;
+  text-shadow: 0 2px 4px rgba(255, 99, 132, 0.6);
+}
+
+body.dark-mode .signup-button {
+  background: linear-gradient(to right, #ff6384, #f781b5);
+}
+
+body.dark-mode .input-group input {
+  background: #20232a;
+  border-color: #41474f;
+  color: #fff;
+}
+
+body.dark-mode .help-text a {
+  color: #ff6384;
+}
