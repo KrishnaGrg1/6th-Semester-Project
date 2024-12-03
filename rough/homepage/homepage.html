@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Streaming</title>
+  <link rel="stylesheet" href="styles.css">
+  <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet"
+/>
+
+</head>
+<body>
+  <div class="container">
+    <header class="navbar">
+        <div class="search-container">
+            <i class="fa fa-search"></i> 
+            <input type="text" placeholder="Search movies..." />
+            
+          </div>
+      <nav>
+        <a href="#">Movies</a>
+        <a href="#">Horror</a>
+        <a href="#">Documentary</a>
+        <a href="#">More</a>
+      </nav>
+      <div class="profile">
+        <img src="./logo.jpg" alt="Profile">
+        <span>
+            <button>Sign In</button>
+        </span>
+      </div>
+    </header>
+    <main>
+      <div class="left">
+        
+      <section class="trending-trailer">
+        <h2>New Trending Trailer</h2>
+        <div class="trailers">
+          <!-- Empty placeholders -->
+          <div>Loading..</div>
+          <div>Loading..</div>
+          <div>Loading..</div>
+        </div>
+      </section>
+      <section class="continue-watching">
+        <h2>Continue Watching</h2>
+        <ul>
+          <li>
+            <div class="movie-item">
+              <img src="fast-furious.jpg" alt="Fast & Furious">
+              <div class="details">
+                <h4>Fast & Furious 7</h4>
+                <span>2016 - 2h39min</span>
+              </div>
+              <button class="play-button">
+                <i class="fa fa-play"></i> <!-- Play Icon -->
+              </button>
+            </div>
+          </li>
+          <li>
+            <div class="movie-item">
+              <img src="ice-cube-friday.jpg" alt="Ice-cube Friday">
+              <div class="details">
+                <h4>Ice-cube Friday</h4>
+                <span>2019 - 1h55min</span>
+              </div>
+              <button class="play-button">
+                <i class="fa fa-play"></i>
+              </button>
+            </div>
+          </li>
+          <li>
+            <div class="movie-item">
+              <img src="avengers.jpg" alt="Marvel - Avengers">
+              <div class="details">
+                <h4>Marvel - Avengers</h4>
+                <span>2017 - 3h2min</span>
+              </div>
+              <button class="play-button">
+                <i class="fa fa-play"></i>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </section>
+      
+    
+      </div>
+      <div class="right">
+        <section class="trending">
+        <h2>Now on Trending</h2>
+        <div class="trending-content">
+          
+          <div class="info">
+            <h3>TOP BOY :</h3>
+            <h3>THE SUMMER HOUSE</h3>
+            <p>Top Boy is a British crime and drama TV series that explores the lives of young people living in the housing estates of East London.</p>
+            <div class="info-button-section">
+                <button id="watch">
+                    <i class="fa fa-play"></i>
+                    <span>Watch</span>
+                </button>
+                <button id="playlist">
+                Add to Playlist
+                </button>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      <section class="top-picks">
+        <h2>Top Picks For You</h2>
+        <div class="movie-cards">
+          <div class="card">
+            <img src="./horror.PNG" alt="Horror">
+            <div class="play-overlay">
+              <button class="play-button">
+                <i class="fa fa-play"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./love.png..PNG" alt="Love">
+            <div class="play-overlay">
+              <button class="play-button">
+                <i class="fa fa-play"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./redravan.png.PNG" alt="Snow Adventure">
+            <div class="play-overlay">
+              <button class="play-button">
+                <i class="fa fa-play"></i>
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="./trending.jpg" alt="Snow Adventure">
+            <div class="play-overlay">
+              <button class="play-button">
+                <i class="fa fa-play"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      </div>
+
+    </main>
+    
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>
