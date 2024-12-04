@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     margin: 0;
-    font-family: Georgia;
+    font-family: Futura;
    background-color: #576374;
     color: #cccccc;
     overflow-x: hidden;
@@ -15,6 +15,9 @@ body {
     align-items: center;
     padding: 20px 40px;
     
+  }
+  .container{
+    background-image: url(./background.jpg);
   }
   
   .search-container {
@@ -167,6 +170,7 @@ body {
     display: flex;
     gap: 30px;
     opacity: 1;
+    font-family: Microsoft Sans Serif;
   }
  
   .trending-trailer {
@@ -231,7 +235,7 @@ body {
     width: 245px;
     padding: 20px; /* Add spacing inside the container */
     gap: 15px; /* Add spacing between rows */
-
+    
   }
   
   /* Ensure the section fits within the layout */
@@ -323,6 +327,7 @@ body {
     flex-direction: column;
     display: flex;
     gap: 30px;
+    font-family: Inter;
   }
 
   .trending {
