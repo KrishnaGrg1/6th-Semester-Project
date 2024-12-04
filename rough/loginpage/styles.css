@@ -62,7 +62,7 @@ body {
   header button {
     padding: 10px 15px;
     border: none;
-    background-color: #e43f5a;
+    background-color: transparent;
     color: #ffffff;
     border-radius: 5px;
     cursor: pointer;
