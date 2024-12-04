@@ -68,9 +68,7 @@ body {
     cursor: pointer;
   }
   
-  header button:hover {
-    background-color: #f95d77;
-  }
+
   
    .profile {
     background-color: rgba(217, 217, 217, 0.2);
@@ -688,12 +686,147 @@ body {
   outline: none;
 }
 
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-  .search-container {
-    width: 100%;
-  }
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) { 
+    /* Adjust Header */
+    header {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 10px;
+    }
+
+    .search-container {
+        width: 90%; /* Make search bar wider on smaller screens */
+        margin-bottom: 10px; 
+    }
+
+    nav {
+        width: 100%;
+        flex-direction: column; /* Stack navigation links */
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    .profile {
+       
+        margin-top: 10px; /* Add some space */
+    }
+
+    /* Adjust Main Content Layout */
+    main {
+        flex-direction: column; /* Stack sections vertically */
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .left, .right {
+        width: 100%; /* Make both sections full width */
+    }
+
+    .trending {
+        min-width: 100%; 
+    }
+
+    /* Adjust Trending Trailer Section */
+    .trending-trailer {
+        width: 100%; /* Make it full width */
+    }
+
+    /* Adjust Continue Watching Section */
+    .continue-watching {
+        width: 100%; /* Make it full width */
+    }
+    .trailer-item{
+        width: 100%;
+    }
+    /* Adjust Top Picks For You Section */
+    .top-picks {
+        width: 100%; /* Make it full width */
+    }
+
+    .movie-cards {
+        flex-direction: column; /* Stack movie cards */
+        gap: 10px;
+    }
+
+    .card {
+        width: 90%; /* Make cards slightly narrower */
+        margin: 0 auto; /* Center the cards */
+    }
+
+    /* Adjust Movie Cards Container */
+    .movie-cards {
+        flex-direction: column; /* Stack cards vertically on mobile */
+        gap: 10px;
+    }
+
+    /* Adjust Search Results */
+    #searchResults {
+        width: 90%;
+        left: 5%; /* Center the dropdown */
+    }
+
+    .info {
+        width: 100%;
+    }
+
+    .info-button-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+}html {
+  height: 100%;
+  width: 100%;
 }
+
+
+.hamburger-menu {
+    display: none;  /* Hide by default */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer; 
+    font-size: 24px; 
+  }
+ 
+  /* Show the hamburger icon only on mobile devices */
+  @media (max-width: 768px) {
+    .hamburger-menu {
+      display: block; 
+    }
+    nav {
+      display: none;
+    }
+  }
+ 
+   /* ... (Your existing styles) */
+ 
+   nav.visible {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+    
+ 
+     padding: 20px;
+     text-align: center;  /* Center the links */
+     border-radius: 0 0 10px 10px; 
+   }
+ 
+   nav.visible a {
+     display: block; /* Ensure links stack vertically */
+    
+     font-size: 18px; 
+     text-decoration: none;
+     color: darkgray;
+   }
+ 
+   nav.visible a:hover,nav.visible a.active {
+    background-color:darkgray;
+    border-radius: 20px;
+    color: white;
+
+  }
