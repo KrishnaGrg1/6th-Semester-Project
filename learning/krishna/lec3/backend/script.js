@@ -60,6 +60,23 @@ app.get('/get',(req,res)=>{
     })
 })
 
+app.get('/update',async(req,res)=>{
+    await userModel.findOneAndUpdate({
+        name:'a'
+    },{
+        name:'Admin',
+        email:'admin@gmail.com',
+        password:'admin'
+    })
+    res.send('Updated');
+})
+
+app.get('/delete',async(req,res)=>{
+    await userModel.findOneAndDelete({
+        name:'ab'
+    })
+    res.send('Deleted');
+})
 app.post('/get',(req,res)=>{
     userModel.find({_id:req.body.id}).then((data)=>{
         res.send(data);
