@@ -237,6 +237,13 @@ body {
   top: 0; /* Align to the top */
   left: 0; /* Align to the left */
 }
+.trailer-item h3{
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
 
 
   /* .continue-watching{
@@ -726,27 +733,46 @@ body {
         width: 100%; /* Make both sections full width */
     }
 
-    .trending {
-        min-width: 100%; 
-    }
+    
 
     /* Adjust Trending Trailer Section */
     .trending-trailer {
-        width: 100%; /* Make it full width */
+        margin: 0 auto;
+        width: 60%; /* Make it full width */
     }
 
     /* Adjust Continue Watching Section */
     .continue-watching {
-        width: 100%; /* Make it full width */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        
+        width: 60%; /* Make it full width */
+        margin: 0 auto;
+    }
+    .movie-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+    .trending{
+        width: 50%;
+        margin: 0 auto;
     }
     .trailer-item{
         width: 100%;
     }
     /* Adjust Top Picks For You Section */
     .top-picks {
-        width: 100%; /* Make it full width */
+        width: 60%; /* Make it full width */
+        margin: 0 auto;
     }
-
+    .top-picks h2{
+        margin: 0 auto;
+    }
     .movie-cards {
         flex-direction: column; /* Stack movie cards */
         gap: 10px;
@@ -754,7 +780,10 @@ body {
 
     .card {
         width: 90%; /* Make cards slightly narrower */
-        margin: 0 auto; /* Center the cards */
+        margin: 0 auto; /* Cnter the cards */
+    }
+    .card img{
+        object-fit: fill;
     }
 
     /* Adjust Movie Cards Container */
