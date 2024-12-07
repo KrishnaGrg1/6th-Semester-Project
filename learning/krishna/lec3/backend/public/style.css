@@ -28,21 +28,7 @@
     color: hsl(var(--hue-color), 8%, 65%);
   }
   
-  .contact-top  p {
-    color:white;
-    font-size: 1rem;
-    color: hsl(var(--hue-color), 8%, 65%);;
-    margin: 0;
-  }
 
-
-  .contact-section {
-    display: flex;
-    align-items: flex-start; /* Align items at the start (top) */
-    justify-content: space-between; /* Space between items */
-    width: 60vw;
-    gap: 4rem;
-}
 
 
 .contact-form {
