@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PopCornBox</title>
+    <link rel="stylesheet" href="src/allmovie.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="search-container">
+            <i class="fa fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search movies...">
+        </div>
+        <div>
+            <button id="search-movie">Search</button>
+        </div>
+        <button class="hamburger-menu" id="hamburgerMenu">
+            <i class="fa fa-bars"></i>
+        </button>
+        <nav>
+            <a href="homepage">Home</a>
+            <a href="#">Pricing</a>
+            <a href="#contact">Contact</a>
+            <a href="#">About</a>
+        </nav>
+        <div class="profile">
+            <img src="/assets/logo.jpg" alt="Profile">
+            <button>Sign In</button>
+        </div>
+    </header>
+    <main>
+        <div class="movie-container"></div>
+    </main>
+    <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">PopCornBox</h1>
+                </div>
+                <div class="footer__links">
+                    <a href="#contact" class="footer__link">Contact-Me</a>
+                </div>
+                <div class="footer__socials">
+                    <a href="https://www.instagram.com/_krishneyyyyyyy/" target="_blank" class="footer__social">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/krishna-bahadur-gurung-60933a2a6/" target="_blank" class="footer__social">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100091664064459" target="_blank" class="footer__social">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://github.com/SamirGrg1" target="_blank" class="footer__social">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="footer__copy">&#169; 2024 PopCornBox. All rights reserved.</p>
+        </div>
+    </footer>
+    <script >
+        const movieContainer = document.querySelector('.movie-container');
+const inputBox = document.getElementById('searchInput');
+const searchButton = document.getElementById('search-movie');
+
+let currentPage = 1;
+let currentMovieName = '';
+const moviesPerPage = 3;
+const API_KEY = '7390c31e7d4f58c4b9afbc61a12f010e';
+
+// Fetch movie information
+const getMovieInfo = async (movieName, page = 1) => {
+    try {
+        const response = await fetch(
+            `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movieName}&page=${page}`
+        );
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching movie info:', error);
+        alert('Failed to fetch movie data. Please try again.');
+    }
+};
+
+// Fetch movie trailers
+const getMovieTrailer = async (movieId) => {
+    try {
+        const response = await fetch(
+            `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`
+        );
+        const data = await response.json();
+        const trailer = data.results.find(video => video.site === 'YouTube' && video.type === 'Trailer');
+        return trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
+    } catch (error) {
+        console.error('Error fetching trailer:', error);
+        return null;
+    }
+};
+
+// Display movies
+const showMovies = async (data, movieName) => {
+    if (!data.results || data.results.length === 0) {
+        movieContainer.innerHTML = `<p>${movieName} not available.</p>`;
+        return;
+    }
+
+    if (currentPage === 1) {
+        movieContainer.innerHTML = '';
+    }
+
+    const movies = data.results.slice(0, moviesPerPage * currentPage);
+    for (const movie of movies) {
+        const { id, title, vote_average, genre_ids, release_date, overview, poster_path } = movie;
+        const trailerUrl = await getMovieTrailer(id);
+
+        const movieDetail = document.createElement('div');
+        movieDetail.classList.add('movie-details');
+        movieDetail.innerHTML = `
+            <div class="movie-poster">
+                <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}">
+            </div>
+            <div class="movie-info">
+                <h2>${title}</h2>
+                <p><span class="rating">&#11088; ${vote_average}</span></p>
+                <p><strong>Genres:</strong> ${genre_ids.join(', ')}</p>
+                <p><strong>Released:</strong> ${release_date}</p>
+                <p><strong>Overview:</strong> ${overview}</p>
+                ${trailerUrl ? `<iframe src="${trailerUrl.replace('watch?v=', 'embed/')}" frameborder="0" allowfullscreen></iframe>` : ''}
+            </div>
+        `;
+        movieContainer.appendChild(movieDetail);
+    }
+
+    // Only create the "Get More" button if there are more movies to show
+    if (data.results.length > moviesPerPage * currentPage) {
+        let getMoreButton = document.getElementById('get-more-button');
+
+        // Create the button if it doesn't exist
+        if (!getMoreButton) {
+            getMoreButton = document.createElement('button');
+            getMoreButton.id = 'get-more-button';
+            getMoreButton.textContent = 'Get More';
+            movieContainer.appendChild(getMoreButton);
+
+            getMoreButton.addEventListener('click', async () => {
+                // Increment current page and fetch more movies
+                currentPage++;
+                getMoreButton.remove(); // Remove the button before fetching more
+                const newData = await getMovieInfo(movieName, currentPage);
+                showMovies(newData, movieName);
+            });
+        }
+    }
+};
+
+// Event Listener for Search
+searchButton.addEventListener('click', async () => {
+    const movieName = inputBox.value.trim();
+    if (movieName) {
+        currentMovieName = movieName;
+        currentPage = 1;
+        const data = await getMovieInfo(movieName);
+        if (data) {
+            showMovies(data, movieName);
+        }
+        inputBox.value = '';
+    }
+});
+
+    </script>
+</body>
+</html>

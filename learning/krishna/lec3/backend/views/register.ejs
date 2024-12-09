@@ -1,32 +1,67 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CandyFlix Signup</title>
+  <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-    <section class="contact" id="contact">
-        <div class="contact-top"> 
-       
-                <h2>Form  </h2>
-
-    
-         </div>
-    
+  <div class="login-container">
+    <div class="candy-background">
+      <div class="signup-box">
+        <h1 class="candy-text">Join PopCornBox</h1>
+        <!-- <p>Sign up and start your sweet movie journey!</p> -->
+        <form id="signupForm" action="/register" method="POST">
+          <div class="input-group">
+            <input type="text" id="name" name="name" placeholder="Username" required>
+          </div>
+          <div class="input-group" id="input-email">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="input-group" id="input-pass">
+            <input type="password" id="password" name="password" class="password" placeholder="Password" required>
+          </div>
+          <button type="submit" class="signup-button">Sign Up</button>
+        </form>
         
-        <div class="contact-form">
-            <form action="/register" method="POST">
-                <input type="hidden" name="access_key" value="3061539e-2c48-4406-a007-39e5c3626c34">
-                <input type="text" name="name" placeholder="Name">
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="password" placeholder="password" >
-                <button type="submit">Submit <i class="fas fa-paper-plane"></i></button>
-            </form>
+        <div class="help-text">
+          <p>Already have an account? <a href="login">Log in here</a>.</p>
         </div>
-     
-</section>  
+      </div>
+    </div>
+  </div>
+ 
+  <script  src="script.js">
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+      document.addEventListener("DOMContentLoaded", () => {
+        const darkModeToggle = document.getElementById("darkModeToggle");
+      
+        // Check if dark mode was previously enabled
+        if (localStorage.getItem("darkMode") === "enabled") {
+            document.body.classList.add("dark-mode");
+            if (darkModeToggle) {
+                darkModeToggle.checked = true;
+            }
+        }
+      
+        // Toggle dark mode
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener("change", () => {
+                if (darkModeToggle.checked) {
+                    document.body.classList.add("dark-mode");
+                    localStorage.setItem("darkMode", "enabled");
+                } else {
+                    document.body.classList.remove("dark-mode");
+                    localStorage.setItem("darkMode", "disabled");
+                }
+            });
+        }
+      });
     
+  </script>
+ 
 </body>
 </html>
