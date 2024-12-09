@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "start": "nodemon script"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

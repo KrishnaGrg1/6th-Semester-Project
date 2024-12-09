@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CandyFlix Signup</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="candy-background">
+      <div class="signup-box">
+        <h1 class="candy-text">Join PopCornBox</h1>
+        <!-- <p>Sign up and start your sweet movie journey!</p> -->
+        <form id="signupForm" action="/signup" method="POST">
+          <div class="input-group">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+          </div>
+          <div class="input-group" id="input-email">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="input-group" id="input-pass">
+            <input type="password" id="password" name="password" class="password" placeholder="Password" required>
+          </div>
+          <div class="input-group" id="input-confirm">
+            <input type="password" id="confirm-password" name="confirmPassword" class="confirmPassword" placeholder="Confirm Password" required>
+          </div>
+          <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+        
+        <div class="help-text">
+          <p>Already have an account? <a href="../login page/login.html">Log in here</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <script src="../login page/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+    
+        // Collect form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+    
+        // Log the data to check if it's correct
+        console.log(data);  // Check the data in the console
+    
+        // Send the data as JSON to the backend
+        fetch('http://localhost:3000/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(result => {
+          if (result.success) {
+            alert(result.message);  // Show success message
+            // Optionally, redirect to login page
+             window.location.href = '../login page/login.html';
+          } else {
+            alert('Signup failed: ' + result.message);  // Show error message
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred during signup');
+        });
+      });
+    });
+    
+  </script>
+</body>
+</html>
