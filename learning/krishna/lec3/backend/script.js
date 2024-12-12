@@ -112,10 +112,13 @@ app.post('/register', async (req, res) => {
 });
 
 
-app.get('/homepage',(req,res)=>{
+app.get('/home',(req,res)=>{
     res.render('home');
 });
 
+app.get('/contact',(req,res)=>{
+    res.render('contact')
+})
 
 app.get('/allmovie',(req,res)=>{
     res.render('allmovie');
