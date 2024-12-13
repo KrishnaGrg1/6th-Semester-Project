@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie App Login</title>
+  <link rel="stylesheet" href="src/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="candy-background">
+      <div class="login-box">
+        <div id="message"></div>
+
+        <h1 class="candy-text">PopCornBox</h1>
+        <p>Sweeten your movie time!</p>
+       <!-- login.ejs -->
+<form action="/login" method="POST" id="loginForm">
+  <div class="input-group">
+      <input type="email" id="email" name="email" placeholder="Email" required>
+  </div>
+  <div class="input-group">
+      <input type="password" id="password" name="password" class="password" placeholder="Password" required>
+  </div>
+  <button type="submit" class="login-button">Log In</button>
+</form>
+
+        <div id="message"></div>
+        
+        
+          <div class="help-text">
+         
+            <p><a href="./forget">Forgot Password?</a></p>
+            
+          
+          <p>New here? <a href="register">Sign up now</a>.</p>
+        </div>
+        
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-toggle">
+          <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+          </label>
+          <p>Toggle Dark Mode</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js">
+
+  </script>
+  
+  
+</body>
+</html>

@@ -3,79 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie App Login</title>
-  <link rel="stylesheet" href="src/login.css">
+  <title>Movie Streaming</title>
+  <link rel="stylesheet" href="src/home.css">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet"
+  />
 </head>
 <body>
-  <div class="login-container">
-    <div class="candy-background">
-      <div class="login-box">
-        <div id="message"></div>
+  <div class="container">
+    <!-- Header -->
+    <div id="home">
+    <header class="navbar">
+      <div class="search-container">
+        <i class="fa fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search movies...">
+        <div id="searchResults"></div>
+      </div>
+      <div>
+        <button id="search-movie">Search</button>
+    </div>
+      <button class="hamburger-menu" id="hamburgerMenu">
+        <i class="fa fa-bars"></i>
+      </button>
+      <nav>
+        <a href="home" >Home</a>
+        <a href="#">Pricing</a>
+        <a href="contact">Contact</a>
+        <a href="#">About</a>
+      </nav>
+      <div class="profile">
+        <img src="/assets/logo.jpg" alt="Profile">
+        <button>Sign In</button>
+      </div>
+    </header>
 
-        <h1 class="candy-text">PopCornBox</h1>
-        <p>Sweeten your movie time!</p>
-        <form action="/login" method="post" id="loginForm">
-          <div class="input-group">
-            <input type="text" name="name" id="username" placeholder="Username" required>
+    
+    <!-- Main Content -->
+    <main>
+      
+      <!-- Left Section -->
+      <div class="left">
+        <!-- Trending Trailer Section -->
+        <section class="trending-trailer">
+          <h2>New Trending Trailer</h2>
+          <div class="trailers">
+           
           </div>
-          <div class="input-group">
-            <input type="password" name="password" id="password" placeholder="Password" required>
+        </section>
+
+        <!-- Continue Watching Section -->
+        <section class="continue-watching">
+          <h2>Continue Watching</h2>
+          <ul id="continueWatchingList">
+              <!-- Movie items will be dynamically inserted here -->
+          </ul> 
+      </section>
+      </div>
+
+      <!-- Right Section -->
+      <div class="right">
+        <!-- Now on Trending Section -->
+        <section class="trending">
+          <h2>Now on Trending</h2>
+          <div class="trending-content">
+              <!-- Content will be populated via JS -->
           </div>
-          <button type="submit" class="login-button">Log In</button>
-        </form>
-        <div id="message"></div>
-        
-        
-          <div class="help-text">
-         
-            <p><a href="./forget">Forgot Password?</a></p>
+      </section>
+
+        <!-- Top Picks Section -->
+        <section class="top-picks">
+          <h2>Top Picks For You</h2>
+          <div class="movie-cards">
+            <!-- Content will be populated via JS -->
             
-          
-          <p>New here? <a href="register">Sign up now</a>.</p>
-        </div>
-        
-        <!-- Dark Mode Toggle -->
-        <div class="dark-mode-toggle">
-          <label class="toggle-switch">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider"></span>
-          </label>
-          <p>Toggle Dark Mode</p>
-        </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="movie-container"></div>
+  
+
+<footer class="footer">
+  <div class="footer__bg">
+    <div class="footer__container container grid">
+      <div>
+        <h1 class="footer__title">PopCornBox</h1>
+
+      </div>
+
+      <div class="footer__links">
+        <div><a href="#contact" class="footer__link">Contact-Me</a></div>
+      </div>
+
+      <div class="footer__socials">
+        <a href="https://www.instagram.com/_krishneyyyyyyy/" class="footer__social" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/krishna-bahadur-gurung-60933a2a6/" class="footer__social" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100091664064459" class="footer__social" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://github.com/SamirGrg1" class="footer__social" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
       </div>
     </div>
+
+    <p class="footer__copy">&#169; 2024 PopCornBox. All rights reserved.</p>
+  </div>
+</footer>
   </div>
 
-  <script >
-    const username = document.getElementById('username').value;
-const password = document.getElementById('password').value;
-  document.addEventListener("DOMContentLoaded", () => {
-    const darkModeToggle = document.getElementById("darkModeToggle");
-  
-    // Check if dark mode was previously enabled
-    if (localStorage.getItem("darkMode") === "enabled") {
-        document.body.classList.add("dark-mode");
-        if (darkModeToggle) {
-            darkModeToggle.checked = true;
-        }
-    }
-  
-    // Toggle dark mode
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener("change", () => {
-            if (darkModeToggle.checked) {
-                document.body.classList.add("dark-mode");
-                localStorage.setItem("darkMode", "enabled");
-            } else {
-                document.body.classList.remove("dark-mode");
-                localStorage.setItem("darkMode", "disabled");
-            }
-        });
-    }
-  });
-
-  </script>
-  
-  
+  <script src="js/home.js">
+ 
+</script>
+ 
 </body>
 </html>

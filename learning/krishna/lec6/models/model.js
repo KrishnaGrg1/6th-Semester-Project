@@ -1,19 +1,23 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 
-const ModelSchema=new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
+const ModelSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
     },
-    password:{
-        type:String,
-        required:true
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
     }
-},{
-    timestamps:true
-})
+}, {
+    timestamps: true
+});
 
+const UserModel = mongoose.model('User', ModelSchema); // Corrected this line
 
-const URL=mongoose.Schema('URL',ModelSchema);
-
-module.exports=URL;
+module.exports = UserModel;
