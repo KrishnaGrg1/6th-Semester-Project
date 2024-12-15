@@ -13,6 +13,11 @@ body {
     text-decoration: none;
     color: inherit;
   }
+  #message {
+    color: red;  /* You can change this to crimson, orange, etc. */
+    font-weight: bold;
+   
+  }
   
   .candy-background {
     display: flex;
