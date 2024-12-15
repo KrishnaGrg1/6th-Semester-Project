@@ -14,7 +14,8 @@
         <button type="submit">Generate</button>
     </form>
     <% if (locals.id) {%>
-        <p> URL generated: http://localhost:8000/url/<%=id %></p>
+        <p> URL generated: http://localhost:8000/<%=id %></p>
+       
     <%} %>
 
     <% if (locals.urls) { %>

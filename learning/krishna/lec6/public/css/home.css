@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: Georgia;
    /* background-image: url(./background.jpg); */
-   background-color: #101020;
+   background-image: url('../assets/background.jpg');
     color: #cccccc;
     overflow-x: hidden;
     min-width: 1280px;

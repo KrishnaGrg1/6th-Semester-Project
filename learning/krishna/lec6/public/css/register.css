@@ -66,6 +66,12 @@ body {
     background:rgba(217, 214, 214, 0.2);
     transition: border-color 0.3s ease;
   }
+  .input-group #lname{
+    border-radius: 0px 0px 0px 0px;
+     
+  }
+  .input-group #password{
+    border-radius: 0px 0px 15px 15px;  }
   .input-group ::placeholder{
     opacity: 50%;
   }

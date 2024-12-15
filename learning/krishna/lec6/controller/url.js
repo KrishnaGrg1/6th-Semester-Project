@@ -5,14 +5,15 @@ const saltRounds = 10;
 
 
 async function register (req, res)  {
-    const { name, email, password } = req.body;
+    const { fname,lname, email, password } = req.body;
 
-    if (!name || !email || !password) {
+    if (!fname || !lname || !email || !password) {
         return res.status(400).send('All fields are required');
     }
     const hashedPassword = await bcrypt.hash(password, saltRounds);
   const user= await UserModel.create({
-        name:name,
+        fname:fname,
+        lname:lname,
         email:email,
         password: hashedPassword 
     });
