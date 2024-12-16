@@ -10,12 +10,12 @@ async function register (req, res)  {
     if (!fname || !lname || !email || !password) {
         return res.status(400).send('All fields are required');
     }
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    // const hashedPassword = await bcrypt.hash(password, saltRounds);
   const user= await UserModel.create({
         fname:fname,
         lname:lname,
         email:email,
-        password: hashedPassword 
+        password: password,
     });
    
     
@@ -33,16 +33,16 @@ async function login(req, res) {
     console.log(email);
     console.log(password);
     try {
-        const user = await UserModel.findOne({ email });
+        const user = await UserModel.findOne({ email,password});
         if (!user) {
             return res.render('login', { message: 'Invalid email or password' });
         }
         
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.render('login', { message: 'Invalid email or password' });
-        }
-        console.log(isMatch);
+        // const isMatch = await bcrypt.compare(password, user.password);
+        // if (!isMatch) {
+        //     return res.render('login', { message: 'Invalid email or password' });
+        // }
+        // console.log(isMatch);
         // If email and password are correct, proceed with login success
         res.render('home');
     } catch (error) {
