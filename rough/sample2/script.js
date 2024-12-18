@@ -4,38 +4,45 @@ const path = require('path');
 const port = 8000;
 const { connecttoMongoDB } = require('./connect');
 const router = require('./routes/routes');
-const hrouter = require('./routes/hroutes');
 const cookieParser = require('cookie-parser');
-app.use(cookieParser());
-
-
-const cors = require('cors');
 const { restrictToLoggedinUserOnly } = require('./middleware/auth');
+const { getUserId } = require('./services/auth');
 
-
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-// Middleware to handle user session restriction
-app.use('/',  router);
-app.use('/', hrouter);
+// Routes
+app.use('/', router);
 
-// Protect the /home route with restrictToLoggedinUserOnly middleware
-app.get('/home',restrictToLoggedinUserOnly, (req, res) => {
-    res.render('home', { user: req.user });  // Pass user data to the home page
+app.get('/register', (req, res) => {
+    res.render('register', { message: '' });
 });
-
-app.get('/contact',restrictToLoggedinUserOnly,(req, res) => {
-    res.render('contact');
-  });
 
 app.get('/login', (req, res) => {
-    res.render('login', { message: '' });  // Default login page with empty message
+    res.render('login', { message: '' });
 });
-app.get('/register', (req, res) => {
-  res.render('register');
+
+app.get('/home', restrictToLoggedinUserOnly, (req, res) => {
+    res.render('home');
+});
+
+app.get('/contact', restrictToLoggedinUserOnly, (req, res) => {
+    res.render('contact');
+});
+
+app.get('/logout', (req, res) => {
+    const sessionId = req.cookies?.uid;
+    if (sessionId) {
+        // Clear server-side session
+        const sessionIdToUserMap = require('./service/auth');
+        sessionIdToUserMap.delete(sessionId);
+        // Clear client-side cookie
+        res.clearCookie('uid');
+    }
+    res.redirect('/login');
 });
 
 // MongoDB connection
