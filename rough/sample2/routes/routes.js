@@ -10,13 +10,6 @@ router.post('/login', login);
 router.get('/login', (req, res) => {
   res.render('login', { message: '' }); // Default message is an empty string
 });
-// router.get('/contact',(req,res)=>{
-//   res.render('contact')  
-// })
-
-// router.get('/home', (req, res) => {
-//   res.render('home');
-// });
 
 
 
