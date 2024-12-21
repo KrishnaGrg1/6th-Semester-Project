@@ -1,0 +1,103 @@
+Krishna
+grbgkrishna_72858
+Online
+
+arjunQ21 — Today at 2:53 PM
+Day 2:
+Krishna — Today at 2:56 PM
+homework day2
+Tasks on cryptoData Object
+Task 1: Display the exchange rate for Ethereum
+Write a code snippet that shows the following output:
+"The rate of Ethereum is 3200 as of 21 may, 2024"
+
+Task 2: Add a new cryptocurrency to the list
+Expand
+message.txt
+4 KB
+﻿
+Tasks on cryptoData Object
+Task 1: Display the exchange rate for Ethereum
+Write a code snippet that shows the following output:
+"The rate of Ethereum is 3200 as of 21 may, 2024"
+
+Task 2: Add a new cryptocurrency to the list
+Add a new cryptocurrency called Solana with the following properties:
+
+name: "Solana"
+exchangeRate: 190
+foundIn: "2020"
+Task 3: Change the exchange rate of Stack
+Change the exchange rate of Stack from 2.2 to 2.45.
+
+Task 4: Update the foundIn year for Dogecoin
+Change the year Dogecoin was found to "2014".
+
+Task 5: Remove the cryptocurrency DogeCoin from the list
+Remove the cryptocurrency object for DogeCoin from the currencies array.
+
+Task 6: Calculate the total exchange rate for all currencies
+Write a function that calculates the sum of the exchangeRate for all the cryptocurrencies listed in currencies.
+
+Task 7: Display all cryptocurrencies found after 2010
+Create a list of cryptocurrencies that were found after the year 2010. For example, you can create a new array and log out the details of those currencies.
+
+Task 8: Add a new property symbol to all currencies
+Add a new property symbol for each currency. Here’s what the values for symbol could be:
+
+"Bitcoin" → "BTC"
+"Ethereum" → "ETH"
+"DogeCoin" → "DOGE"
+"Stack" → "STACK"
+"Solana" → "SOL"
+Task 9: Sort the currencies by exchange rate
+Write code to sort the currencies by their exchange rate in descending order and log the sorted list.
+
+Task 10: Find the currency with the highest exchange rate
+Write a function that finds and logs the cryptocurrency with the highest exchange rate from the currencies array.
+
+Task 11: Find the index of Ethereum in the currencies list
+Find the index position of Ethereum in the currencies array and display it.
+
+Task 12: Display the names of all currencies in a single string
+Write code to output the names of all cryptocurrencies as a comma-separated string.
+Example output:
+"BitCoin, Ethereum, DogeCoin, Stack, Solana"
+
+Task 13: Create a new object cryptoSummary
+Create a new object cryptoSummary with two properties:
+
+date: Copy the date from the cryptoData object.
+totalCurrencies: Calculate and store the total number of cryptocurrencies in the currencies array.
+Task 14: Add a property lastUpdated with the current date
+Add a new property lastUpdated to the cryptoData object. Set this to the current date in the format DD MM, YYYY. You can use the Date object for this task.
+
+Task 15: Find the currency with the name "Stack"
+Write a function that searches for the cryptocurrency called "Stack" and returns its details (including the name, exchange rate, and year found).
+
+Task 16: Create an object of crypto names and their rates
+Create a new object where each property is the name of a cryptocurrency, and the value is its exchange rate.
+
+Example output:
+
+javascript
+Copy code
+{
+  BitCoin: 97000,
+  Ethereum: 3200,
+  DogeCoin: 0.32,
+  Stack: 2.2
+}
+Task 17: Convert the exchange rate of all currencies to USD
+Write a function that takes an exchange rate in a different currency (e.g., Euro, GBP, etc.) and converts all the cryptocurrency rates to USD. This will involve multiplying the exchange rate by a conversion factor.
+
+Task 18: Show how many years ago each cryptocurrency was created
+For each cryptocurrency, calculate how many years ago it was created from the current year (2024). Add a new property yearsAgo to each cryptocurrency object and display the updated array.
+
+Task 19: Check if a currency exists in the list
+Write a function that checks whether a cryptocurrency (e.g., "Bitcoin", "Cardano") exists in the currencies array. It should return true or false.
+
+Task 20: Display the cryptocurrency with the earliest found year
+Write a function that returns the cryptocurrency object that was found the earliest (i.e., the smallest value of foundIn). Display the name and year found.
+message.txt
+4 KB
