@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie App Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="candy-background">
+      <div class="login-box">
+        <div id="message"></div>
+
+        <h1 class="candy-text">PopCornBox</h1>
+        <p>Sweeten your movie time!</p>
+        <form>
+          <div class="input-group">
+            <input type="text" id="username" placeholder="Username" required>
+          </div>
+          <div class="input-group">
+            <input type="password" id="password" placeholder="Password" required>
+          </div>
+          <button type="button" class="login-button" onclick="login()">
+            Log In
+          </button>
+          
+        </form>
+        
+          <div class="help-text">
+         
+            <p><a href="./forget.html">Forgot Password?</a></p>
+            
+          
+          <p>New here? <a href="../signup page/signup.html">Sign up now</a>.</p>
+        </div>
+        
+        <!-- Dark Mode Toggle -->
+        <div class="dark-mode-toggle">
+          <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+          </label>
+          <p>Toggle Dark Mode</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    // Function to get query parameters
+    function getQueryParams() {
+      const params = {};
+      window.location.search.substring(1).split("&").forEach(param => {
+          const [key, value] = param.split("=");
+          params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      });
+      return params;
+  }
+
+  // Check for the logout parameter
+  
+  const params = getQueryParams();
+  if (params.logout === 'success') {
+    
+      const msg=document.getElementById('message');
+      msg.innerText = 'Logout successful';
+      msg.style.color = 'green';
+      setTimeout(() => {
+        msg.innerText="";
+        console.log("work");
+        }, 3000);
+  }
+  
+  </script>
+  <script>
+    // Function to get query parameters
+    function getQueryParams() {
+      const params = {};
+      window.location.search.substring(1).split("&").forEach(param => {
+        const [key, value] = param.split("=");
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      });
+      return params;
+    }
+  
+    // Login function
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+  
+      if (!username || !password) {
+        const msg = document.getElementById('message');
+        msg.innerText = 'Please enter both username and password';
+        msg.style.color = 'red';
+        msg.style.border='1px solid black';
+        return;
+      }
+  
+      fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          window.location.href = '../homepage/homepage.html';
+        } else {
+          const msg = document.getElementById('message');
+          msg.innerText = 'Login failed: ' + data.message;
+          msg.style.color = 'red';
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        const msg = document.getElementById('message');
+        msg.innerText = 'An error occurred. Please try again.';
+        msg.style.color = 'red';
+      });
+    }
+  
+    // Check for the logout parameter and handle logout
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = getQueryParams();
+      if (params.logout === 'success') {
+        fetch('http://localhost:3000/logout', { method: 'POST' })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              alert('Logout successful!');
+              const msg = document.getElementById('message');
+              msg.innerText = 'Logout successful';
+              msg.style.color = 'green';
+              setTimeout(() => {
+                msg.innerText = "";
+              }, 3000);
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }
+    });
+  </script>
+  
+  
+  
+</body>
+</html>
