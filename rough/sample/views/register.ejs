@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CandyFlix Signup</title>
+  <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="candy-background">
+      <div class="signup-box">
+        <h1 class="candy-text">Join PopCornBox</h1>
+        <!-- <p>Sign up and start your sweet movie journey!</p> -->
+        <form id="signupForm" action="/register" method="POST">
+          <div class="input-group">
+            <input type="text" id="fname" name="fname" placeholder="frist Name" required>
+          </div>
+          <div class="input-group">
+            <input type="text" id="lname" name="lname" placeholder="Last Name" required>
+          </div>
+          <div class="input-group" id="input-email">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="input-group" id="input-pass">
+            <input type="password" id="password" name="password" class="password" placeholder="Password" required>
+          </div>
+          <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+        
+        <div class="help-text">
+          <p>Already have an account? <a href="login">Log in here</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <script src="js/script.js"  >
+
+      
+  </script>
+ 
+</body>
+</html>

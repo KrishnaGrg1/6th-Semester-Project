@@ -1,0 +1,6 @@
+MONGO_URI=mongodb://127.0.0.1:27017/movie
+PORT=8001
+JWT_SECRET=kbg321
+EMAIL_USER=gkrishnabahadur618@gmail.com
+EMAIL_PASS=grgkrishna123
+STRIPE_SECRET_KEY=kbg321

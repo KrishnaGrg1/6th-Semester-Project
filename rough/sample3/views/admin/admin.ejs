@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <a href="/logout">Logout</a>
+    </header>
+    <main>
+        <h2>Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user._id %></td>
+                    <td><%= user.fname %></td>
+                    <td><%= user.lname %></td>
+                    <td><%= user.email %></td>
+                    <td>
+                        <a href="/admin/edit/<%= user._id %>">Edit</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
