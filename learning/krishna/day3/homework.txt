@@ -1,0 +1,21 @@
+```Day 3 Homework:
+
+Implement a custom callback function: Write a function named modulus that calculates the remainder of two numbers and pass it as a callback to the calculate function.
+
+Use callback functions for conditional logic: Write a function named isGreater that takes two numbers as arguments and logs which number is greater. Pass this function as a callback to the calculate function.
+
+Create an array processing callback: Write a function named processArray that takes an array of numbers and a callback function. Use the callback function to calculate the sum of all even numbers in the array.
+
+Transform numbers using callbacks: Create a function square that returns the square of a number. Pass it as a callback to a new transform function that applies the callback to each number in an array and returns the transformed array.
+
+Build a string manipulation callback: Write a function concatenateStrings that takes two strings, concatenates them, and returns the result. Pass this as a callback to a generic function that takes two strings and a callback.
+
+Chain callbacks with mathematical operations: Create a function chainCalculate that takes two numbers and two callbacks. The first callback performs an operation (e.g., addition), and the second callback uses the result to perform another operation (e.g., multiplication by 2).
+
+Handle asynchronous callbacks: Write a function delayedMultiply that takes two numbers and a callback function. Use setTimeout to simulate a delay, and after 2 seconds, pass the result of multiplying the two numbers to the callback.
+
+Pass callbacks dynamically: Write a function chooseOperation that takes a string ('add', 'subtract', 'multiply', 'divide') and dynamically assigns one of your predefined calculation functions (like add or subtract) to a callback. Use this callback to calculate the result for two numbers.
+
+Use higher-order functions: Create a function higherOrderOperation that takes two numbers and a callback function as arguments. The callback should calculate the average of the two numbers and log whether the result is greater than 10.
+
+Design a validation callback: Write a function validateAndCalculate that takes two numbers and a callback. Validate the numbers to ensure they are both positive before performing the callback operation. If validation fails, log an error message.```
