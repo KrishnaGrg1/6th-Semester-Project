@@ -44,7 +44,9 @@ body {
     border-radius: 30px;
     padding: 0 10px;
   }
-
+  #username{
+    font-size: 16px;
+  }
   /* Placeholder styling */
   .search-container input[type="text"]::placeholder {
     color: white; /* White placeholder text */
@@ -72,8 +74,7 @@ body {
   }
   
 
-  
-   .profile {
+  .profile {
     background-color: rgba(217, 217, 217, 0.2);
     border-radius: 20px;
     display: flex;
@@ -81,28 +82,55 @@ body {
     gap: 10px;
     height:47px;
     width: 223px;
+    position: relative;
+    cursor: pointer;
   }
   
   .profile img {
     height: 80px;
+
   }
-  .profile:hover{
-    background-color:lightgray;
-  }
-  .profile span button{
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    font-size: 16px;
-  }
- 
+
+  
+.profile-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: gray; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+  width: 200px;
+  padding: 10px;
+}
+
+.profile-options a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.profile-options button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: rgba(217, 217, 217, 0.2);
+  color: #f6f6fd;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.profile-options button:hover {
+  background-color: rgb(38, 186, 235);
+}
+.profile-options.show {
+  display: block;
+}
+#logoutbtn:hover{
+  background-color: red;
+}
   
   /* Navigation Menu */
   nav {

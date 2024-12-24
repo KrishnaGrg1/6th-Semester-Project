@@ -33,9 +33,14 @@
         <a href="#">About</a>
       </nav>
       <div class="profile">
-        <img src="/assets/logo.jpg" alt="Profile">
-        <a href="login"> <button>Sign In</button></a>
-      </div>
+        <img src="/assets/logo.jpg" alt="Profile" id="profileImg">
+        <p id="username"><%= user.fname %></p>
+        <div id="profileOptions" class="profile-options">
+          
+          <a href="/edit-profile"><button>Edit Profile</button></a>
+            <a  href="logout"><button id="logoutbtn">Log Out</button></a>
+        </div>
+    </div>
     </header>
 
     

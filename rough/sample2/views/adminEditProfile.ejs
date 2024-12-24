@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Edit Profile</title>
+    <link rel="stylesheet" href="css/adminEditProfile.css">
+</head>
+<body>
+    <h1>Admin Edit Profile</h1>
+    <h3>Welcome, <%= loggedInUser.fname %></h3>  <!-- Access logged-in user's first name -->
+
+    <!-- User Selection Dropdown -->
+    <form action="/profile-update" method="Post">
+        <h4>Select a user to edit their profile:</h4>
+        <select name="userId" required>
+            <option value="">-- Select a user --</option>
+            <% users.forEach(user => { %>
+                <option value="<%= user._id %>" <%= user._id.toString() === userToEdit._id.toString() ? 'selected' : '' %>>
+                    <%= user.fname %> <%= user.lname %> - <%= user.email %>
+                </option>
+            <% }) %>
+        </select>
+
+        <button type="submit">Edit Selected User's Profile</button>
+    </form>
+
+    <!-- User Profile Edit Form -->
+    <h4>Edit Profile Details:</h4>
+    <form action="/profile-update/<%= userToEdit._id %>" method="POST">
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="fname" value="<%= userToEdit.fname %>" required><br>
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" value="<%= userToEdit.lname %>" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= userToEdit.email %>" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter new password"><br>
+
+        <button type="submit">Update Profile</button>
+    </form>
+
+</body>
+</html>

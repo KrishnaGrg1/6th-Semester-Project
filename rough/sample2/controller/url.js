@@ -1,5 +1,5 @@
 const UserModel=require('../models/model');
-const {v4:uuidv4}=require('uuid');
+const jwt = require('jsonwebtoken');
 const {setUser,getUser,}=require('../services/auth');
 
 
@@ -36,9 +36,9 @@ async function login(req, res) {
             return res.render('login', { message: 'Invalid email or password' });
         }
 
-        const sessionId = uuidv4();
-        setUser(sessionId, user);
-        res.cookie("uid", sessionId, { httpOnly: true, secure: true });
+      
+        const token=setUser(user);
+        res.cookie("uid", token, { httpOnly: true, secure: true });
         res.redirect('/home');  // After successful login, redirect to homepage
     } catch (error) {
         console.error('Error finding user:', error);

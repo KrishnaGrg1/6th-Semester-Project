@@ -325,3 +325,19 @@ window.addEventListener('DOMContentLoaded', fetchAndDisplayTopPicks);
    nav.classList.toggle('visible'); 
  });
  
+
+ document.addEventListener("DOMContentLoaded", () => {
+    const profileImg = document.getElementById('profileImg');
+    const profileOptions = document.getElementById('profileOptions');
+
+    profileImg.addEventListener('click', () => {
+        profileOptions.classList.toggle('show');
+    });
+
+    // Close the dropdown if the user clicks outside of it
+    window.addEventListener('click', (event) => {
+        if (!profileImg.contains(event.target) && !profileOptions.contains(event.target)) {
+            profileOptions.classList.remove('show');
+        }
+    });
+});

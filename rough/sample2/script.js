@@ -15,26 +15,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
+
 // Routes
 app.use('/', router);
 
 
 
-
-app.get('/logout', (req, res) => {
-    const sessionId = req.cookies?.uid;
-    if (sessionId) {
-        // Clear server-side session
-        const sessionIdToUserMap = require('./service/auth');
-        sessionIdToUserMap.delete(sessionId);
-        // Clear client-side cookie
-        res.clearCookie('uid');
-    }
-    res.redirect('/login');
-});
-
 // MongoDB connection
-connecttoMongoDB('mongodb://127.0.0.1:27017/movie')
+connecttoMongoDB('mongodb://127.0.0.1:27017/movie-streaming')
     .then(() => {
         console.log('MongoDB connected successfully');
     })
