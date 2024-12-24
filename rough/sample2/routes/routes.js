@@ -5,8 +5,7 @@ const router = express.Router();
 const { register, login } = require('../controller/url');
 const { restrictToLoggedinUserOnly} = require('../middleware/auth');
 
-// Authentication Routes
-// Register Route
+
 router.post('/register', register);
 router.get('/register',(req,res)=>{
     res.render('register');
@@ -43,8 +42,9 @@ router.get('/contact', restrictToLoggedinUserOnly, (req, res) => {
 
 
 
+
+
 // Profile Edit Route (GET)
-// Profile Edit Route (GET) for Admin
 router.get('/edit-profile', restrictToLoggedinUserOnly, async (req, res) => {
     try {
         const loggedInUser = req.user;  // Logged-in user (admin)
@@ -54,28 +54,25 @@ router.get('/edit-profile', restrictToLoggedinUserOnly, async (req, res) => {
         if (!user) {
             return res.status(404).send('User not found');
         }
+        console.log(user)
 
-        if (loggedInUser.role === "user") {
+        if (user.role === "user") {
             // If regular user, render 'edit-profile' view
-            res.render('edit-profile', { loggedInUser, user });
-        } else {
+            res.render('edit-profile', { loggedInUser, user ,message: ''});
+        } else if (user.role === "admin") {
             // If admin, render 'adminEditProfile' view and pass necessary data
             const users = await UserModel.find();  // Fetch all users for admin to manage
             const selectedUserId = req.query.userId || userId;
             const userToEdit = await UserModel.findById(selectedUserId);
 
             // Pass 'loggedInUser', 'user', 'users', and 'userToEdit' to the template
-            res.render('adminEditProfile', { loggedInUser, user, users, userToEdit });
+            res.render('adminEditProfile', { loggedInUser, user, users, userToEdit, message: '' });
         }
-
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal Server Error');
     }
 });
-
-
-
 
 
 // Profile Update Route (POST)
@@ -90,7 +87,7 @@ router.post('/profile-update', restrictToLoggedinUserOnly, async (req, res) => {
         if (!updatedUser) {
             return res.status(404).send('User not found');
         }
-
+       
         // Redirect to the 'home' page after successful update
         res.redirect('/edit-profile');
     } catch (err) {
@@ -99,12 +96,28 @@ router.post('/profile-update', restrictToLoggedinUserOnly, async (req, res) => {
     }
 });
 
+// Admin Profile Update Route (POST)
+router.post('/admin-profile-update', restrictToLoggedinUserOnly, async (req, res) => {
+    if (req.user.role !== 'admin') {
+        return res.status(403).send('Forbidden');
+    }
 
+    const { userId, fname, lname, email, password } = req.body;
 
+    try {
+        const updatedUser = await UserModel.findByIdAndUpdate(userId, { fname, lname, email, password }, { new: true });
 
-
-
-
+        if (!updatedUser) {
+            return res.status(404).send('User not found');
+        }
+        
+        // Redirect to the 'adminEditProfile' page after successful update
+        res.redirect(`/edit-profile?userId=${userId}`);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 // Add other routes as needed
 router.get('/', (req, res) => {

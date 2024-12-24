@@ -7,41 +7,57 @@
     <link rel="stylesheet" href="css/adminEditProfile.css">
 </head>
 <body>
-    <h1>Admin Edit Profile</h1>
-    <h3>Welcome, <%= loggedInUser.fname %></h3>  <!-- Access logged-in user's first name -->
+    <div class="container">
+        <div class="card">
+            <h2>Edit Admin Profile</h2>
+            <p>Welcome, <%= loggedInUser.fname %></p>
 
-    <!-- User Selection Dropdown -->
-    <form action="/profile-update" method="Post">
-        <h4>Select a user to edit their profile:</h4>
-        <select name="userId" required>
-            <option value="">-- Select a user --</option>
-            <% users.forEach(user => { %>
-                <option value="<%= user._id %>" <%= user._id.toString() === userToEdit._id.toString() ? 'selected' : '' %>>
-                    <%= user.fname %> <%= user.lname %> - <%= user.email %>
-                </option>
-            <% }) %>
-        </select>
+            <!-- User Selection Dropdown -->
+            <form action="/admin-profile-update" method="POST" class="form-section">
+                <h4>Select a User:</h4>
+                <select name="userId" required>
+                    <option value="">-- Select a user --</option>
+                    <% users.forEach(user => { %>
+                        <option value="<%= user._id %>" <%= user._id.toString() === userToEdit._id.toString() ? 'selected' : '' %>>
+                            <%= user.fname %> <%= user.lname %> - <%= user.email %>
+                        </option>
+                    <% }) %>
+                </select>
+                <button type="submit" class="btn">Edit User</button>
+            </form>
 
-        <button type="submit">Edit Selected User's Profile</button>
-    </form>
+            <!-- User Profile Edit Form -->
+            <form action="/admin-profile-update" method="POST" class="form-section">
+        
+                <input type="hidden" name="userId" value="<%= userToEdit._id %>">
+                
+                <label>First Name:</label>
+                <input type="text" name="fname" value="<%= userToEdit.fname %>" required>
+                
+                <label>Last Name:</label>
+                <input type="text" name="lname" value="<%= userToEdit.lname %>" required>
+                
+                <label>Email:</label>
+                <input type="email" name="email" value="<%= userToEdit.email %>" required>
+                
+                <label>Password:</label>
+                <div class="password-container">
+                    <input type="password" name="password" id="password"  value="<%= userToEdit.password %>" placeholder="New password">
+                    <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+                </div>
+                
+                <button type="submit" class="btn">Update Profile</button>
+            </form>
+            <a href="home" class="back-link">← Back to Profile</a>
+        </div>
+    </div>
 
-    <!-- User Profile Edit Form -->
-    <h4>Edit Profile Details:</h4>
-    <form action="/profile-update/<%= userToEdit._id %>" method="POST">
-        <label for="fname">First Name:</label>
-        <input type="text" id="fname" name="fname" value="<%= userToEdit.fname %>" required><br>
-
-        <label for="lname">Last Name:</label>
-        <input type="text" id="lname" name="lname" value="<%= userToEdit.lname %>" required><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<%= userToEdit.email %>" required><br>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Enter new password"><br>
-
-        <button type="submit">Update Profile</button>
-    </form>
-
+    <script>
+        function togglePassword(id, element) {
+            const passwordField = document.getElementById(id);
+            passwordField.type = passwordField.type === "password" ? "text" : "password";
+            element.textContent = passwordField.type === "password" ? "👁️" : "🙈";
+        }
+    </script>
 </body>
 </html>

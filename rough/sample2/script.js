@@ -20,7 +20,6 @@ app.set('view engine', 'ejs');
 app.use('/', router);
 
 
-
 // MongoDB connection
 connecttoMongoDB('mongodb://127.0.0.1:27017/movie-streaming')
     .then(() => {

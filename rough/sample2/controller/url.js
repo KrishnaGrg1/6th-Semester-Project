@@ -19,7 +19,7 @@ async function register (req, res)  {
    
     
     console.log(user);
-    res.render('login',{message: ''}); 
+    res.render('login',{message: 'Succesfully Signup'}); 
 };
 
 
