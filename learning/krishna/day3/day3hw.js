@@ -78,15 +78,15 @@
 
 // function chainCalculate(num1,num2,callable1,callable2){
 //     let first=callable1(num1,num2);
-//     let second=callable2(first,num2);
+//     let second=callable2(first);
 //     console.log(first)
 //     console.log(second);
 // }
 // function add(num1,num2){
 //     return num1+num2;
 // }
-// function multiply(num1,num2){
-//     return num1*num2;
+// function multiply(num1){
+//     return num1*2;
 // }
 // chainCalculate(2,3,add,multiply)
     
@@ -104,56 +104,58 @@
 
 
 //task8:Pass callbacks dynamically: Write a function chooseOperation that takes a string ('add', 'subtract', 'multiply', 'divide') and dynamically assigns one of your predefined calculation functions (like add or subtract) to a callback. Use this callback to calculate the result for two numbers.
-// function chooseOperation(string,callable){
-//     switch(string){
-//         case "add":
-//             console.log(callable(add));
-//             break;
-//         case "sub":
-//             console.log(callable(sub));
-//             break;
-//         case "multiply":
-//             console.log(callable(multiply));
-//             break;
-//         case "divide":
-//             console.log(callable(divide));
-//             break;    
-//         default:
-//             console.log("Invalid operation")
-//             break;  
-//     }
-// }
-
-// function add(num1,num2){
-//     return num1*num2
-// }
-// function sub(num1,num2){
-//     return num1-num2
-// }
-// function multiply(num1,num2){
-//     return num1*num2
-// }
-// function divide(num1,num2){
-//     return num2/num1;
-// }
-
-
-//task9:Use higher-order functions: Create a function higherOrderOperation that takes two numbers and a callback function as arguments. The callback should calculate the average of the two numbers and log whether the result is greater than 10.
-function higherOrderOperation(num1,num2,callable){
-    let result=callable(num1,num2);
-    console.log(result);
-    if(result>10){
-        console.log(`The result:${result} is greater than 10`)
-    }else{
-        console.log(`The result:${result} is less than 10`)
+function chooseOperation(string,callable){
+    switch(string){
+        case "add":
+            console.log(callable(add));
+            break;
+        case "sub":
+            console.log(callable(sub));
+            break;
+        case "multiply":
+            console.log(callable(multiply));
+            break;
+        case "divide":
+            console.log(callable(divide));
+            break;    
+        default:
+            console.log("Invalid operation")
+            break;  
     }
 }
 
-function average(num1,num2){
-    return (num1+num2)/2
+function add(num1,num2){
+    return num1*num2
 }
+function sub(num1,num2){
+    return num1-num2
+}
+function multiply(num1,num2){
+    return num1*num2
+}
+function divide(num1,num2){
+    return num2/num1;
+}
+add(3,4);
+chooseOperation("add",add)
 
-higherOrderOperation(3,10,average)
+
+//task9:Use higher-order functions: Create a function higherOrderOperation that takes two numbers and a callback function as arguments. The callback should calculate the average of the two numbers and log whether the result is greater than 10.
+// function higherOrderOperation(num1,num2,callable){
+//     let result=callable(num1,num2);
+//     console.log(result);
+//     if(result>10){
+//         console.log(`The result:${result} is greater than 10`)
+//     }else{
+//         console.log(`The result:${result} is less than 10`)
+//     }
+// }
+
+// function average(num1,num2){
+//     return (num1+num2)/2
+// }
+
+// higherOrderOperation(3,10,average)
 
 //task10:Design a validation callback: Write a function validateAndCalculate that takes two numbers and a callback. Validate the numbers to ensure they are both positive before performing the callback operation. If validation fails, log an error message.```
 // function validateAndCalculate(num1,num2,callable){

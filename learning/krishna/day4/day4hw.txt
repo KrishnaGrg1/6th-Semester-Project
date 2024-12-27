@@ -1,0 +1,4 @@
+Create a promise inside which a random number between 1 and 100 is generated.
+And, if that number has '0' at the end, reject with error, else resolve the promise with the random number after 1 second.
+Show this number in console with the promise's .then and .catch construct 
+and also with async/await construct.

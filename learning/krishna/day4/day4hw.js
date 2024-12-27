@@ -17,8 +17,6 @@ const Naya=new Promise(function(res,rej){
     //         res("Zero ayana last ma")
     //     },1000)
     // }
-
-
          const timer=setTimeout(function(){
             if(randomNumber%10==0){
                 rej("Zero ayo last ma")
