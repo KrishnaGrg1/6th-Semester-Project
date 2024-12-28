@@ -1,6 +1,6 @@
 import express from 'express';
 import { config } from 'dotenv';
-import {getCurrentViews,increasedViews,resetViews} from './helpers/views.js'
+import {getCurrentViews,increasedViews,resetViews,decreaseViews} from './helpers/views.js'
 config();
 const port=process.env.PORT || 4000;
 const server=new express();
@@ -25,6 +25,10 @@ server.get('/views/increase',function(req,res){
 server.get('/views/reset',function(req,res){
     // res.send({});
    res.send(resetViews());
+})
+server.get('/views/decrease',function(req,res){
+    // res.send({});
+   res.send(decreaseViews());
 })
 
 server.listen(port,function(){

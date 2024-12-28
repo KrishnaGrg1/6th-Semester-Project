@@ -33,9 +33,20 @@ function resetViews(){
     return CurrentViews;
 }
  
+function decreaseViews(){
+    let CurrentViews=getCurrentViews();
+    let count=CurrentViews.count;
+    count=count-10;
+    CurrentViews['count']=count;
+    let JsonString=JSON.stringify(CurrentViews);
+    writeFileSync('views.json',JsonString,{
+        encoding:'utf-8'
+    })
+    return CurrentViews;
+}
 
 
 
 
 
-export {getCurrentViews,increasedViews,resetViews}
+export {getCurrentViews,increasedViews,resetViews,decreaseViews}

@@ -1,0 +1,9 @@
+Add the following routes with the given functionalities:
+1. /views/reset
+  Reset the count to 0.
+
+2. /views/increaseBy10
+  Increase the count by 10
+
+3. /views/decreaseBy10
+  Decrease the count by 10. Be careful that the view count should not be less than 0 even after decreasing. For example, if count is 8 and this endpoint is called, the count should be 0
