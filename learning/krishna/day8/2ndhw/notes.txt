@@ -1,0 +1,31 @@
+2. Create new route "/cars" with a new file cars.json to store information about cars. A single car entry should have name, model, manufacturer and price. All these properties should be editable. General Route Endpoints:
+  
+  GET /cars => Get all cars list
+  POST /cars => add new car. Take name, model, manufacturer and price for new car from request body.
+  GET /cars/:index => Get single car details
+  DELETE /cars/:index => Delete a car at this index if exists.
+  PUT /cars/:index => Edit single car details. Accept the new car details from request's body.
+
+Be sure to validate request data and deal with error conditions as per the routes.
+
+Use JavaScript's Object destructuring and spread operators where needed.
+
+Also make sure express.json() middleware is used for reading JSON request body. Example:
+// server.use(express.json())
+
+// Sample Cars.json file
+{
+    "cars": [
+        {
+            "make": "2023",
+            "model": "S",
+            "manufacturer": "tesla"
+        },
+        {
+            "make": "2020",
+            "model": "X",
+            "manufacturer": "tesla"
+        }
+    ]
+}
+ 
