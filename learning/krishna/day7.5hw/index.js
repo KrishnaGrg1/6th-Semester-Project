@@ -16,7 +16,9 @@ server.get('/views/tasks/add/:task',(req,res)=>{
     const task=req.params.task;
     const user1=user[0];
     user1.task=[task];
-    res.json(task)
+    res.json({
+        task
+    })
 
 })
 server.get('/views/tasks/remove/:task', (req, res) => {
