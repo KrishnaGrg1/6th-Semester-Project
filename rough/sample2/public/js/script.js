@@ -9,5 +9,5 @@ function togglePassword(inputId, icon) {
       passwordInput.type = 'password';
       icon.textContent = '👁️';  // Change the icon when password is hidden
     }
-  }
+}
   

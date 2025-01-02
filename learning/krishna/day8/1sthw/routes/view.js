@@ -2,8 +2,7 @@ import { readFileSync, writeFileSync} from "fs";
 
 
 function viewall(){
-   const view=readFileSync('/Users/krishnabahadurgurung/Documents/Project/sample4/6th-Semester-Project/learning/krishna/day8/1sthw/view.json',{
-    encoding:"utf-8" })
+   const view=readFileSync('/Users/krishnabahadurgurung/Documents/Project/sample4/6th-Semester-Project/learning/krishna/day8/1sthw/view.json',{encoding:"utf-8" })
     const parsedData=JSON.parse(view);
     return parsedData;
 }
@@ -15,7 +14,7 @@ function addtodo(taskname){
    if(todo.includes(taskname)){
     throw new Error (`${taskname} is already exist`);
    }else{
-    todo=[...todo,taskname];
+    todo.push(taskname)
     let write={todo,count};
     let obj=JSON.stringify(write);
     writeFileSync('/Users/krishnabahadurgurung/Documents/Project/sample4/6th-Semester-Project/learning/krishna/day8/1sthw/view.json',obj,{

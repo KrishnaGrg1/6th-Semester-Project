@@ -7,9 +7,11 @@ const { restrictToLoggedinUserOnly} = require('../middleware/auth');
 
 
 router.post('/register', register);
+
 router.get('/register',(req,res)=>{
     res.render('register');
 })
+
 // Login Routes
 router.get('/login', (req, res) => {
     res.render('login', { message: '' });
