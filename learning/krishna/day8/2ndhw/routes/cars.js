@@ -17,7 +17,7 @@ function addcars(task){
     
    for(let i=0;i<numberOfCars;i++){
     if (cars[i].model === task.model && cars[i].manufacturer === task.manufacturer) {
-        return "Car Model and Manufacturer already exist"; // No need to add it again
+        throw new Error ("Car Model and Manufacturer already exist"); // No need to add it again
     }
    }
     cars.push(task);
@@ -66,7 +66,7 @@ function deletecars(carsId){
         let obj=JSON.stringify(write);
         writeFileSync("/Users/krishnabahadurgurung/Documents/Project/sample4/6th-Semester-Project/learning/krishna/day8/2ndhw/cars.json",
         obj,{encoding:"utf-8"});
-        return (`CarID: ${carsId} is deleted`)
+        return {msg:`CarID: ${carsId} is deleted`};
     }else{
         throw new Error (`Car Id: ${carsId} not found`)
     }
