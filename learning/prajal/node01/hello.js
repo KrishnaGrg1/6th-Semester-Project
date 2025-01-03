@@ -1,1 +1,5 @@
-console.log("Hey there! I am JS");
+function add(a,b) {
+    return a+b;
+}
+
+console.log(add(2, 5));
