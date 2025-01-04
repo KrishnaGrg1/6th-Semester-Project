@@ -16,6 +16,5 @@
     "joi": "^17.13.3",
     "mongoose": "^8.9.3"
   },
-  "devDependencies": {},
   "description": ""
 }
