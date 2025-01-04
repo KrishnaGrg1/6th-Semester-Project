@@ -1,4 +1,4 @@
-// Exporting functions using CommonJS
+
 function add(a, b) {
     return a + b;
 }
