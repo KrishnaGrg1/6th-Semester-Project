@@ -19,7 +19,8 @@ const currencySchema=new Schema({
 const mainSchema=new Schema({
     date:{
         type:Date,
-        required:true
+        required:true,
+        default:"2019"
     },
     source:{
         type:String,
