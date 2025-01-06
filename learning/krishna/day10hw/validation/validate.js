@@ -7,10 +7,10 @@ const addCurrencySchema = joi.object().keys({
     });
 
 const addmainSchema= joi.object().keys({
-    date: joi.date(),
+   
     source: joi.string().min(3).required(),
     updatedBy:joi.string().min(3).required(),
-    currencies:addCurrencySchema
+    currencies:joi.array().items(addCurrencySchema)
 }).required();
 
 
