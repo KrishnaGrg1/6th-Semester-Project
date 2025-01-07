@@ -8,7 +8,7 @@ import mongoose from 'mongoose';
 const bookRouter=Router();
 const singleBookRouter=Router();
 
-bookRouter.get('/',async(req,res)=>{
+bookRouter.get('/books',async(req,res)=>{
   try{
    
     const metadata = (await getBookMetaData()).toObject();
@@ -21,11 +21,11 @@ bookRouter.get('/',async(req,res)=>{
   }
 })
 
-bookRouter.put('/',validate(update),async(req,res)=>{
+bookRouter.put('/metadata',validate(update),async(req,res)=>{
   try{
    let {source,updatedBy}=req.body;
-   let latest=await updateBookMetaData(req.body);
-   return res.status(200).json({ metadata: latest })
+   let latest=(await updateBookMetaData(req.body)).toJSON();
+return res.status(200).json({ metadata: {...latest, _id: undefined, __v: undefined}});
   }catch(e){
     return res.status(400).json({
       error:e.message()
@@ -51,7 +51,7 @@ bookRouter.post('/',validate(bookValidation.add),async(req,res)=>{
 })
 
 
-bookRouter.use('/:bookId',validate(bookValidation.validateSingle),async function(req,res,next){
+bookRouter.use('/books/:bookId',validate(bookValidation.validateSingle),async function(req,res,next){
   try{
     let bookId=req.params.bookId;
     
@@ -60,6 +60,7 @@ bookRouter.use('/:bookId',validate(bookValidation.validateSingle),async function
     if (existing) {
       req.existing = existing;
       next();
+
   } else {
       throw new Error("Book not found by id: " + bookId);
   }
@@ -97,7 +98,7 @@ singleBookRouter.put('/',validate(bookValidation.add),async function(req,res){
 
 singleBookRouter.delete('/',async function(req,res){
   try{
-    await req.existing.deleteOne()
+    await req.existing.deleteOne();
     return res.json({
       "message": "Book deleted successfully"
     })
