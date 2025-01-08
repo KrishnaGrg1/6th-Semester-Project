@@ -50,7 +50,7 @@ UserRouter.post("/login", validate(UserValidation.login), async (req, res) => {
       });
     }
     return res.json({
-      message: "Invalid email and password"
+      message: "Incorrect email and password"
     });
   } catch (e) {
     return res.status.json({

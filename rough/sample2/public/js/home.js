@@ -2,6 +2,7 @@
 const api_Key = '4626200399b08f9d04b72348e3625f15';
 const baseUrl = 'https://api.themoviedb.org/3/';
 
+
 // DOM Elements
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
