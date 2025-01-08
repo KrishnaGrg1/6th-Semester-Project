@@ -6,10 +6,12 @@ const app=express();
 config();
 const port=process.env.PORT|| 4000
 
+app.use(express.json());
+  
 
 connectToMongoDB().then(function (connectMessage){
     console.log(connectMessage);
-    app.use(express.json());
+    
     app.use(mainRoutes)
     app.listen(port,()=>{
         console.log("Server running on PORT : "+port)

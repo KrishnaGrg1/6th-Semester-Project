@@ -5,7 +5,7 @@ import findUserByEmail from "../services/user.js";
 
 const register=catchAsync(async function(req,res){
     const existingUser=await findUserByEmail(req.body.email);
-
+    
     if(existingUser){
         throw new Error ("Email already taken or used");
     }
