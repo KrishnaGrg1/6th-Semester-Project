@@ -24,7 +24,23 @@ const post = catchAsync(async (req, res) => {
   });
 });
 
+const getBUserId=catchAsync(async (req, res) => {
+  
+  const userid=req.params.userid;
 
-const productController = { get, post };
+  const product = await Product.findOne({createdBy:userid})
+
+  if(!product){
+    console.log(product)
+    throw new Error ("Invalid userid")
+  }
+  
+ 
+  return res.json({
+    product
+  });
+});
+
+const productController = { get, post,getBUserId };
 
 export default productController;

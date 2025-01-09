@@ -14,6 +14,7 @@ const productRouter=Router();
 
 
 productRouter.get('/',productController.get)
+productRouter.get('/:userid',productController.getBUserId)
 productRouter.post('/',captureUserAuthToken,requireLogin,validate(validationSchema.created),productController.post)
 
 export default productRouter
