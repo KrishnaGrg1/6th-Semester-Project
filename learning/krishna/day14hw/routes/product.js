@@ -17,5 +17,6 @@ productRouter.get('/',productController.get)
 productRouter.get('/byuserid/:userid',productController.getBUserId)
 productRouter.get('/byproduct/:productid',productController.getByProductId)
 productRouter.post('/',captureUserAuthToken,requireLogin,validate(validationSchema.created),productController.post)
-
+productRouter.post('/:productid',captureUserAuthToken,requireLogin,validate(validationSchema.created),productController.edit)
+productRouter.delete('/:productid',captureUserAuthToken,requireLogin,productController.remove)
 export default productRouter
