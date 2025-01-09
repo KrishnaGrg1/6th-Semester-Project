@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popcornbox - About Us</title>
+    <style>
+        /* [Previous shared styles remain the same until .main] */
+        :root {
+            --background: #1a0910;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --accent: #ffd700;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-bg-darker: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-primary);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            position: relative;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5rem;
+        }
+
+        .nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            padding: 5px 15px;
+        border-radius: 5px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color:darkgray;
+            border-radius: 20px;
+            color: white;
+        
+          }
+        .fimg{
+            width: 143px;
+            height: 135px;
+        }
+
+        .profile {
+            background-color: rgba(217, 217, 217, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            height:47px;
+            width: 223px;
+            position: relative;
+            cursor: pointer;
+          }
+          
+          .profile img {
+            height: 80px;
+        
+          }
+        
+          
+        .profile-options {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: gray; 
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          display: none;
+          z-index: 1000;
+          width: 200px;
+          padding: 10px;
+        }
+        
+        .profile-options a {
+          display: block;
+          margin-bottom: 10px;
+        }
+        
+        .profile-options button {
+          width: 100%;
+          padding: 10px;
+          border: none;
+          background-color: rgba(217, 217, 217, 0.2);
+          color: #f6f6fd;
+          border-radius: 5px;
+          cursor: pointer;
+          text-align: left;
+        }
+        
+        .profile-options button:hover {
+          background-color: rgb(38, 186, 235);
+        }
+        .profile-options.show {
+          display: block;
+        }
+        #logoutbtn:hover{
+          background-color: red;
+        }
+          
+          /* Navigation Menu */
+          nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            width: 60%;
+          }
+          .main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        .about-container {
+            display: flex;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .about-content {
+            flex: 1;
+            text-align: left;
+            background: var(--glass-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--glass-bg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-section {
+            margin-top: 4rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: var(--glass-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- [Header remains the same] -->
+    <header class="header">
+        <img  class="fimg" src="/assets/popcornlogo.png" alt="Popcornbox" class="logo">
+        <nav class="nav">
+            <a href="home">Home</a>
+            <a href="pricing">Pricing</a>
+            <a href="contact" >Contact</a>
+            <a href="about" class="active">About</a>
+        </nav>
+        <div class="profile">
+            <img src="/assets/popcornlogo.png" alt="Profile" id="profileImg" />
+            <p id="username"><%= user.fname %></p>
+            <div id="profileOptions" class="profile-options">
+              <a href="/edit-profile"><button>Edit Profile</button></a>
+              <a href="logout"><button id="logoutbtn">Log Out</button></a>
+            </div>
+          </div>
+    </header>
+    <main class="main">
+        <h1 class="title">About Us</h1>
+        <p class="subtitle">Creating cinematic experiences for everyone</p>
+
+        <div class="about-container">
+            <div class="about-content">
+                <h2 style="color: var(--accent); margin-bottom: 1.5rem;">Our Story</h2>
+                <p style="margin-bottom: 1.5rem;">Founded in 2024, Popcornbox has revolutionized how people experience movies in Nepal. We started with a simple idea: make cinema accessible to everyone.</p>
+                <p>Today, we serve thousands of movie enthusiasts across Pokhara and beyond, bringing the magic of cinema directly to our customers.</p>
+            </div>
+            <div class="about-image">
+                <img src="/assets/cinema.jpg" alt="Cinema experience">
+            </div>
+        </div>
+
+        <section class="team-section">
+            <h2 style="color: var(--accent); margin-bottom: 2rem;">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/assets/ceophoto.png" alt="Team member">
+                    <h3>Krishna Bahadur Gurung</h3>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="/assets/designer.jpeg" alt="Team member">
+                    <h3>Prajal Gurung</h3>
+                    <p>Head of Operations</p>
+                </div>
+                <div class="team-member">
+                    <img src="/assets/kailash.jpeg" alt="Team member">
+                    <h3>Kailash Gurung</h3>
+                    <p>Technical Lead</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const profileImg = document.getElementById('profileImg');
+            const profileOptions = document.getElementById('profileOptions');
+        
+            profileImg.addEventListener('click', () => {
+                profileOptions.classList.toggle('show');
+            });
+        
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', (event) => {
+                if (!profileImg.contains(event.target) && !profileOptions.contains(event.target)) {
+                    profileOptions.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

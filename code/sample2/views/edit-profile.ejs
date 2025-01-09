@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/css/editProfile.css">
+</head>
+<body>
+    <div class="container">
+        <div class="signup-box">
+            <h2>Edit Profile</h2>
+            <div id="message"><%= message ? message : '' %></div>
+         <form action="/profile-update" method="POST">
+
+
+                <div class="name-fields">
+                    <div class="name-field">
+                        <input type="text" id="fname" name="fname" value="<%= user.fname %>" required>
+                    </div>
+                    <div class="name-field">
+                        <input type="text" id="lname" name="lname" value="<%= user.lname %>" required>
+                    </div>
+                </div>
+                <input type="email" id="email" name="email" value="<%= user.email %>" required>
+
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" value="<%= user.password %>" required>
+                    <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+                </div>
+
+                <div class="password-wrapper">
+                    <input type="password" id="confirm-password" name="confirm-password" value="<%= user.password %>" required>
+                    <span class="toggle-password" onclick="togglePassword('confirm-password', this)">👁️</span>
+                </div>
+
+                <div class="divider">
+                   <button type="submit" class="signup-btn">Update Profile</button>
+                </div>
+
+                <div class="login-text">
+                    <p>Want to go back? <a href="home" class="login-link">Back to Profile</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js">
+        <!-- function togglePassword(inputId, icon) {
+            const passwordInput = document.getElementById(inputId);
+          
+            // Toggle password visibility
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.textContent = '🙈';  // Change the icon when password is visible
+            } else {
+                passwordInput.type = 'password';
+                icon.textContent = '👁️';  // Change the icon when password is hidden
+            }
+        } -->
+    </script>
+</body>
+</html>
