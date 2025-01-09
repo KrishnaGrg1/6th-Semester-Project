@@ -8,14 +8,15 @@ const get = catchAsync(async (req, res) => {
 
   const userId = req.headers["x-powered-by"];
   if (!userId) {
-    throw new Error("Unauthorized: Missing user ID");
+    throw new Error("Unauthorized: UserId required");
   }
   const existingUser = await User.findOne({ _id: userId });
 
   if (!existingUser) {
     throw new Error("Invalid Id");
   }
-  const product = await Product.find({});
+  const product = await Product.find({})
+ 
   return res.json({
     product
   });
@@ -26,7 +27,7 @@ const post = catchAsync(async (req, res) => {
   const { name, cost, stockQuantity } = req.body;
   const userId = req.headers["x-powered-by"];
   if (!userId) {
-    throw new Error("Unauthorized: Missing user ID");
+    throw new Error("Unauthorized: UserId required");
   }
   const existingUser = await User.findOne({ _id: userId });
 

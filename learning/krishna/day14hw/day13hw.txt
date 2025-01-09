@@ -1,0 +1,20 @@
+Make products CRUD system.
+
+Routes:
+ GET /products
+  Get all products
+
+POST /porducts
+    Add new product
+    Allow to add new from logged in user only.
+    Sample Product properties: 
+
+    - name
+    - cost
+    - stockQuantity
+    - createdBy [ User who added it ]
+
+    For simulation of foreign keys in mongoDB, mongoose allows referecnes.
+
+    for example, in this situation, the type of createdBy is:
+    { type: Schema.Types.ObjectId, ref: 'User' }
