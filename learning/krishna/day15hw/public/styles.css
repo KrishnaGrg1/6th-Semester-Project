@@ -1,0 +1,44 @@
+body{
+    background-color: cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+a:hover{
+    border-radius: 20px;
+    background-color: darkgoldenrod;
+    padding: 10px;
+}
+button{
+    margin-top: 30px;
+    border-radius: 20px;
+    height: 50px;
+    padding: 10px;
+    background-color: lightgray;
+    color:darkorange;
+    font-size: large;
+    font-weight: bold;
+}
+button:hover{
+    background-color: orange;
+    color: lightgray;
+}
+a{
+    text-decoration: none;
+    color:whitesmoke
+}
+p{
+    font-size: medium;
+    color: white;
+    
+}

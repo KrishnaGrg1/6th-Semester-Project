@@ -7,11 +7,11 @@ const getJokes=async(req,res)=>{
         const response=(await fetch(api));
       
         const text=await response.json();
-        let value=text.value
-        value=value.replace(/Chuck Norris/g, "Bishal");
+        let jokes=text.value
+        jokes=jokes.replace(/Chuck Norris/g, "Bishal");
    
         return res.json({
-            Jokes:value
+            jokes
         })
 
     }catch(e){
