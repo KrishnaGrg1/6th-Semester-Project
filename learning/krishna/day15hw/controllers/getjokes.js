@@ -8,7 +8,7 @@ const getJokes=async(req,res)=>{
       
         const text=await response.json();
         let value=text.value
-        value=value.replace("Chuck Norris","Bishal")
+        value=value.replace(/Chuck Norris/g, "Bishal");
    
         return res.json({
             Jokes:value
