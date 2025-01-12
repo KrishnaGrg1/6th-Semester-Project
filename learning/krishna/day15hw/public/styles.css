@@ -38,11 +38,11 @@ a{
     color:whitesmoke
 }
 p{
-    font-size: medium;
+    font-size: 30px;
     color: white;
-    
+    font-weight: bold;
 }
 
 #randomjokes{
-    
+    color: red;
 }
