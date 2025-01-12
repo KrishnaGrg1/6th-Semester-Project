@@ -4,7 +4,7 @@ config();
 const api=process.env.API;
 const getJokes=async(req,res)=>{
     try{
-        const response=(await fetch(api));
+        const response=await fetch(api);
       
         const text=await response.json();
         let jokes=text.value
