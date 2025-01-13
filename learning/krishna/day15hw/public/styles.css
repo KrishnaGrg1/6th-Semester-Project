@@ -42,7 +42,10 @@ p{
     color: white;
     font-weight: bold;
 }
-
+div{
+    border-radius: 12px;
+   
+}
 #randomjokes{
     color: red;
 }
