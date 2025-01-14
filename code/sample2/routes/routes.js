@@ -1,5 +1,5 @@
 // routes/routes.js
-const express = require('express');
+import express from 'express';
 const UserModel=require('../models/model');
 const router = express.Router();
 const { register, login } = require('../controller/url');

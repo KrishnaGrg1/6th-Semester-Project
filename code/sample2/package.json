@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nodemon script"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "description": "",
