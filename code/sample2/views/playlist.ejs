@@ -1,0 +1,31 @@
+<!-- views/playlist.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist</title>
+    <link rel="stylesheet" href="/css/playlist.css">
+</head>
+<body>
+    <div class="container">
+        <div class="playlist-box">
+            <h2>Your Playlist</h2>
+            <ul class="playlist-list">
+                <% user.playlist.forEach(movie => { %>
+                    <li class="playlist-item">
+                        <img src="<%= movie.poster_path %>" alt="<%= movie.title %>">
+                        <div class="movie-info">
+                            <h3><%= movie.title %></h3>
+                            <button class="edit-btn" data-movie-id="<%= movie.movieId %>">Edit</button>
+                            <button class="remove-btn" data-movie-id="<%= movie.movieId %>">Remove</button>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+
+    <script src="/js/playlist.js"></script>
+</body>
+</html>
