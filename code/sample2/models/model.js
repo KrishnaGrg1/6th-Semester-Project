@@ -24,6 +24,7 @@ const ModelSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         default: 'user'
     },
+    
     playlist: [
         {
             movieId: {
