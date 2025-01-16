@@ -2,7 +2,7 @@
 import express from 'express';
 const UserModel=require('../models/model');
 const router = express.Router();
-const { register, login } = require('../controller/url');
+const { register, login } = require('../controller/authController');
 const { restrictToLoggedinUserOnly} = require('../middleware/auth');
 const { fetchMovieDetails } = require('../services/movieService');
 

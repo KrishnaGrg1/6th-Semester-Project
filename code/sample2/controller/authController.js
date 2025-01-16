@@ -46,9 +46,23 @@ async function login(req, res) {
     }
 }
 
+async function forgetPassword(req,res){
+    try{
+        const {email}=req.body;
 
+        const existingUser=UserModel.findOne({email:email});
 
-module.exports = {
+        if(!existingUser){
+            throw new Error("Email not found");
+        }
+        
+    }catch (error) {
+        console.error('Error finding user:', error);
+        return res.status(500).send('Internal Server Error');
+    }
+}
+
+exports = {
     register,
-    login
+    login,forgetPassword
 };
