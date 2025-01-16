@@ -32,7 +32,7 @@ const sendmail = async (email) => {
 
        // console.log("Email sent successfully:", info);  // Ensure this gets logged
 
-        return { message: "OTP sent successfully", otp: otp };  // Return OTP and message
+        return otp;  // Return OTP and message
     } catch (error) {
         console.error("Error in sendmail:", error);  // Log errors during email sending
         throw new Error("Failed to send OTP");

@@ -1,7 +1,7 @@
 {
   "name": "day17",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "scripts.js",
   "scripts": {
     "start": "nodemon server.js"
   },

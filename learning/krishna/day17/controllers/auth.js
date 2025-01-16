@@ -55,13 +55,13 @@ const forgetPassword = catchAsync(async (req, res) => {
         if (!existingUser) {
             throw new Error("Email not found");
         }
-
+        console.log(1);
        
         const result = await sendmail(existingUser.email);
         console.log("Sendmail result:", result); 
 
         // Ensure result and OTP are valid
-        if (!result || !result.otp) {
+        if (!result ) {
             console.error("Failed to generate OTP or send email");
             throw new Error("OTP could not be generated or email sending failed");
         }
@@ -74,7 +74,7 @@ const forgetPassword = catchAsync(async (req, res) => {
 
         return res.json({
             message: "OTP sent successfully to user",
-            otp: existingUser.otp  // Return OTP (for testing purposes, consider removing it for security)
+            
         });
     } catch (error) {
         console.error("Error in recovery function:", error);  // Log errors here too
@@ -101,6 +101,7 @@ const resetPassword = catchAsync(async (req, res) => {
         }
 
         existingUser.password=await bcrypt.hash(password,10);
+        existingUser.otp=null;
         await existingUser.save();
 
        
