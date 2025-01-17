@@ -1,4 +1,5 @@
-const jwt=require('jsonwebtoken')
+import jwt from 'jsonwebtoken';
+
 const secret="JaiNepal321";
 const tokenBlacklist = new Set();
 
@@ -33,5 +34,5 @@ function logout(token) {
     console.log('Token blacklisted (logged out):', token);
   }
 }
-module.exports = { setUser, getUser,logout };
+export{ setUser, getUser,logout };
   

@@ -1,4 +1,4 @@
-const { getUser } = require("../services/auth");
+import { setUser, getUser } from '../services/auth.js';
 
 async function checkForAuthentication(req,res,next){
   const authorizationHeaderValue = req.headers["authorization"];
@@ -28,7 +28,8 @@ async function checkAuth(req, res, next) {
   next();
 }
 
-module.exports = {
+
+export {
   restrictToLoggedinUserOnly,
   checkAuth,
 };
