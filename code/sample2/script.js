@@ -1,11 +1,12 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const path = require('path');
+import  path from 'path';
 const port = 8001;
-const { connecttoMongoDB } = require('./connect');
-const router = require('./routes/routes');
+import  { connecttoMongoDB } from './connect.js';
 
-const cookieParser = require('cookie-parser');
+
+import cookieParser from 'cookie-parser';
+import mainRouter from './routes/routes.js';
 
 app.use(cookieParser());
 app.use(express.json());
@@ -15,7 +16,7 @@ app.set('view engine', 'ejs');
 
 
 // Routes
-app.use('/', router);
+app.use('/', mainRouter);
 
 
 // MongoDB connection

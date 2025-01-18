@@ -57,7 +57,7 @@ label {
   font-size: 24px;
 }
 
-#email ,#password{
+#email ,#password,#otp{
   width: 740px;
   padding: 0.8rem;
   border-radius: 5px;

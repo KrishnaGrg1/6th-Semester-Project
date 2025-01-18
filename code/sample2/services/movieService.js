@@ -1,5 +1,5 @@
 // services/movieService.js
-const axios = require('axios');
+import axios from 'axios';
 const api_Key = '4626200399b08f9d04b72348e3625f15'; // Replace with your actual API key
 
 async function fetchMovieDetails(movieId) {
@@ -25,4 +25,4 @@ async function fetchMovieDetails(movieId) {
     }
 }
 
-module.exports = { fetchMovieDetails };
+export default fetchMovieDetails ;
