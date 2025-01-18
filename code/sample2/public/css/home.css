@@ -471,7 +471,7 @@ body {
     height: 22px;
     width: 16px;
   }
-  .info-button-section #playlist {
+  .info-button-section #add-to-playlist-btn{
     background-color: rgba(217, 217, 217, 0.2); /* Light gray background with 20% opacity */
     color: #FFFFFF; /* Ensure the text remains visible */
     height: 36px;
@@ -699,7 +699,7 @@ body {
 }
 
 /* WatchList Button */
-.watchListBtn {
+.add-to-playlist-btn {
   padding: 5px 10px;
   background-color: red;
   color: white;

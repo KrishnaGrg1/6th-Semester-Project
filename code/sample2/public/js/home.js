@@ -1,5 +1,6 @@
 // Define the API key and base URL
-const api_Key = '4626200399b08f9d04b72348e3625f15';
+
+const api_Key = '576de2fd895bd4c93d0593bdd3e50ec9';
 const baseUrl = 'https://api.themoviedb.org/3/';
 
 
@@ -124,7 +125,7 @@ function displayTrendingMovie(movie) {
     // Create the HTML structure for the movie details
     const movieItem = document.createElement('div');
     movieItem.classList.add('info');
-    
+
     const title = movie.title || movie.name;
     const releaseDate = movie.release_date || movie.first_air_date;
     const movieOverview = movie.overview ? movie.overview + '...' : 'No overview available';
@@ -137,9 +138,7 @@ function displayTrendingMovie(movie) {
             <button id="watch">
                 <i class="fa fa-play"></i><span>Watch</span>
             </button>
-            <button id="playlist">
-                Add to Playlist
-            </button>
+            <button class="add-to-playlist-btn" data-movie-id="${movie.id}">Playlist</button>
         </div>
     `;
 
@@ -158,9 +157,40 @@ function displayTrendingMovie(movie) {
         }
     });
 
+    // Handle "Add to Playlist" button click
+    const addToPlaylistBtn = movieItem.querySelector('.add-to-playlist-btn');
+    addToPlaylistBtn.addEventListener('click', async () => {
+        const movieData = {
+            movieId: movie.id,
+            title: title,
+            poster_path: posterPath,
+        };
+
+        try {
+            const response = await fetch('/add-to-playlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(movieData),
+            });
+
+            if (response.ok) {
+                alert('Movie added to playlist successfully!');
+            } else {
+                const error = await response.text();
+                alert(`Failed to add movie to playlist: ${error}`);
+            }
+        } catch (error) {
+            console.error('Error adding movie to playlist:', error);
+            alert('An unexpected error occurred.');
+        }
+    });
+
     // Append movie item to the trending content section
     trendingSection.appendChild(movieItem);
 }
+
 
 
 // Function to display movie trailers
@@ -343,3 +373,7 @@ window.addEventListener('DOMContentLoaded', fetchAndDisplayTopPicks);
         }
     });
 });
+
+
+
+  

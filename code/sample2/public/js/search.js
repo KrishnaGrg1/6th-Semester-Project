@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentPage = 1;
     let currentMovieName = '';
     const moviesPerPage = 3;
-    const API_KEY = '7390c31e7d4f58c4b9afbc61a12f010e';
+    const API_KEY = '576de2fd895bd4c93d0593bdd3e50ec9';
   
     // Fetch movie data from the API
     const getMovieInfo = async (movieName, page = 1) => {

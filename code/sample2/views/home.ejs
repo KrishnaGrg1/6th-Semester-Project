@@ -41,6 +41,7 @@
             <p id="username"><%= user.fname %></p>
             <div id="profileOptions" class="profile-options">
               <a href="/edit-profile"><button>Edit Profile</button></a>
+              <a href="/playlist"><button>Playlist</button></a>
               <a href="logout"><button id="logoutbtn">Log Out</button></a>
             </div>
           </div>
@@ -89,22 +90,7 @@
           </div>
         </main>
       </div>
-      <div class="movie-container">
-        <section class="playlist">
-          <h2>Your Playlist</h2>
-          <ul class="playlist-list">
-              <% user.playlist.forEach(movie => { %>
-                  <li class="playlist-item">
-                      <img src="<%= movie.poster_path %>" alt="<%= movie.title %>">
-                      <div class="movie-info">
-                          <h3><%= movie.title %></h3>
-                          <button class="remove-btn" data-movie-id="<%= movie.movieId %>">Remove</button>
-                      </div>
-                  </li>
-              <% }) %>
-          </ul>
-      </section>
-      </div>
+      
 
       <footer class="footer">
         <div class="footer__bg">
@@ -162,5 +148,7 @@
 
     <script src="js/home.js"></script>
     <script src="js/search.js"></script>
+    <script src="/js/movie_details.js"></script>
+</body>
   </body>
 </html>

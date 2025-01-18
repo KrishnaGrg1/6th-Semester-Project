@@ -1,5 +1,4 @@
 import UserModel from "../models/model.js";
-import jwt from "jsonwebtoken";
 import { setUser, getUser } from "../services/auth.js";
 
 import sendmail from "../middleware/sendmail.js";
@@ -10,6 +9,11 @@ const register = async (req, res) => {
 
     if (!fname || !lname || !email || !password) {
       return res.status(400).send("All fields are required");
+    }
+
+    const existingUser=await UserModel.findOne({email:email});
+    if(existingUser){
+      return res.status(400).render("register", { message: "Email already exist" });
     }
     // const hashedPassword = await bcrypt.hash(password, saltRounds);
     const user = await UserModel.create({

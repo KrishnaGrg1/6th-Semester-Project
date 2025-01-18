@@ -1,38 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const addToPlaylistButton = document.querySelector(".add-to-playlist-btn");
+document.addEventListener('DOMContentLoaded', () => {
+  const addToPlaylistBtn = document.querySelector('.add-to-playlist-btn');
 
-  addToPlaylistButton.addEventListener("click", async () => {
-    const movieId = addToPlaylistButton.dataset.movieId;
+  if (addToPlaylistBtn) {
+      addToPlaylistBtn.addEventListener('click', async () => {
+          const movieId = addToPlaylistBtn.dataset.movieId;
+          const title = document.querySelector('.movie-info h2').textContent.trim();
+          const posterPath = document.querySelector('.poster-img').src;
 
-    try {
-      const response = await fetch(`/movie/${movieId}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
+          try {
+              const response = await fetch('/add-to-playlist', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ movieId, title, poster_path: posterPath }),
+              });
+
+              if (response.ok) {
+                  alert('Movie added to playlist successfully!');
+              } else {
+                  const error = await response.text();
+                  alert(`Failed to add movie to playlist: ${error}`);
+              }
+          } catch (error) {
+              console.error('Error adding movie to playlist:', error);
+              alert('An unexpected error occurred.');
+          }
       });
-
-      if (response.ok) {
-        const movieDetails = await response.json();
-        const { id, title, poster_path } = movieDetails;
-
-        const addResponse = await fetch("/add-to-playlist", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ movieId: id, title, poster_path })
-        });
-
-        if (addResponse.ok) {
-          alert("Movie added to playlist");
-          location.reload();
-        } else {
-          alert("Error adding movie to playlist");
-        }
-      } else {
-        alert("Error fetching movie details");
-      }
-    } catch (error) {
-      console.error("Error adding movie to playlist:", error);
-    }
-  });
+  }
 });
