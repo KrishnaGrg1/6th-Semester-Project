@@ -12,15 +12,18 @@
     <div class="container">
         <h2>Your Playlist</h2>
         <div class="playlist-box">
-            
+            <!-- /movie/${id} -->
             <ul>
                 <% if (user.playlist && user.playlist.length > 0) { %>
                     <% user.playlist.forEach(movie => { %>
                         <li class="playlist-item" data-movie-id="<%= movie.movieId %>">
-                            <img src="<%= movie.poster_path %>" alt="<%= movie.title %>">
+                            <a href="/movie/<%= movie.movieId %>" class="movie-link">
+                                <img src="<%= movie.poster_path %>" alt="<%= movie.title %>">
                             <div class="movie-info">
                                 <h3><%= movie.title %></h3>
                             </div>
+                            </a>
+                            
                             <div class="action-buttons">
                                 <button class="action-btn edit-btn" data-movie-id="<%= movie.movieId %>">Edit</button>
                                 <button class="action-btn remove-btn" data-movie-id="<%= movie.movieId %>">Remove</button>

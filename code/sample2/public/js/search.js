@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchButton = document.getElementById('search-movie');
     const main = document.querySelector('main');
     const contactSection = document.getElementById('contact');
+    const searchResults=document.getElementById('searchResults')
   
     let currentPage = 1;
     let currentMovieName = '';
@@ -88,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Handle "Get More" button
     if (data.results.length > moviesPerPage * currentPage) {
         let getMoreButton = document.getElementById('get-more-button');
+        
   
         if (!getMoreButton) {
             getMoreButton = document.createElement('button');
@@ -109,7 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Event Listener for Search Button
     searchButton.addEventListener('click', async () => {
+        // e.preventDefault();
         const movieName = inputBox.value.trim();
+      
   
         if (movieName) {
             main.innerHTML = '';
