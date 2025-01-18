@@ -147,3 +147,11 @@ input::placeholder {
 .login-link:hover {
   text-decoration: underline;
 }
+
+
+#message{
+  color: red;
+  margin: 20px;
+  font-weight:bolder;
+
+}

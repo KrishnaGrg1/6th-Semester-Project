@@ -1,4 +1,3 @@
-// js/playlist.js
 document.addEventListener('DOMContentLoaded', () => {
     const editButtons = document.querySelectorAll('.edit-btn');
     const removeButtons = document.querySelectorAll('.remove-btn');
@@ -13,9 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 try {
                     const response = await fetch('/edit-playlist', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ movieId, newTitle, newPosterPath })
                     });
 
@@ -23,11 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         alert('Movie edited successfully');
                         location.reload();
                     } else {
-                        alert('Error editing movie');
+                        const error = await response.text();
+                        alert(`Error editing movie: ${error}`);
                     }
                 } catch (error) {
                     console.error('Error editing movie:', error);
+                    alert('An unexpected error occurred.');
                 }
+            } else {
+                alert('Both title and poster path are required.');
             }
         });
     });
@@ -39,9 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await fetch('/remove-from-playlist', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ movieId })
                 });
 
@@ -49,10 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Movie removed successfully');
                     location.reload();
                 } else {
-                    alert('Error removing movie');
+                    const error = await response.text();
+                    alert(`Error removing movie: ${error}`);
                 }
             } catch (error) {
                 console.error('Error removing movie:', error);
+                alert('An unexpected error occurred.');
             }
         });
     });

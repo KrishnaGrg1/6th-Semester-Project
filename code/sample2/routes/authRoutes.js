@@ -6,7 +6,7 @@ const authRouter = Router();
 authRouter.post("/register", authController.register);
 
 authRouter.get("/register", (req, res) => {
-  res.render("register");
+  res.render("register",{message:""});
 });
 
 // Login Routes
@@ -21,6 +21,7 @@ authRouter.post("/forget-password", authController.forgetPassword);
 
 
 authRouter.post('/verify-otp', authController.verifyOtp);  // To verify OTP and update password
+
 
 
 authRouter.get("/forget-password", (req, res) => {
