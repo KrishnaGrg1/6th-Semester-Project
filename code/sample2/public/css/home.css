@@ -1,7 +1,7 @@
 /* General Styles */
 body {
     margin: 0;
-    font-family: Georgia;
+    font-family: 'Poppins';
    /* background-image: url(./background.jpg); */
    background-image: url('../assets/background.jpg');
     color: #cccccc;
