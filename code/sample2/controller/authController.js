@@ -95,10 +95,11 @@ const forgetPassword = async (req, res) => {
       console.log("Email received in verifyOtp:", email); // Log email to check its value
   
       const existingUser = await UserModel.findOne({ email: email });
-        console.log("ex"+existingUser.otp)
-        console.log("otp"+otp)
+      console.log("ex" + existingUser.otp);
+      console.log("otp" + otp);
+      
       if (!existingUser) {
-        return res.status(404).render("verify-otp", { message: "User not found" });
+        return res.status(404).render("verify-otp", { message: "User not found", email: email });
       }
   
       // Check if OTP is correct and has not expired
@@ -124,6 +125,7 @@ const forgetPassword = async (req, res) => {
       return res.status(500).render("verify-otp", { message: "An unexpected error occurred. Please try again later." });
     }
   };
+  
   
   
   
