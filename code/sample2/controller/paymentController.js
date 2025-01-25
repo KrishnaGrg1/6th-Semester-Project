@@ -145,11 +145,14 @@ const completepayment = catchAsync(async (req, res) => {
       paymentGateway: "khalti",
       status: "success"
     });
-    res.json({
-      success: true,
+    // res.json({
+    //   success: true,
+    //   message: "Payment Successful",
+    //   paymentData
+    // });
+    res.render('purchase',{
       message: "Payment Successful",
-      paymentData
-    });
+    })
   } catch (error) {
     console.error(error);
     res.status(500).json({
