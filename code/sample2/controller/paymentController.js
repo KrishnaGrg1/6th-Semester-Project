@@ -150,9 +150,16 @@ const completepayment = catchAsync(async (req, res) => {
     //   message: "Payment Successful",
     //   paymentData
     // });
+
+    const subscriptionPlans =await SubscriptionPlan.find({});
+    const loggedInUser = await UserModel.findById(req.user._id); // Get the logged-in user by ID
+   
     res.render('purchase',{
-      message: "Payment Successful",
+        user: loggedInUser,
+        subscriptionPlans,
+        message: "Payment Successful",
     })
+   
   } catch (error) {
     console.error(error);
     res.status(500).json({
