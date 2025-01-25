@@ -220,6 +220,9 @@
         background: #e6b100;
         color: white;
       }
+      #message{
+        color: red;
+      }
 
       /* Alert Messages */
       .alert {
@@ -262,9 +265,10 @@
 
   <div class="container">
     <div class="payment-box">
-      <div id="message"><%= message ? message : '' %></div>
+     
       <h1>Choose Your Subscription Plan</h1>
       <form action="/payment/add" method="POST" id="paymentForm">
+        <div id="message"><%= message ? message : '' %></div>
         <div class="form-group">
           <label for="planid">Subscription Plan:</label>
           <select name="planid" id="planid" required>
