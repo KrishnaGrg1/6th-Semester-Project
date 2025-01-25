@@ -57,7 +57,7 @@ const initiatePayment = catchAsync(async (req, res) => {
       amount: existingsubscriptionPlan.price*100, // amount should be in paisa (Rs * 100)
       purchase_order_id: purchasedPlan._id, // purchase_order_id to verify later
       purchase_order_name: existingsubscriptionPlan.plan_name,
-      return_url: `${process.env.BACKEND_URI}/payment/verify`, // return URL for the redirect
+      return_url: `${process.env.BACKEND_URI}payment/verify`, // return URL for the redirect
 
       website_url: `${process.env.FRONTEND_URI}` // the website URL
     });
