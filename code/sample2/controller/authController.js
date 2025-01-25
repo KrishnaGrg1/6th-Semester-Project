@@ -49,6 +49,7 @@ const login = async (req, res) => {
     const token = setUser(user);
     res.cookie("uid", token, { httpOnly: true, secure: true });
     res.redirect("/home"); // After successful login, redirect to homepage
+    
   } catch (error) {
     console.error("Error finding user:", error);
     return res.status(500).render("login", { message: error.message });

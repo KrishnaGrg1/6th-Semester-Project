@@ -9,7 +9,7 @@ async function checkForAuthentication(req,res,next){
 
 async function restrictToLoggedinUserOnly(req, res, next) {
   const userUid = req.cookies?.uid;
-
+ console.log(userUid)
   if (!userUid) return res.redirect("/login");
   const user = getUser(userUid);
 

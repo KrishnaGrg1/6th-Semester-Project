@@ -4,240 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Popcornbox - Pricing</title>
-    <style>
-        /* [Previous shared styles remain the same until .main] */
-        :root {
-            --background: #1a0910;
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.6);
-            --accent: #ffd700;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-bg-darker: rgba(255, 255, 255, 0.05);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: var(--background);
-            color: var(--text-primary);
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 4rem;
-            position: relative;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-        }
-
-        .nav {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 5rem;
-        }
-
-        .nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 1.1rem;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-            padding: 5px 15px;
-        border-radius: 5px;
-        }
-
-        nav a:hover, nav a.active {
-            background-color:darkgray;
-            border-radius: 20px;
-            color: white;
-        
-          }
-        .fimg{
-            width: 143px;
-            height: 135px;
-        }
-
-        .profile {
-            background-color: rgba(217, 217, 217, 0.2);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            height:47px;
-            width: 223px;
-            position: relative;
-            cursor: pointer;
-          }
-          
-          .profile img {
-            height: 80px;
-        
-          }
-        
-          
-        .profile-options {
-          position: absolute;
-          top: 100%;
-          right: 0;
-          background-color: gray; 
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-          display: none;
-          z-index: 1000;
-          width: 200px;
-          padding: 10px;
-        }
-        
-        .profile-options a {
-          display: block;
-          margin-bottom: 10px;
-        }
-        
-        .profile-options button {
-          width: 100%;
-          padding: 10px;
-          border: none;
-          background-color: rgba(217, 217, 217, 0.2);
-          color: #f6f6fd;
-          border-radius: 5px;
-          cursor: pointer;
-          text-align: left;
-        }
-        
-        .profile-options button:hover {
-          background-color: rgb(38, 186, 235);
-        }
-        .profile-options.show {
-          display: block;
-        }
-        #logoutbtn:hover{
-          background-color: red;
-        }
-          
-          /* Navigation Menu */
-          nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            font-size: 1.2rem;
-            width: 60%;
-          }
-          .main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-            text-align: center;
-        }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .pricing-card {
-            background: var(--glass-bg);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .pricing-card.popular {
-            background: var(--glass-bg-darker);
-            border: 2px solid var(--accent);
-            position: relative;
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: black;
-            padding: 0.25rem 1rem;
-            border-radius: 12px;
-            font-size: 0.9rem;
-        }
-
-        .price {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin: 1.5rem 0;
-        }
-
-        .price span {
-            font-size: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .features {
-            list-style: none;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        .features li {
-            margin: 1rem 0;
-            color: var(--text-secondary);
-        }
-
-        .features li::before {
-            content: '✓';
-            color: var(--accent);
-            margin-right: 0.5rem;
-        }
-
-        .pricing-btn {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .pricing-btn:hover {
-            background: var(--accent);
-            color: black;
-        }
-
-        .pricing-card.popular .pricing-btn {
-            background: var(--accent);
-            color: black;
-        }
-
-        @media (max-width: 768px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/css/pricing.css">
+   
 </head>
 <body>
     <!-- [Header remains the same] -->
@@ -263,37 +31,51 @@
         <p class="subtitle">Choose the perfect plan for your entertainment needs</p>
 
         <div class="pricing-grid">
+            <!-- 1 Month Plan -->
             <div class="pricing-card">
-                <h2>Basic</h2>
-                <div class="price">$9.99<span>/month</span></div>
+                <h2>1 Month</h2>
+                <div class="price">Rs. 999/month</div>
                 <ul class="features">
                     <li>HD Streaming</li>
-                    <li>1 month</li>
+                   
+                    <li>Cancel anytime</li>
                 </ul>
                 <button class="pricing-btn">Get Started</button>
             </div>
 
+            <!-- 3 Month Plan (Popular) -->
             <div class="pricing-card popular">
-                <span class="popular-badge">Most Popular</span>
-                <h2>Medium</h2>
-                <div class="price">$19.99<span>/month</span></div>
+                <span class="popular-badge">Popular</span>
+                <h2>3 Months</h2>
+                <div class="price">Rs. 2500 (Rs. 833/month)</div>
                 <ul class="features">
                     <li>4K Streaming</li>
-                    <li>4 Devices</li>
-                    <li>Full Library</li>
-                    <li>Unlimited Downloads</li>
+                  
+                    <li>Cancel anytime</li>
                 </ul>
                 <button class="pricing-btn">Get Started</button>
             </div>
 
+            <!-- 6 Month Plan -->
             <div class="pricing-card">
-                <h2>Premium</h2>
-                <div class="price">$29.99<span>/month</span></div>
+                <h2>6 Months</h2>
+                <div class="price">Rs. 4500 (Rs. 750/month)</div>
                 <ul class="features">
                     <li>4K Streaming</li>
-                    <li>6 Devices</li>
-                    <li>Full Library</li>
-                    <li>Priority Support</li>
+                   
+                    <li>Cancel anytime</li>
+                </ul>
+                <button class="pricing-btn">Get Started</button>
+            </div>
+
+            <!-- 12 Month Plan -->
+            <div class="pricing-card">
+                <h2>12 Months</h2>
+                <div class="price">Rs. 8000 (Rs. 667/month)</div>
+                <ul class="features">
+                    <li>Ultra HD Streaming</li>
+                  
+                    <li>Cancel anytime</li>
                 </ul>
                 <button class="pricing-btn">Get Started</button>
             </div>
