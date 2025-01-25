@@ -4,6 +4,7 @@ import Payment from "../models/payment.js";
 
 import SubscriptionPlan from "../models/subscriptionPlan.js";
 import PurchasedPlan from "../models/purchase.js";
+import UserModel from "../models/model.js";
 
 
 const initiatePayment = catchAsync(async (req, res) => {
