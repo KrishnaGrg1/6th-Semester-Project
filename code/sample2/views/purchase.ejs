@@ -30,128 +30,271 @@
           background: var(--background);
           color: var(--text-primary);
           font-family: 'Roboto', sans-serif;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+         
           height: 100vh;
       }
 
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 4rem;
+        position: relative;
+      }
+    
+      .logo {
+        width: 50px;
+        height: 50px;
+      }
+    
+      .nav {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5rem;
+      }
+    
+      .nav a {
+        color: var(--text-primary);
+        text-decoration: none;
+        font-size: 1.1rem;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+        padding: 5px 15px;
+        border-radius: 5px;
+      }
+    
+      nav a:hover, nav a.active {
+        background-color:darkgray;
+        border-radius: 20px;
+        color: white;
+      }
+    
+      .fimg {
+        width: 143px;
+        height: 135px;
+      }
+    
+      .profile {
+        background-color: rgba(217, 217, 217, 0.2);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 47px;
+        width: 223px;
+        position: relative;
+        cursor: pointer;
+      }
+      
+      .profile img {
+        height: 80px;
+      }
+
+      .profile-options {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: gray; 
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        z-index: 1000;
+        width: 200px;
+        padding: 10px;
+      }
+    
+      .profile-options a {
+        display: block;
+        margin-bottom: 10px;
+      }
+    
+      .profile-options button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: rgba(217, 217, 217, 0.2);
+        color: #f6f6fd;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: left;
+      }
+    
+      .profile-options button:hover {
+        background-color: rgb(38, 186, 235);
+      }
+
+      .profile-options.show {
+        display: block;
+      }
+
+      #logoutbtn:hover {
+        background-color: red;
+      }
+
+      /* Navigation Menu */
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 20px 0;
+        font-size: 1.2rem;
+        width: 60%;
+      }
+
+      .main {
+        max-width: 95%;
+        margin: 2rem auto;
+        padding: 0 2rem;
+        text-align: center;
+      }
+
       .container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem;
       }
 
       /* Payment Box */
       .payment-box {
-          background: var(--glass-bg);
-          border-radius: 15px;
-          padding: 2rem;
-          text-align: center;
-          max-width: 400px;
-          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        background: var(--glass-bg);
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        max-width: 400px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
       }
 
       .payment-box h1 {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-          color: var(--text-primary);
-          font-family: var(--heading-font);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        font-family: var(--heading-font);
       }
 
       .form-group {
-          margin-bottom: 1.5rem;
-          text-align: left;
+        margin-bottom: 1.5rem;
+        text-align: left;
       }
 
       .form-group label {
-          display: block;
-          font-size: 1.1rem;
-          color: var(--text-primary);
+        display: block;
+        font-size: 1.1rem;
+        color: var(--text-primary);
       }
 
       .form-group select {
-          width: 100%;
-          padding: 1rem;
-          margin-top: 0.5rem;
-          font-size: 1rem;
-          background-color: var(--glass-bg-darker);
-          border: 1px solid var(--accent);
-          border-radius: 10px;
-          color: var(--text-primary);
-          outline: none;
+        width: 100%;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        background-color: var(--glass-bg-darker);
+        border: 1px solid var(--accent);
+        border-radius: 10px;
+        color: var(--text-primary);
+        outline: none;
       }
 
       .form-group select:focus {
-          border-color: var(--accent);
+        border-color: var(--accent);
       }
 
       .submit-btn {
-          background: var(--accent);
-          color: black;
-          padding: 1rem 2.5rem;
-          border-radius: 30px;
-          font-weight: bold;
-          cursor: pointer;
-          border: none;
-          font-family: var(--button-font);
-          letter-spacing: 1px;
-          transition: 0.3s;
+        background: var(--accent);
+        color: black;
+        padding: 1rem 2.5rem;
+        border-radius: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        font-family: var(--button-font);
+        letter-spacing: 1px;
+        transition: 0.3s;
       }
 
       .submit-btn:hover {
-          background: #e6b100;
-          color: white;
+        background: #e6b100;
+        color: white;
       }
 
       /* Alert Messages */
       .alert {
-          padding: 1rem;
-          margin-top: 1rem;
-          border-radius: 5px;
-          font-size: 1.1rem;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 5px;
+        font-size: 1.1rem;
       }
 
       .alert.success {
-          background-color: rgba(0, 255, 0, 0.1);
-          color: green;
+        background-color: rgba(0, 255, 0, 0.1);
+        color: green;
       }
 
       .alert.error {
-          background-color: rgba(255, 0, 0, 0.1);
-          color: red;
+        background-color: rgba(255, 0, 0, 0.1);
+        color: red;
       }
+
   </style>
 </head>
 <body>
+  <header class="header">
+    <img class="fimg" src="/assets/popcornlogo.png" alt="Popcornbox" class="logo">
+    <nav class="nav">
+    
+        <a href="../pricing" class="active">Pricing</a>
+        <a href="../contact">Contact</a>
+        <a href="../about">About</a>
+    </nav>
+    <div class="profile">
+        <img src="/assets/popcornlogo.png" alt="Profile" id="profileImg" />
+        <p id="username"><%= user.fname %></p>
+        <div id="profileOptions" class="profile-options">
+            <a href="/edit-profile"><button>Edit Profile</button></a>
+            <a href="logout"><button id="logoutbtn">Log Out</button></a>
+        </div>
+    </div>
+  </header>
 
   <div class="container">
     <div class="payment-box">
       <h1>Choose Your Subscription Plan</h1>
-
       <form action="/payment/add" method="POST" id="paymentForm">
-        <!-- Plan selection dropdown -->
         <div class="form-group">
           <label for="planid">Subscription Plan:</label>
-          <label name="planid" id="planid" required>
-          
-            NPR <%= plan.plan_name %> - <%= plan.price %> 
-            
-          </label>
+          <select name="planid" id="planid" required>
+            <% subscriptionPlans.forEach(plan => { %>
+                <option value="<%= plan._id %>">
+                  <%= plan.plan_name %> - <%= plan.price %> NPR
+                </option>
+              <% }); %>
+          </select>
         </div>
-
-        <!-- Hidden input for payment method (always Khalti) -->
         <input type="hidden" name="paymentMethod" value="khalti">
-
-        <!-- Submit Button -->
         <button type="submit" class="submit-btn">Proceed with Khalti Payment</button>
       </form>
-
-      
     </div>
   </div>
-
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const profileImg = document.getElementById('profileImg');
+        const profileOptions = document.getElementById('profileOptions');
+    
+        profileImg.addEventListener('click', () => {
+            profileOptions.classList.toggle('show');
+        });
+    
+        // Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', (event) => {
+            if (!profileImg.contains(event.target) && !profileOptions.contains(event.target)) {
+                profileOptions.classList.remove('show');
+            }
+        });
+    });
+</script>
 </body>
 </html>

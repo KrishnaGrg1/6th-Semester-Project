@@ -2,6 +2,11 @@ import { Schema, model } from "mongoose";
 
 const purchasedPlanSchema = new Schema(
   {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User", // Link to the User model
+      required: true
+    },
     plan_id: {
       type: Schema.Types.ObjectId,
       ref: "SubscriptionPlan",

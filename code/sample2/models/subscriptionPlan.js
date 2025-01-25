@@ -13,7 +13,7 @@ const subscriptionPlanSchema = new Schema({
   price: {
     type: Number,
     required: true,
-    enum: [1000, 2500,5500 , 10000] // Price can only be one of these values
+    enum: [999, 2500,4500 , 8000] // Price can only be one of these values
   }
 });
 
