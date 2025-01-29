@@ -18,7 +18,7 @@ The platform allows users to:
 
 - **Subscription Plan Selection**: Users can select from different subscription tiers (e.g., Monthly, Quarterly, and Yearly)
 - **Payment Integration**: Secure payment processing through Khalti API.
-- **User Authentication**: The platform supports basic user authentication, including login, registration, and profile management.
+- **User Authentication**: The platform supports basic user authentication, including login, registration,forget-password and profile management.
 - **Payment Verification**: After payment, the status is verified and the user is shown a success or failure message.
 - **Dynamic Content**: Subscription plans are dynamically displayed and sorted by price.
 
@@ -85,6 +85,14 @@ Replace your_khalti_api_key with the API key from your Khalti account.
 ### 4. Start the server
 ```bash
 npm start
+```
+
+### 5 .Payment
+These credentials are basically for testing purposes only which is used on our project.
+```bash
+Test-Credentials:"9800000001"
+MPIN:"1111"
+OTP:"987654"
 ```
 
 Your server should now be running at http://localhost:5000
