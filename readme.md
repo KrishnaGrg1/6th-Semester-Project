@@ -63,12 +63,21 @@ npm install
 Create a .env file in the root directory and configure the following environment variables:
 
 ```dotenv
-DATABASE_URL=your_database_url
-SECRET_KEY=your_secret_key
-MONGO_URI=mongodb://localhost:27017/your_database_name  # MongoDB connection string
-KHALTI_API_KEY=your_khalti_api_key                     # Khalti API key
-BACKEND_URI=http://localhost:5000                       # Backend server URL
-FRONTEND_URI=http://localhost:3000                      # Frontend URL
+PORT=5000
+JWT_Secret_Key="your_jwt_secret_key"  # Change this to a secure key
+SMTP_HOST="your_smtp_host"            # e.g., mail.example.com
+SMTP_USERNAME="your_smtp_username"    # e.g., user@example.com
+SMTP_PASSWORD="your_smtp_password"    # e.g., securepassword
+SMTP_PORT=465
+MONGODB_URL="your_mongodb_connection_string"  # Replace with your MongoDB URL
+Api_Key="your_api_key"                # Get from the API provider
+BaseUrl="https://api.themoviedb.org/3/"  # No need to change if you are using The Movie DB API
+FRONTEND_URI="http://localhost:3000"   # Replace if using a different frontend URI
+KHALTI_GATEWAY_URL="https://dev.khalti.com/"  # Use the correct gateway URL
+KHALTI_SECRET_KEY="your_khalti_secret_key"    # Replace with your actual secret key
+KHALTI_PUBLIC_KEY="your_khalti_public_key"    # Replace with your actual public key
+BACKEND_URI="http://localhost:5000"    # Replace if using a different backend URI
+
 ```
 
 Replace your_khalti_api_key with the API key from your Khalti account.
