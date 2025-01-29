@@ -11,6 +11,7 @@ async function initializeKhaltiPayment(details) {
 
   const bodyContent = JSON.stringify(details);
   console.log(bodyContent);
+  
   const reqOptions = {
     url: `${process.env.KHALTI_GATEWAY_URL}api/v2/epayment/initiate/`,
     method: "POST",

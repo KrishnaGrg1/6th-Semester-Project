@@ -9,8 +9,11 @@ import UserModel from "../models/model.js";
 
 const initiatePayment = catchAsync(async (req, res) => {
   const { planid, paymentMethod } = req.body;
+ 
   const userId=req.user;
+
   console.log("User: "+userId._id)
+
   // Check if user has an existing subscription plan
   const existingSubscription = await PurchasedPlan.findOne({
     user: userId,
@@ -19,6 +22,8 @@ const initiatePayment = catchAsync(async (req, res) => {
   });
 
   console.log(existingSubscription)
+
+
   if (existingSubscription) {
     return res.status(400).json({
       success: false,
@@ -40,6 +45,7 @@ const initiatePayment = catchAsync(async (req, res) => {
   }
 
    // Calculate the expiry date based on the plan duration (e.g., 30 days)
+
    const expiryDate = new Date();
    expiryDate.setDate(expiryDate.getDate() +existingsubscriptionPlan.durationMonth*28); // Adds 30 days to the current date
  
@@ -75,6 +81,7 @@ const initiatePayment = catchAsync(async (req, res) => {
     //   message: "Payment initiation successful. You will be redirected shortly.",
   
     // });
+    
     res.redirect(paymentInitate.payment_url);
   } catch (error) {
     // Handle error during Khalti payment initialization

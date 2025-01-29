@@ -31,7 +31,7 @@ const sendmail = async (email) => {
 
     try {
         const info = await transporter.sendMail({
-            from: '"Test User" <node-class@padxu.com>', 
+            from: '"PopCornBox" <node-class@padxu.com>', 
             to: email,
             subject: "Password Reset OTP",
             text: `Use this code to verify your email: ${otp}`,
