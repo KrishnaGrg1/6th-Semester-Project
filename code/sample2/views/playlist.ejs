@@ -1,43 +1,54 @@
 <!-- views/playlist.ejs -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playlist</title>
-    <link rel="stylesheet" href="/css/playlist.css">
-</head>
-<body>
-    
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="/css/playlist.css" />
+  </head>
+  <body>
     <div class="container">
-        <h2>Your Playlist</h2>
-        <div class="playlist-box">
-            <!-- /movie/${id} -->
-            <ul>
-                <% if (user.playlist && user.playlist.length > 0) { %>
-                    <% user.playlist.forEach(movie => { %>
-                        <li class="playlist-item" data-movie-id="<%= movie.movieId %>">
-                            <a href="/movie/<%= movie.movieId %>" class="movie-link">
-                                <img src="<%= movie.poster_path %>" alt="<%= movie.title %>">
-                            <div class="movie-info">
-                                <h3><%= movie.title %></h3>
-                            </div>
-                            </a>
-                            
-                            <div class="action-buttons">
-                                <button class="action-btn edit-btn" data-movie-id="<%= movie.movieId %>">Edit</button>
-                                <button class="action-btn remove-btn" data-movie-id="<%= movie.movieId %>">Remove</button>
-                            </div>
-                        </li>
-                    <% }) %>
-                <% } else { %>
-                    <p class="no-playlist">No movies in your playlist. Add some to get started!</p>
-                <% } %>
-            </ul>
-            <a href="home" class="back-btn">Back to Homepage</a>
-        </div>
+      <h2>Your Playlist</h2>
+      <div class="playlist-box">
+        <!-- /movie/${id} -->
+        <ul>
+          <% if (user.playlist && user.playlist.length > 0) { %> <%
+          user.playlist.forEach(movie => { %>
+          <li class="playlist-item" data-movie-id="<%= movie.movieId %>">
+            <a href="/movie/<%= movie.movieId %>" class="movie-link">
+              <img src="<%= movie.poster_path %>" alt="<%= movie.title %>" />
+              <div class="movie-info">
+                <h3><%= movie.title %></h3>
+              </div>
+            </a>
+
+            <div class="action-buttons">
+              <button
+                class="action-btn edit-btn"
+                data-movie-id="<%= movie.movieId %>"
+              >
+                Edit
+              </button>
+              <button
+                class="action-btn remove-btn"
+                data-movie-id="<%= movie.movieId %>"
+              >
+                Remove
+              </button>
+            </div>
+          </li>
+          <% }) %> <% } else { %>
+          <p class="no-playlist">
+            No movies in your playlist. Add some to get started!
+          </p>
+          <% } %>
+        </ul>
+        <a href="home" class="back-btn">Back to Homepage</a>
+      </div>
     </div>
 
     <script src="/js/playlist.js"></script>
-</body>
+  </body>
 </html>

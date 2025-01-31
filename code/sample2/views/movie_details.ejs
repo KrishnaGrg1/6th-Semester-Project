@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Details</title>
-    <link rel="stylesheet" href="/css/movie_details.css">
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="/css/movie_details.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <div class="movie-details">
-            <!-- Movie Poster Section -->
-            <div class="movie-poster">
-                <img src="<%= movie.poster_path %>" alt="<%= movie.title %>" class="poster-img">
-            </div>
-
-            <!-- Movie Info Section -->
-            <div class="movie-info">
-                <h2><%= movie.title %></h2>
-                <p class="rating"><span>&#11088;</span> <%= movie.vote_average %></p>
-                <p class="genres"><strong>Genres:</strong> <%= movie.genres.join(', ') %></p>
-                <p><strong>Released:</strong> <%= movie.release_date %></p>
-                <p><strong>Overview:</strong> <%= movie.overview %></p>
-
-                <div class="watch-section">
-                    <a href="<%= movie.trailer_url %>" target="_blank" class="watch-btn">Watch Trailer</a>
-                    <button class="add-to-playlist-btn" data-movie-id="<%= movie.id %>">Add to Playlist</button>
-                </div>
-            </div>
-            <a href="../home" class="back-link">← Back to Profile</a>
+      <div class="movie-details">
+        <!-- Movie Poster Section -->
+        <div class="movie-poster">
+          <img
+            src="<%= movie.poster_path %>"
+            alt="<%= movie.title %>"
+            class="poster-img"
+          />
         </div>
+
+        <!-- Movie Info Section -->
+        <div class="movie-info">
+          <h2><%= movie.title %></h2>
+          <p class="rating"><span>&#11088;</span> <%= movie.vote_average %></p>
+          <p class="genres">
+            <strong>Genres:</strong> <%= movie.genres.join(', ') %>
+          </p>
+          <p><strong>Released:</strong> <%= movie.release_date %></p>
+          <p><strong>Overview:</strong> <%= movie.overview %></p>
+
+          <div class="watch-section">
+            <a href="<%= movie.trailer_url %>" target="_blank" class="watch-btn"
+              >Watch Trailer</a
+            >
+            <button class="add-to-playlist-btn" data-movie-id="<%= movie.id %>">
+              Add to Playlist
+            </button>
+          </div>
+        </div>
+        <a href="../home" class="back-link">← Back to Profile</a>
+      </div>
     </div>
     <script src="/js/movie_details.js"></script>
-</body>
-
+  </body>
 </html>
