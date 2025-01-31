@@ -720,121 +720,147 @@ body {
 }
 
 /* Media Queries for Mobile Devices */
-@media (max-width: 768px) { 
-    /* Adjust Header */
-    header {
-        flex-direction: column; /* Stack elements vertically */
-        padding: 10px;
-    }
-
-    .search-container {
-        width: 90%; /* Make search bar wider on smaller screens */
-        margin-bottom: 10px; 
-    }
-
-    nav {
-        width: 100%;
-        flex-direction: column; /* Stack navigation links */
-        gap: 10px;
-        margin-top: 10px;
-    }
-
-    nav a {
-        font-size: 16px;
-    }
-
-    .profile {
-       
-        margin-top: 10px; /* Add some space */
-    }
-
-    /* Adjust Main Content Layout */
-    main {
-        flex-direction: column; /* Stack sections vertically */
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .left, .right {
-        width: 100%; /* Make both sections full width */
-    }
-
-    
-
-    /* Adjust Trending Trailer Section */
-    .trending-trailer {
-        margin: 0 auto;
-        width: 60%; /* Make it full width */
-    }
-
-    /* Adjust Continue Watching Section */
-    .continue-watching {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        
-        width: 60%; /* Make it full width */
-        margin: 0 auto;
-    }
-    .movie-item{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-    }
-    .trending {
-      background-size: contain; 
-      background-position: center; 
-      background-repeat: no-repeat; 
-     
-      height: 400px; 
+/* Media Queries for Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  /* General Styles */
+  body {
+    min-width: unset; /* Remove fixed minimum width */
   }
-    .trailer-item{
-        width: 100%;
-    }
-    /* Adjust Top Picks For You Section */
-    .top-picks {
-        width: 60%; /* Make it full width */
-        margin: 0 auto;
-    }
-    .top-picks h2{
-        margin: 0 auto;
-    }
-    .movie-cards {
-        flex-direction: column; /* Stack movie cards */
-        gap: 10px;
-    }
 
-    .card {
-        width: 90%; /* Make cards slightly narrower */
-        margin: 0 auto; /* Cnter the cards */
-    }
-    .card img{
-        object-fit: fill;
-    }
+  /* Header */
+  header {
+    flex-direction: column; /* Stack header items vertically */
+    padding: 10px;
+  }
 
-    /* Adjust Movie Cards Container */
-    .movie-cards {
-        flex-direction: column; /* Stack cards vertically on mobile */
-        gap: 10px;
-    }
+  .search-container {
+    width: 100%; /* Full width for search bar */
+    margin-bottom: 10px;
+  }
 
-    /* Adjust Search Results */
-    #searchResults {
-        width: 90%;
-        left: 5%; /* Center the dropdown */
-    }
+  .profile {
+    width: 100%; /* Full width for profile section */
+    justify-content: center;
+    margin-top: 10px;
+  }
 
-    .info {
-        width: 100%;
-    }
+  /* Navigation Menu */
+  nav {
+    display: none; /* Hide navigation by default */
+    flex-direction: column; /* Stack links vertically */
+    gap: 10px;
+    margin-top: 10px;
+  }
 
-    .info-button-section {
-        flex-direction: column;
-        gap: 10px;
-    }
+  nav.visible {
+    display: flex; /* Show navigation when toggled */
+  }
+
+  /* Main Content */
+  main {
+    flex-direction: column; /* Stack left and right sections vertically */
+    padding: 10px;
+  }
+
+  .left, .right {
+    width: 100%; /* Full width for both sections */
+  }
+
+  /* Trending Trailer Section */
+  .trending-trailer {
+    width: 100%; /* Full width */
+    height: auto; /* Adjust height dynamically */
+  }
+
+  /* Continue Watching Section */
+  .continue-watching {
+    width: 100%; /* Full width */
+    height: auto; /* Adjust height dynamically */
+  }
+
+  /* Trending Section */
+  .trending {
+    min-width: unset; /* Remove fixed width */
+    height: auto; /* Adjust height dynamically */
+    padding: 10px;
+  }
+
+  .trending-content {
+    flex-direction: column; /* Stack content vertically */
+  }
+
+  /* Top Picks Section */
+  .top-picks {
+    width: 100%; /* Full width */
+  }
+
+  .movie-cards {
+    flex-direction: column; /* Stack movie cards vertically */
+    gap: 10px;
+  }
+
+  .card {
+    width: 100%; /* Full width for cards */
+    height: auto; /* Adjust height dynamically */
+  }
+
+  .card img {
+    width: 100%; /* Full width for images */
+    height: auto; /* Adjust height dynamically */
+  }
+
+  /* Search Results */
+  #searchResults {
+    width: 100%; /* Full width for search results */
+    left: 0;
+  }
+
+  /* Footer */
+  .footer__container {
+    flex-direction: column; /* Stack footer items vertically */
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer__links {
+    flex-direction: column; /* Stack links vertically */
+    gap: 10px;
+  }
+
+  .footer__socials {
+    margin: 10px 0; /* Add spacing around social icons */
+  }
+
+  /* Movie Details Page */
+  .movie-details {
+    flex-direction: column; /* Stack poster and info vertically */
+    align-items: center;
+    padding: 10px;
+  }
+
+  .movie-poster {
+    margin-right: 0;
+    margin-bottom: 1rem; /* Add spacing below poster */
+  }
+
+  .movie-info {
+    width: 100%; /* Full width for movie info */
+  }
+
+  /* Contact Page */
+  .contact-section {
+    flex-direction: column; /* Stack contact info and form vertically */
+    width: 100%; /* Full width */
+    gap: 2rem;
+  }
+
+  .contact-info-mid {
+    width: 100%; /* Full width for contact info */
+  }
+
+  .contact-form {
+    width: 100%; /* Full width for form */
+  }
 }
 
 
@@ -1152,5 +1178,25 @@ body {
   .movie-poster {
       margin-right: 0;
       margin-bottom: 1rem; /* Space below the poster on small screens */
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .profile img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .movie-item img {
+    width: 40px;
+    height: 40px;
   }
 }
