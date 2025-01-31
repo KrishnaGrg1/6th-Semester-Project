@@ -16,17 +16,17 @@ const transporter = nodemailer.createTransport({
 });
 
 // Function to send the OTP email
-const sendmail = async (email) => {
+const sendmail = async (email,fname) => {
     const otp = generateOtp().toString();  // Generate OTP
     // console.log("Generated OTP:", otp);  // Add logging here to ensure OTP is being generated
 
     try {
         const info = await transporter.sendMail({
-            from: '"Test User" <node-class@padxu.com>', 
+            from: '"PopCornBox" <node-class@padxu.com>', 
             to: email,
             subject: "OTP",
             text: `Use this code to verify your email: ${otp}`,
-            html: `<p>Dear User, <br /> Use this code to verify your email: 
+            html: `<p>Dear ${fname}, <br /> Use this code to verify your email: 
                    <b style='font-size: 20px;'>${otp}</b></p>`
         });
 

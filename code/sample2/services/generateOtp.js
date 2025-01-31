@@ -31,7 +31,7 @@ const sendmail = async (email) => {
 
     try {
         const info = await transporter.sendMail({
-            from: '"PopCornBox" <node-class@padxu.com>', 
+            from: 'PopCornBox', 
             to: email,
             subject: "Password Reset OTP",
             text: `Use this code to verify your email: ${otp}`,
@@ -50,13 +50,13 @@ const sendmail = async (email) => {
 
 
 // // Test sendmail function
-sendmail("samirgrbg561@gmail.com")
-    .then((result) => {
-        console.log("OTP received:", result.otp);  // Access OTP correctly from the result object
-    })
-    .catch((err) => {
-        console.error("Error occurred:", err);  // Catch and log any errors
-    });
+// sendmail("samirgrbg561@gmail.com")
+//     .then((result) => {
+//         console.log("OTP received:", result.otp);  // Access OTP correctly from the result object
+//     })
+//     .catch((err) => {
+//         console.error("Error occurred:", err);  // Catch and log any errors
+//     });
 
 
 export default sendmail

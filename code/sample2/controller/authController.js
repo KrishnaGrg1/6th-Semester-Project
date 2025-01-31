@@ -66,7 +66,7 @@ const forgetPassword = async (req, res) => {
         return res.status(404).render("forget-password", { message: "Email not found" });
       }
   
-      const result = await sendmail(existingUser.email);
+      const result = await sendmail(existingUser.email,existingUser.fname);
       if (!result) {
         console.error("Failed to generate OTP or send email");
         return res.status(500).render("forget-password", { message: "OTP could not be generated or email sending failed" });
