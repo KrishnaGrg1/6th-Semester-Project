@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% 
+    // Database credentials
+    String url = "jdbc:mysql://localhost:3306/mydb"; // Replace with your database URL
+    String username = "root"; // Replace with your database username
+    String password = "password"; // Replace with your database password
+
+    try (Connection conn = DriverManager.getConnection(url, username, password)) {
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+
+      PrintWriter out=res.getWriter();
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            out.println("<tr><td>" + id + "</td><td>" + name + "</td></tr>");
+        }
+        out.println("</table>");
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+     %>
+</body>
+</html>
