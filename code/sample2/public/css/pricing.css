@@ -141,8 +141,8 @@ nav a:hover, nav a.active {
 /* Pricing Section */
 .pricing-grid {
 display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 0.5rem;
+grid-template-columns: repeat(3, 1fr);
+gap: 2rem;
 padding: 0.5rem;
 }
 
@@ -363,4 +363,91 @@ header {
   .features li {
     font-size: 0.9rem;
   }
+}
+
+/* Base Alert Box Styles */
+.alert-box {
+  background: var(--glass-bg-darker); /* Subtle dark background */
+  color: var(--text-primary);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 2rem auto;
+  width: fit-content;
+  max-width: 90%;
+  position: relative;
+  animation: fadeIn 0.5s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.alert-box p {
+  margin: 0;
+  color: var(--accent);
+}
+
+.alert-box button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.alert-box button:hover,
+.alert-box button:focus {
+  color: var(--accent);
+  outline: none; /* Remove default focus outline */
+}
+
+/* Error Alert Enhancements */
+.alert-box.error {
+  background: rgba(255, 0, 0, 0.2); /* Stronger red tint */
+  border: 2px solid rgba(255, 0, 0, 0.6); /* Bold red border */
+  box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.5); /* Red glow effect */
+  color: var(--accent); /* Use accent color for text */
+}
+
+.alert-box.error p {
+  color: var(--accent); /* Highlight text in accent color */
+}
+
+/* Jumping Button Animation for Error Alerts */
+.alert-box.error button {
+  animation: jump 1s infinite ease-in-out; /* Continuous jumping animation */
+}
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0); /* Normal position */
+  }
+  50% {
+    transform: translateY(-10px); /* Jump up slightly */
+  }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility Enhancements */
+.alert-box[role="alert"] {
+  outline: 2px solid transparent; /* For screen readers */
+}
+
+.alert-box button:focus-visible {
+  outline: 2px solid var(--accent); /* Visible focus state for keyboard users */
 }

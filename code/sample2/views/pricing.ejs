@@ -6,6 +6,26 @@
     <title>Popcornbox - Pricing</title>
     <link rel="icon" href="assets/favicon.png" />
     <link rel="stylesheet" href="/css/pricing.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get("message");
+        const main = document.querySelector('.main'); // Select the first element with class "main"
+    
+        if (message && main) {
+          const alertBox = document.createElement("div");
+          alertBox.className = "alert-box";
+          alertBox.innerHTML = `
+            <p>${message}</p>
+            <button onclick="this.parentElement.remove()"></button>
+          `;
+          main.prepend(alertBox); // Insert inside the .main div
+        }
+      });
+    </script>
+    
+
+    
   </head>
   <body>
     <!-- [Header remains the same] -->
@@ -33,6 +53,7 @@
     </header>
     <main class="main">
       <h1 class="title">Pricing Plans</h1>
+     
       <p class="subtitle">
         Choose the perfect plan for your entertainment needs
       </p>
@@ -81,19 +102,7 @@
           </a>
         </div>
 
-        <!-- 12 Month Plan -->
-        <div class="pricing-card">
-          <h2>12 Months</h2>
-          <div class="price">Rs. 8000 (Rs. 667/month)</div>
-          <ul class="features">
-            <li>Ultra HD Streaming</li>
-
-            <li>Cancel anytime</li>
-          </ul>
-          <a href="payment/add">
-            <button class="pricing-btn">Get Started</button>
-          </a>
-        </div>
+      
       </div>
     </main>
     <script>

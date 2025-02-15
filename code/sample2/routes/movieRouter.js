@@ -1,12 +1,12 @@
 import { Router } from "express";
 import movieController from "../controller/movieController.js";
 
-import {restrictToLoggedinUserOnly} from '../middleware/auth.js'
+import {checkPayment, restrictToLoggedinUserOnly} from '../middleware/auth.js'
 
 
 const movieRouter=Router();
 
-movieRouter.get('/home', restrictToLoggedinUserOnly,movieController.viewHome );
+movieRouter.get('/home', restrictToLoggedinUserOnly,checkPayment,movieController.viewHome );
 
 
 movieRouter.get('/contact', restrictToLoggedinUserOnly,movieController.viewContact);
