@@ -138,7 +138,7 @@ function displayTrendingMovie(movie) {
             <button id="watch">
                 <i class="fa fa-play"></i><span>Watch</span>
             </button>
-            <button class="add-to-playlist-btn" data-movie-id="${movie.id}">Playlist</button>
+            <button class="add-to-playlist-btn" data-movie-id="${movie.id}">Add to Playlist</button>
         </div>
     `;
 

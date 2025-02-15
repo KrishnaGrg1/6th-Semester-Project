@@ -452,7 +452,7 @@ body {
     padding: 10px;
     
   }
-  .info-button-section button{
+  #watch{
     padding: 10px 15px;
     border: none;
     background-color: white;
@@ -471,11 +471,12 @@ body {
     height: 22px;
     width: 16px;
   }
-  .info-button-section #add-to-playlist-btn{
+ .add-to-playlist-btn{
     background-color: rgba(217, 217, 217, 0.2); /* Light gray background with 20% opacity */
     color: #FFFFFF; /* Ensure the text remains visible */
+    padding: 10px 15px;
     height: 36px;
-    width: 166px;
+    width: 165px;
     border-radius: 20px;
     font-size: 1.2rem;
     cursor: pointer;
@@ -699,7 +700,7 @@ body {
 }
 
 /* WatchList Button */
-.add-to-playlist-btn {
+/* .add-to-playlist-btn {
   padding: 5px 10px;
   background-color: red;
   color: white;
@@ -709,7 +710,7 @@ body {
   font-size: 14px;
   transition: background-color 0.3s;
  
-}
+} */
 
 .watchListBtn:hover {
   background-color: #005f73;
