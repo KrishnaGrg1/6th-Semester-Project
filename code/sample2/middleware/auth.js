@@ -49,7 +49,7 @@ async function checkPayment(req, res, next) {
 
     const existingUser = await PurchasedPlan.findOne({ user: req.user._id });
 
-    if (!existingUser || existingUser.expiryDate < Date.now()) {
+    if (!existingUser || existingUser.expiryDate < Date.now() || existingUser.status==='pending') {
       // return res.redirect("/pricing"); // Redirect to pricing if no payment
       return res.redirect(`/pricing?message=Payment required`);
 
