@@ -17,7 +17,7 @@ const paymentSchema = new Schema(
     },
     productId: {
       type: Schema.Types.ObjectId,
-      ref: "PurchasedPla",
+      ref: "PurchasedPlan",
       required: true
     },
 
