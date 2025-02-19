@@ -28,6 +28,18 @@ authRouter.get("/forget-password", (req, res) => {
   res.render("forget-password", { message: "" });
 });
 
+authRouter.get("/otp-profile", (req, res) => {
+  res.render("otp-profile", { message: "" });
+});
+
+authRouter.post("/otp-profile",authController.otpProfile);
+
+// authRouter.get("/verify-profile", (req, res) => {
+//   res.render("verify-profile", { message: "" });
+// });
+
+authRouter.post('/verify-profile',authController.verifyProfile)
+
 // Logout Route
 authRouter.get("/logout", (req, res) => {
   // Clear the session cookie

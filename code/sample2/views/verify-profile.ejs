@@ -10,9 +10,9 @@
   <body>
     <div class="container">
       <div class="login-box">
-        <h2>Verify OTP and Set New Password</h2>
+        <h2>Verify Profile</h2>
         <p class="subtitle">
-          Please enter the OTP sent to your email and set a new password.
+          Please enter the OTP sent to your email and update your profile.
         </p>
 
         <!-- Display message if provided -->
@@ -21,7 +21,7 @@
         <% } %>
 
         <!-- Form for verifying OTP and setting new password -->
-        <form action="/verify-otp" method="POST">
+        <form action="/verify-profile" method="POST">
           <!-- Hidden input to pass email -->
           <input type="hidden" name="email" value="<%= email %>" />
 
@@ -35,25 +35,11 @@
             required
           />
 
-          <!-- New Password Input -->
-          <label for="newPassword">New Password</label>
-          <div class="password-wrapper">
-            <input
-              type="password"
-              id="password"
-              name="newPassword"
-              placeholder="Enter new password"
-              required
-            />
-            <span
-              class="toggle-password"
-              onclick="togglePassword('password', this)"
-              >👁️</span
-            >
-          </div>
+         
+         
 
           <!-- Submit Button -->
-          <button type="submit" class="login-btn">Set New Password</button>
+          <button type="submit" class="login-btn">Set Profile Verified</button>
          
         </form>
 
