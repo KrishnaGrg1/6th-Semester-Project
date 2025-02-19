@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="css/adminEditProfile.css">
 </head>
 <body>
+    <header class="header">
+        <img
+          class="fimg"
+          src="/assets/popcornlogo.png"
+          alt="Popcornbox"
+          class="logo"
+        />
+        <nav class="nav">
+          <a href="profiledetails">Profile Details</a>
+          <a href="edit-profile">Edit Profile</a>
+          
+        </nav>
+        
+      </header>
+      <div class="main">
     <div class="container">
         <div class="card">
             <h2>Edit Admin Profile</h2>
@@ -52,7 +67,7 @@
             <a href="home" class="back-link">← Back to Profile</a>
         </div>
     </div>
-
+</div>
     <script>
         function togglePassword(id, element) {
             const passwordField = document.getElementById(id);

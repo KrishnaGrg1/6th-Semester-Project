@@ -1,4 +1,6 @@
 import UserModel from "../models/model.js";
+import PurchasedPlan from "../models/purchase.js";
+import SubscriptionPlan from "../models/subscriptionPlan.js";
 
 
 
@@ -32,6 +34,50 @@ const viewProfileEdit=async (req, res) => {
     }
 }
 
+const viewProfileDetails=async(req,res)=>{
+   try{
+    const loggedInUser = req.user;  // Logged-in user (admin)
+        const userId = loggedInUser._id;  // Get logged-in user's ID
+        const user = await UserModel.findById(userId);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+        console.log(user)
+
+        const purchasedplan=await PurchasedPlan.findOne({user:userId})
+        
+        if(!purchasedplan){
+            return res.render('profiledetails', {
+                user,
+                purchasedplan: {
+                  purchaseDate: null,
+                  expiryDate: null,
+                  plan_name: null,
+                },
+                subscriptionPlan: 0,
+                daysLeft: null, // No days left if no plan exists
+              });
+        }
+        const subscriptionPlan=await SubscriptionPlan.findOne({_id:purchasedplan.plan_id});
+        
+        const today = new Date(); // Current date
+        const expiryDate = new Date(purchasedplan.expiryDate); // Expiry date from the database
+    
+        // Calculate the difference in milliseconds
+        const timeDifference = expiryDate - today;
+    
+        // Convert milliseconds to days
+        const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+        res.render('profiledetails',{
+            user,purchasedplan,subscriptionPlan,daysLeft
+        })
+   }
+   catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+}
+}
 
 const updateUserProfile=async (req, res) => {
     const userId = req.user._id;
@@ -79,7 +125,8 @@ const updateAdminProfile=async (req, res) => {
 const profileManagementController={
     viewProfileEdit,
     updateUserProfile,
-    updateAdminProfile
+    updateAdminProfile,
+    viewProfileDetails
 }
 
 export default profileManagementController

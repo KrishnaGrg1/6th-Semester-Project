@@ -16,5 +16,7 @@ profileManagementRouter.post('/profile-update', restrictToLoggedinUserOnly, prof
 // Admin Profile Update Route (POST)
 profileManagementRouter.post('/admin-profile-update', restrictToLoggedinUserOnly, profileManagementController.updateAdminProfile);
 
+//View Profile(Get)
+profileManagementRouter.get('/profiledetails',restrictToLoggedinUserOnly,profileManagementController.viewProfileDetails)
 
 export default profileManagementRouter

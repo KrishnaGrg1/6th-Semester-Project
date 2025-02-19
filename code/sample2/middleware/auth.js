@@ -45,14 +45,24 @@ async function checkPayment(req, res, next) {
       return res.redirect("/login"); // Redirect to login if user not found
     }
 
-    req.user = user;
+    req.user = user; // Store user in request
 
+    // Fetch the user's purchased plan
     const existingUser = await PurchasedPlan.findOne({ user: req.user._id });
 
-    if (!existingUser || existingUser.expiryDate < Date.now() || existingUser.status==='pending') {
-      // return res.redirect("/pricing"); // Redirect to pricing if no payment
-      return res.redirect(`/pricing?message=Payment required`);
+    // Allow admins to proceed without checking payment
+    if (req.user.role === "admin") {
+      return next();
+    }
 
+    // Check if user has a valid subscription
+    if (
+      !existingUser || 
+      !existingUser.expiryDate || 
+      existingUser.expiryDate.getTime() < Date.now() || 
+      existingUser.status === "pending"
+    ) {
+      return res.redirect(`/pricing?message=Payment required`);
     }
 
     next(); // Allow access if payment is valid

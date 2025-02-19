@@ -49,7 +49,7 @@ const login = async (req, res) => {
     }
 
     if(user.isVerify===false){
-      return res.render("login", { message: "User is not verified" });
+      return res.render("otp-profile", { message: "User is not verified" });
     }
 
     const token = setUser(user);
@@ -84,6 +84,7 @@ const forgetPassword = async (req, res) => {
     }
 
     existingUser.otp = result.otp;
+    existingUser.otpAttempts=0;
     existingUser.expiresAt = new Date(Date.now() + 15 * 60 * 1000); // OTP expiration time (15 minutes)
     await existingUser.save();
 
@@ -171,6 +172,12 @@ const otpProfile = async (req, res) => {
         .status(404)
         .render("otp-profile", { message: "Email not found" });
     }
+    if(existingUser.isVerify===true){
+      return res
+      .render("login", {
+        message: "User is already verified"
+      });
+    }
 
     const result = await sendmail(existingUser.email, existingUser.fname);
     if (!result) {
@@ -183,6 +190,7 @@ const otpProfile = async (req, res) => {
     }
 
     existingUser.otp = result.otp;
+    existingUser.otpAttempts=0;
     existingUser.expiresAt = new Date(Date.now() + 15 * 60 * 1000); // OTP expiration time (15 minutes)
     await existingUser.save();
 
