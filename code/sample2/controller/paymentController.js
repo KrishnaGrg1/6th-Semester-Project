@@ -47,7 +47,7 @@ const initiatePayment = catchAsync(async (req, res) => {
    // Calculate the expiry date based on the plan duration (e.g., 30 days)
 
    const expiryDate = new Date();
-   expiryDate.setDate(expiryDate.getDate() +existingsubscriptionPlan.durationMonth*28); // Adds 30 days to the current date
+expiryDate.setMonth(expiryDate.getMonth() + existingsubscriptionPlan.durationMonth); // Adds 30 days to the current date
  
   // Create the purchased plan in the database
   const purchasedPlan = await PurchasedPlan.create({
