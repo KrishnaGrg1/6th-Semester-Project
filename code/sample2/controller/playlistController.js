@@ -30,7 +30,7 @@ const addPlaylist = async (req, res) => {
         res.status(201).send('Movie added to playlist');
     } catch (error) {
         console.error('Error adding movie to playlist:', error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).send('Internal Server Error',error.message);
     }
 };
 
@@ -44,7 +44,7 @@ const viewPlaylist = async (req, res) => {
         }
 
         const playlist = user.playlist || [];
-        res.render('playlist', { user: { playlist } });
+        res.render('playlist', { user: { playlist,user } });
     } catch (error) {
         console.error('Error fetching playlist:', error);
         res.status(500).send('Internal Server Error');
