@@ -272,13 +272,7 @@ function displayContinueWatchingMovies(movies) {
         // Add event listener for the play button
         const playButton = movieItem.querySelector(`#play-${movieId}`);
         playButton.addEventListener('click', async () => {
-            const trailerUrl = await fetchMovieTrailer(movieId);
-            if (trailerUrl) {
-                // Open the YouTube trailer in a new tab
-                window.open(trailerUrl, '_blank');
-            } else {
-                alert('No trailer available for this movie');
-            }
+            window.location.href = `/movie/${movieId}`;
         });
     });
 }
@@ -333,15 +327,11 @@ function displayMovieCards(movies) {
         // Add event listener for the play button
         const playButton = movieCard.querySelector(`#play-${movieId}`);
         playButton.addEventListener('click', async () => {
-            const trailerUrl = await fetchMovieTrailer(movieId);
-            if (trailerUrl) {
-                window.open(trailerUrl, '_blank'); // Open trailer in a new tab
-            } else {
-                alert('No trailer available for this movie');
-            }
+            window.location.href = `/movie/${movieId}`;
         });
     }
 }
+
 
 // Call the function when the page loads
 window.addEventListener('DOMContentLoaded', fetchAndDisplayTopPicks);
