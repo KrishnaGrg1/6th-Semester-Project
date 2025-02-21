@@ -316,7 +316,7 @@ function displayMovieCards(movies) {
             <img src="${posterPath}" alt="${title}">
             <div class="play-overlay">
                 <button class="play-button" id="play-${movieId}">
-                    <i class="fa fa-play"></i> <!-- Play Icon Only -->
+                    <i class="fa fa-play"></i> 
                 </button>
             </div>
         `;

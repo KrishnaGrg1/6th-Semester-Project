@@ -10,6 +10,7 @@ const viewHome = async (req, res) => {
     res.status(500).send("Error loading home page");
   }
 };
+
 const viewContact = async (req, res) => {
   try {
     const loggedInUser = await UserModel.findById(req.user._id); // Get the logged-in user by ID

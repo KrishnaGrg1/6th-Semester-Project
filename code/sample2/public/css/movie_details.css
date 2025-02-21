@@ -88,6 +88,9 @@ body {
 
 .watch-section {
     margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap:30px
 }
 
 .watch-btn {
@@ -154,4 +157,19 @@ body {
         padding: 8px 20px;
         font-size: 1rem;
     }
+}
+
+.add-to-playlist-btn{
+    background-color: rgba(217, 217, 217, 0.2); /* Light gray background with 20% opacity */
+    color: #FFFFFF; /* Ensure the text remains visible */
+    padding: 10px 15px;
+    height: 36px;
+    width:200px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }

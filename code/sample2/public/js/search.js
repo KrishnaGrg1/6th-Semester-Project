@@ -64,17 +64,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 const movieDetail = document.createElement('div');
                 movieDetail.classList.add('movie-details');
                 movieDetail.innerHTML = `
-                    <div class="movie-poster">
-                        <img id="movie-poster-${id}" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${title}">
+                    <div class="poster-container">
+                        <img id="movie-poster-${id}" 
+                        src="https://image.tmdb.org/t/p/w500${poster_path}" 
+                        alt="${title}" 
+                        class="movie-poster">
                     </div>
                     <div class="movie-info">
-                        <h2>${title}</h2>
-                        <p><span class="rating">&#11088; ${vote_average}</span></p>
-                        <p><strong>Genres:</strong> ${genre_ids.join(', ')}</p>
-                        <p><strong>Released:</strong> ${release_date}</p>
-                        <p><strong>Overview:</strong> ${overview}</p>
-                        <iframe src="${trailerUrl.replace('watch?v=', 'embed/')}" frameborder="0" allowfullscreen></iframe>
+                        <div class="title-section">
+                            <h1>${title}</h1>
+                            <p class="director">Released: ${release_date}</p>
+                        </div>
+                        <button class="play-trailer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>Play Trailer
+                        </button>
+                        <div class="rating">
+                            <span class="star">★</span>
+                            <span>${vote_average}</span>
+                        </div>
+                        <div class="metadata-grid">
+                            <div class="metadata-item">
+                            <h4>Overview</h4>
+                            <p>${overview}</p>
+                        </div>
+                        <div class="metadata-item">
+                            <h4>Genres</h4>
+                            <p>${genre_ids.join(', ')}</p>
+                        </div>
                     </div>
+                  
+                   
                 `;
                 movieContainer.appendChild(movieDetail);
   
