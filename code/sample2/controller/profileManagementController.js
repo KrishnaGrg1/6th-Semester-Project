@@ -56,11 +56,11 @@ const viewProfileDetails=async(req,res)=>{
                  plan_name: null,
                },
                subscriptionPlan: 0,
-               daysLeft: null, // No days left if no plan exists
+               daysLeft: 0, // No days left if no plan exists
              });
        }
        const subscriptionPlan=await SubscriptionPlan.findOne({_id:purchasedplan.plan_id});
-       
+       console.log(subscriptionPlan.plan_name);
        const today = new Date(); // Current date
        const expiryDate = new Date(purchasedplan.expiryDate); // Expiry date from the database
    

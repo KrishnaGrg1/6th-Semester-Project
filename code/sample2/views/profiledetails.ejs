@@ -210,16 +210,36 @@
           </div>
           <div class="form-field">
             <label>Purchased Plan:</label>
-            <span><%= subscriptionPlan.plan_name %></span>
+            <span>
+              <% if (subscriptionPlan.plan_name) { %>
+                <%= subscriptionPlan.plan_name %>
+              <% } else { %>
+                No plan available
+              <% } %>
+            </span>
           </div>
+          
           <div class="form-field">
             <label>Buy Date:</label>
-            <span><%= purchasedplan.purchaseDate %></span>
+            <span>
+              <% if (purchasedplan.purchaseDate) { %>
+                <%= new Date(purchasedplan.purchaseDate).toDateString() %>
+              <% } else { %>
+                No purchase date available
+              <% } %>
+            </span>
           </div>
           <div class="form-field">
             <label>Expiry Date:</label>
-            <span><%= purchasedplan.expiryDate %></span>
+            <span>
+              <% if (purchasedplan.expiryDate) { %>
+                <%= new Date(purchasedplan.expiryDate).toDateString() %>
+              <% } else { %>
+                No expiry date available
+              <% } %>
+            </span>
           </div>
+          
           <div class="form-field days-left">
             <label>Days Left:</label>
             <span class="days-left-value"><%= daysLeft %></span>
