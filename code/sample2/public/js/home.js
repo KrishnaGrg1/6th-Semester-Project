@@ -329,6 +329,7 @@ function displayMovieCards(movies) {
         playButton.addEventListener('click', async () => {
             window.location.href = `/movie/${movieId}`;
         });
+        
     }
 }
 

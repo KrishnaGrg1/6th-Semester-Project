@@ -46,6 +46,7 @@ const viewMoviebyMovieID=async (req, res) => {
     try {
         const movieId = req.params.id;
         const movieDetails = await fetchMovieDetails(movieId);
+        console.log(movieId);
         res.render('movie_details', { movie: movieDetails, user: req.user });
     } catch (error) {
         console.error('Error fetching movie details:', error);
