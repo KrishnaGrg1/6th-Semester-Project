@@ -4,117 +4,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Profile</title>
-    <link rel="icon" href="assets/favicon.png" />
+    <link rel="icon" href="/assets/favicon.png" />
     <link rel="stylesheet" href="/css/editProfile.css" />
   </head>
   <body>
     <header class="header">
-      <a href="home">
-        <img
-      class="fimg"
-      src="/assets/popcornlogo.png"
-      alt="Popcornbox"
-      class="logo"
-    />
-     </a>
+      <a href="/home">
+        <img class="fimg" src="/assets/popcornlogo.png" alt="Popcornbox" />
+      </a>
       <nav class="nav">
-        <a href="profiledetails">Profile Details</a>
-        <a href="edit-profile">Edit Profile</a>
-        
+        <a href="/profiledetails">Profile Details</a>
+        <a href="/edit-profile">Edit Profile</a>
       </nav>
-      
     </header>
+
     <div class="main">
-    <div class="container">
-      <div class="signup-box">
-        <h2>Edit Profile</h2>
-        <div id="message"><%= message ? message : '' %></div>
-        <form action="/profile-update" method="POST">
-          <div class="name-fields">
-            <div class="name-field">
-              <input
-                type="text"
-                id="fname"
-                name="fname"
-                value="<%= user.fname %>"
-                required
-              />
+      <div class="container">
+        <div class="signup-box">
+          <h2>Edit Profile</h2>
+
+          <!-- Display messages dynamically -->
+          <% if (message) { %>
+            <div class="alert"><%= message %></div>
+          <% } %>
+
+          <form action="/profile-update" method="POST" onsubmit="return validateForm()">
+            <div class="name-fields">
+              <input type="text" id="fname" name="fname" value="<%= user.fname %>" required />
+              <input type="text" id="lname" name="lname" value="<%= user.lname %>" required />
             </div>
-            <div class="name-field">
-              <input
-                type="text"
-                id="lname"
-                name="lname"
-                value="<%= user.lname %>"
-                required
-              />
+            <input type="email" id="email" name="email" value="<%= user.email %>" required />
+
+            <div class="password-wrapper">
+              <input type="password" id="currentpassword" name="currentpassword" placeholder="Current Password" required />
+              <span class="toggle-password" onclick="togglePassword('currentpassword', this)">👁️</span>
             </div>
-          </div>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value="<%= user.email %>"
-            required
-          />
 
-          <div class="password-wrapper">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value="<%= user.password %>"
-              required
-            />
-            <span
-              class="toggle-password"
-              onclick="togglePassword('password', this)"
-              >👁️</span
-            >
-          </div>
+            <div class="password-wrapper">
+              <input type="password" id="newPassword" name="newPassword" placeholder="New Password" />
+              <span class="toggle-password" onclick="togglePassword('newPassword', this)">👁️</span>
+            </div>
 
-          <div class="password-wrapper">
-            <input
-              type="password"
-              id="confirm-password"
-              name="confirm-password"
-              value="<%= user.password %>"
-              required
-            />
-            <span
-              class="toggle-password"
-              onclick="togglePassword('confirm-password', this)"
-              >👁️</span
-            >
-          </div>
+            <div class="password-wrapper">
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" />
+              <span class="toggle-password" onclick="togglePassword('confirmPassword', this)">👁️</span>
+            </div>
 
-          <div class="divider">
             <button type="submit" class="signup-btn">Update Profile</button>
-          </div>
 
-          <div class="login-text">
-            <p>
-              Want to go back?
-              <a href="home" class="login-link">Back to Profile</a>
-            </p>
-          </div>
-        </form>
+            <p>Want to go back? <a href="/home" class="login-link">Back to Profile</a></p>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-    <script src="js/script.js">
-      <!-- function togglePassword(inputId, icon) {
-          const passwordInput = document.getElementById(inputId);
 
-          // Toggle password visibility
-          if (passwordInput.type === 'password') {
-              passwordInput.type = 'text';
-              icon.textContent = '🙈';  // Change the icon when password is visible
+    <script>
+      function togglePassword(inputId, icon) {
+          const input = document.getElementById(inputId);
+          if (input.type === "password") {
+              input.type = "text";
+              icon.textContent = "🙈";
           } else {
-              passwordInput.type = 'password';
-              icon.textContent = '👁️';  // Change the icon when password is hidden
+              input.type = "password";
+              icon.textContent = "👁️";
           }
-      } -->
+      }
+
+      function validateForm() {
+          const newPassword = document.getElementById("newPassword").value;
+          const confirmPassword = document.getElementById("confirmPassword").value;
+
+          if (newPassword && newPassword !== confirmPassword) {
+              alert("New Password and Confirm Password do not match!");
+              return false;
+          }
+          return true;
+      }
     </script>
   </body>
 </html>

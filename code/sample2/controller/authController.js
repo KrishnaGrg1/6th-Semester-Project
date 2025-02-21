@@ -1,12 +1,12 @@
 import UserModel from "../models/model.js";
 import { setUser, getUser } from "../services/auth.js";
-
+import bcrypt from 'bcrypt';
 import sendmail from "../middleware/sendmail.js";
 
 const register = async (req, res) => {
   try {
     const { fname, lname, email, password } = req.body;
-
+    const saltRounds = 10;
     if (!fname || !lname || !email || !password) {
       return res.status(400).send("All fields are required");
     }
@@ -17,12 +17,12 @@ const register = async (req, res) => {
         .status(400)
         .render("register", { message: "Email already exist" });
     }
-    // const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
     const user = await UserModel.create({
       fname: fname,
       lname: lname,
       email: email,
-      password: password
+      password: hashedPassword
     });
 
     console.log(user);
@@ -30,7 +30,7 @@ const register = async (req, res) => {
   } catch (error) {
     console.error("Error finding user:", error);
     return res.status(500).send({
-      error: error.message()
+      error: error.message
     });
   }
 };
@@ -43,23 +43,30 @@ const login = async (req, res) => {
   }
 
   try {
-    const user = await UserModel.findOne({ email, password });
+    const user = await UserModel.findOne({ email });
     if (!user) {
       return res.render("login", { message: "Invalid email or password" });
     }
 
-    if(user.isVerify===false){
+    // Compare hashed password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.render("login", { message: "Invalid email or password" });
+    }
+
+    if (user.isVerify === false) {
       return res.render("otp-profile", { message: "User is not verified" });
     }
 
     const token = setUser(user);
     res.cookie("uid", token, { httpOnly: true, secure: true });
-    res.redirect("/home"); // After successful login, redirect to homepage
+    res.redirect("/home");
   } catch (error) {
     console.error("Error finding user:", error);
     return res.status(500).render("login", { message: error.message });
   }
 };
+
 
 const forgetPassword = async (req, res) => {
   try {
@@ -141,9 +148,11 @@ const verifyOtp = async (req, res) => {
         .status(400)
         .render("verify-otp", { message: "OTP has expired", email: email });
     }
+    const saltRounds=10;
+    const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
 
     // Set new password (make sure to hash it)
-    existingUser.password = newPassword;
+    existingUser.password = hashedPassword;
     existingUser.otp = undefined; // Clear OTP after use
     existingUser.expiresAt = undefined; // Clear expiration date
     existingUser.otpAttempts = 0;
