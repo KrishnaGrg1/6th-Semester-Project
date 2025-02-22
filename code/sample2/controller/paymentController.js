@@ -23,7 +23,7 @@ const initiatePayment = catchAsync(async (req, res) => {
   console.log(existingSubscription);
 
   if (existingSubscription) {
-    return res.status(400).json({
+    return res.render("purchase",{
       success: false,
       message: "You already have an active subscription."
     });
