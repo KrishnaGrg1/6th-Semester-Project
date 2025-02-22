@@ -22,12 +22,7 @@ const initiatePayment = catchAsync(async (req, res) => {
 
   console.log(existingSubscription);
 
-  if (existingSubscription) {
-    return res.render("purchase",{
-      success: false,
-      message: "You already have an active subscription."
-    });
-  }
+ 
 
   // Check if subscription plan exists
   const existingsubscriptionPlan = await SubscriptionPlan.findOne({
@@ -42,6 +37,15 @@ const initiatePayment = catchAsync(async (req, res) => {
     throw new Error("Other payment methods are not available");
   }
 
+  if (existingSubscription) {
+    const subscriptionPlans =await SubscriptionPlan.find({});
+    const loggedInUser = await UserModel.findById(req.user._id);
+    return res.status(400).render("purchase", {
+      user: loggedInUser,
+      subscriptionPlans,
+      message: "You already have an active subscription.",
+    });
+  }
   // Calculate the expiry date based on the plan duration (e.g., 30 days)
 
   const expiryDate = new Date();
