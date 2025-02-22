@@ -1,6 +1,6 @@
 # 6th-Semester-Project - PopCornBox
 
-This is the 6th Semester Project showcasing a web application with various features, including subscription plans, user authentication, and payment gateway integration. The project has been deployed and is available at https://sixth-semester-project.onrender.com/.
+This is the 6th Semester Project showcasing a web application with various features, including subscription plans, user authentication, and payment gateway integration. The project has been deployed and is available at https://6th-semester-project-production.up.railway.app/
 
 # Project Overview
 
@@ -32,7 +32,28 @@ The platform allows users to:
 - **Payment Gateway**: Khalti API
 - **Hosting**: Render 
 - **MoveAI**: tmdbapi
+- **UI/UX**: Figma
 
+---
+## Design
+- **Login**
+- **Signup**
+- **Homepage**
+- **Adminprofile**
+- **Contact**
+- **Moviedetails**
+- **editingprofile**
+- **OTPverifying**
+- **Forgotpassword**
+- **About**
+- **Pricing**
+- **Useredit**
+- **Profiledetails**
+- **Subscriptionplan**
+
+```bash
+cd Design
+``
 ---
 
 ## Prerequisites
