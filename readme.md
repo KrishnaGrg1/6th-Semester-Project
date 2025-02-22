@@ -53,7 +53,7 @@ The platform allows users to:
 
 ```bash
 cd Design
-``
+```
 ---
 
 ## Prerequisites
