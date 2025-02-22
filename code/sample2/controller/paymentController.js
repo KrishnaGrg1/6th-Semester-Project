@@ -6,13 +6,12 @@ import SubscriptionPlan from "../models/subscriptionPlan.js";
 import PurchasedPlan from "../models/purchase.js";
 import UserModel from "../models/model.js";
 
-
 const initiatePayment = catchAsync(async (req, res) => {
   const { planid, paymentMethod } = req.body;
- 
-  const userId=req.user;
 
-  console.log("User: "+userId._id)
+  const userId = req.user;
+
+  console.log("User: " + userId._id);
 
   // Check if user has an existing subscription plan
   const existingSubscription = await PurchasedPlan.findOne({
@@ -21,8 +20,7 @@ const initiatePayment = catchAsync(async (req, res) => {
     expiryDate: { $gte: new Date() } // Ensure the subscription has not expired
   });
 
-  console.log(existingSubscription)
-
+  console.log(existingSubscription);
 
   if (existingSubscription) {
     return res.status(400).json({
@@ -44,24 +42,26 @@ const initiatePayment = catchAsync(async (req, res) => {
     throw new Error("Other payment methods are not available");
   }
 
-   // Calculate the expiry date based on the plan duration (e.g., 30 days)
+  // Calculate the expiry date based on the plan duration (e.g., 30 days)
 
-   const expiryDate = new Date();
-expiryDate.setMonth(expiryDate.getMonth() + existingsubscriptionPlan.durationMonth); // Adds 30 days to the current date
- 
+  const expiryDate = new Date();
+  expiryDate.setMonth(
+    expiryDate.getMonth() + existingsubscriptionPlan.durationMonth
+  ); // Adds 30 days to the current date
+
   // Create the purchased plan in the database
   const purchasedPlan = await PurchasedPlan.create({
     user: userId._id,
     plan_id: planid,
-    totalPrice: existingsubscriptionPlan.price*100,
+    totalPrice: existingsubscriptionPlan.price * 100,
     paymentMethod: paymentMethod,
-    expiryDate: expiryDate 
+    expiryDate: expiryDate
   });
 
   // Initialize Khalti payment
   try {
     const paymentInitate = await khaltifunction.initializeKhaltiPayment({
-      amount: existingsubscriptionPlan.price*100, // amount should be in paisa (Rs * 100)
+      amount: existingsubscriptionPlan.price * 100, // amount should be in paisa (Rs * 100)
       purchase_order_id: purchasedPlan._id, // purchase_order_id to verify later
       purchase_order_name: existingsubscriptionPlan.plan_name,
       return_url: `${process.env.BACKEND_URI}payment/verify`, // return URL for the redirect
@@ -79,9 +79,9 @@ expiryDate.setMonth(expiryDate.getMonth() + existingsubscriptionPlan.durationMon
     //   success: true,
     //   paymentUrl: paymentInitate.payment_url, // Assuming this is returned from Khalti
     //   message: "Payment initiation successful. You will be redirected shortly.",
-  
+
     // });
-    
+
     res.redirect(paymentInitate.payment_url);
   } catch (error) {
     // Handle error during Khalti payment initialization
@@ -104,9 +104,9 @@ const completepayment = catchAsync(async (req, res) => {
     transaction_id
   } = req.query;
   try {
-    const userId = req.user; 
-   
-    console.log("User Id: "+userId._id)
+    const userId = req.user;
+
+    console.log("User Id: " + userId._id);
     if (!userId) {
       return res.status(401).json({
         success: false,
@@ -115,7 +115,7 @@ const completepayment = catchAsync(async (req, res) => {
     }
     const paymentInfo = await khaltifunction.verifyPayment(pidx);
 
-   console.log(paymentInfo);
+    console.log(paymentInfo);
 
     // Check if payment is completed and details match
     if (
@@ -159,15 +159,14 @@ const completepayment = catchAsync(async (req, res) => {
     //   paymentData
     // });
 
-    const subscriptionPlans =await SubscriptionPlan.find({});
+    const subscriptionPlans = await SubscriptionPlan.find({});
     const loggedInUser = await UserModel.findById(req.user._id); // Get the logged-in user by ID
-   
-    res.render('purchase',{
-        user: loggedInUser,
-        subscriptionPlans,
-        message: "Payment Successful",
-    })
-   
+
+    res.render("purchase", {
+      user: loggedInUser,
+      subscriptionPlans,
+      message: "Payment Successful"
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({
@@ -179,7 +178,8 @@ const completepayment = catchAsync(async (req, res) => {
 });
 
 const paymentController = {
-  initiatePayment,completepayment
+  initiatePayment,
+  completepayment
 };
 
 export default paymentController;

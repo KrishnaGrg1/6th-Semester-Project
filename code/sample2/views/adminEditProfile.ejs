@@ -8,69 +8,68 @@
     <link rel="stylesheet" href="css/adminEditProfile.css">
 </head>
 <body>
-    <header class="header">
-        <a href="home">
-            <img
-          class="fimg"
-          src="/assets/popcornlogo.png"
-          alt="Popcornbox"
-          class="logo"
-        />
-        </a>
+    <div class="header">
         
-        <nav class="nav">
-          <a href="profiledetails">Profile Details</a>
-          <a href="edit-profile">Edit Profile</a>
-          
-        </nav>
-        
-      </header>
-      <div class="main">
-    <div class="container">
-        <div class="card">
-            <h2>Edit Admin Profile</h2>
-            <p>Welcome, <%= loggedInUser.fname %></p>
+        <h1>Admin Profile</h1>
+    </div>
 
-            <!-- User Selection Dropdown -->
-            <form action="/admin-profile-update" method="POST" class="form-section">
-                <h4>Select a User:</h4>
-                <select name="userId" required>
+    <div class="main-content">
+        <div class="welcome-section">
+            <h2>Welcome Back</h2>
+            <p>Edit User Profile</p>
+        </div>
+
+        <div class="profile-section">
+            <div class="profile-photo">
+                <a href="home" class="photo-container">
+                    <img  class="fimg" src="/assets/popcornlogo.png" alt="Popcornbox" class="logo"/>
+                </a>
+                <a href="profiledetails" class="edit-profile">
+                    Profile Details
+                </a>
+                <a href="edit-profile" class="edit-profile">
+                    Edit Profile
+                </a>
+            </div>
+
+            <div class="form-section" >
+                <form class="form-grid" id="profileForm" action="/admin-profile-update" method="POST">
+                   
+                      <select class="input-field" name="userId" required>
                     <option value="">-- Select a user --</option>
                     <% users.forEach(user => { %>
                         <option value="<%= user._id %>" <%= user._id.toString() === userToEdit._id.toString() ? 'selected' : '' %>>
                             <%= user.fname %> <%= user.lname %> - <%= user.email %>
                         </option>
                     <% }) %>
-                </select>
-                <button type="submit" class="btn">Edit User</button>
-            </form>
+                      </select>
+                    <button type="submit" class="btn">Edit User</button>
+                </form>
 
-            <!-- User Profile Edit Form -->
-            <form action="/admin-profile-update" method="POST" class="form-section">
-        
-                <input type="hidden" name="userId" value="<%= userToEdit._id %>">
-                
-                <label>First Name:</label>
-                <input type="text" name="fname" value="<%= userToEdit.fname %>" required>
-                
-                <label>Last Name:</label>
-                <input type="text" name="lname" value="<%= userToEdit.lname %>" required>
-                
-                <label>Email:</label>
-                <input type="email" name="email" value="<%= userToEdit.email %>" required>
-                
-                <label>Password:</label>
-                <div class="password-container">
-                    <input type="password" name="password" id="password"   placeholder="New password">
+                <!-- User Profile Edit Form -->
+                <form action="/admin-profile-update" class="form-grid" id="profileForm" method="POST" class="form-section">
+                     <input type="hidden" name="userId" value="<%= userToEdit._id %>">
+                    <div class="name-fields">
+                        
+                        <input type="text" name="fname"  class="input-field" value="<%= userToEdit.fname %>" required>
+                        
+                        <input type="text" class="input-field" name="lname" value="<%= userToEdit.lname %>" required>
+                    </div>
+
+                    
+                    <input type="email" name="email" class="input-field" value="<%= userToEdit.email %>" required>
+                    <div class="password-container">
+                    <input type="password" name="password" id="password" class="input-field"   placeholder="New password">
                     <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
                 </div>
-                
-                <button type="submit" class="btn">Update Profile</button>
-            </form>
-            <a href="home" class="back-link">← Back to Profile</a>
+
+                    
+                    <button type="submit" class="btn">Update Profile</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+
     <script>
         function togglePassword(id, element) {
             const passwordField = document.getElementById(id);
