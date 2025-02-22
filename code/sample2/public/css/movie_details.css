@@ -10,23 +10,16 @@ body {
     background-image: url('../assets/background.jpg');
     color: #fff;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
     height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
+    height: 95%;
+
     width: 95%;
-    padding: 20px;
-    background: url('<%= movie.poster_path %>'); /* Background with poster image */
-    background-size: cover;
-    background-position: center;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
-    position: relative;
-    overflow: hidden;
+    padding: 50px;
+
     color: #fff;
     display: flex;
     justify-content: center;
@@ -34,32 +27,37 @@ body {
 }
 
 .movie-details {
+    width: 100%;
     display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    position: relative;
-    z-index: 1;
+   flex-direction: column;
+   justify-content: center;
 }
 
 .movie-poster {
-    flex: 0 0 300px;  /* Fixed width for the poster */
-    max-height: 500px;
-    border-radius: 10px;
-    overflow: hidden;
+   width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40x;
+   
 }
 
-.poster-img {
+.movie-poster iframe {
     width: 100%;
-    height: auto;
+    height: 500px;
     object-fit: cover;
     border-radius: 10px;
+    
 }
 
 .movie-info {
-    flex: 1;
-    max-width: 600px;
+  margin-top: 30px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
     color: #fff;
     font-size: 1.1rem;
+    width: 100%;
 }
 
 .movie-info h2 {
@@ -173,3 +171,43 @@ body {
     justify-content: center;
     gap: 15px;
 }
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    position: relative;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5rem;
+  }
+  
+  .nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    padding: 5px 15px;
+    border-radius: 5px;
+  }
+  
+
+  .fimg {
+    width: 143px;
+    height: 135px;
+  }
+  
+  

@@ -20,6 +20,8 @@ async function fetchMovieDetails(movieId) {
             overview: movie.overview,
             trailer_url: trailerUrl,
             trailerVideo:trailerVideo,
+            runtime:movie.runtime,
+            tagline:movie.tagline
         };
     } catch (error) {
         console.error('Error fetching movie details:', error);
