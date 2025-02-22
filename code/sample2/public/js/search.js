@@ -99,11 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <p class="director">Released: ${release_date}</p>
                             </div>
                             <div class="button">
-                            <button class="play-trailer">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                </svg>Play Trailer
+                            <button  id="watch">
+                                <i class="fa fa-play"></i>
+                                <span>Watch</span>
                             </button>
                             <button class="add-to-playlist-btn" data-movie-id="${id}">
                                 <i class="fa fa-play"></i>

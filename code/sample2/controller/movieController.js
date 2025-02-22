@@ -41,7 +41,6 @@ const viewPricing = async (req, res) => {
   }
 };
 
-
 const viewMoviebyMovieID=async (req, res) => {
     try {
         const movieId = req.params.id;

@@ -476,13 +476,14 @@ body {
     color: #FFFFFF; /* Ensure the text remains visible */
     padding: 10px 15px;
     height: 36px;
-    width: 165px;
+    width: 185px;
     border-radius: 20px;
     font-size: 1.2rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap:10px;
 }
 
 
@@ -1107,7 +1108,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
-  background: linear-gradient(180deg, #374151 0%, #1f2937 100%);
+  /* background:lightblue; */
   border-radius: 1rem;
   padding: 2rem;
   margin-bottom: 2rem;
@@ -1195,7 +1196,10 @@ body {
 
 .star {
   color: #fbbf24;
-  font-size: 1.5rem;
+  
+}
+.rating span{
+ font-size: 2rem;
 }
 
 

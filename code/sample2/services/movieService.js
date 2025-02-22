@@ -8,6 +8,7 @@ async function fetchMovieDetails(movieId) {
         const movie = response.data;
         const trailer = movie.videos.results.find(video => video.site === 'YouTube' && video.type === 'Trailer');
         const trailerUrl = trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null;
+        const trailerVideo=`https://www.youtube.com/embed/${trailer.key}`
 
         return {
             id: movie.id,
@@ -17,7 +18,8 @@ async function fetchMovieDetails(movieId) {
             genres: movie.genres.map(genre => genre.name),
             release_date: movie.release_date,
             overview: movie.overview,
-            trailer_url: trailerUrl
+            trailer_url: trailerUrl,
+            trailerVideo:trailerVideo,
         };
     } catch (error) {
         console.error('Error fetching movie details:', error);
