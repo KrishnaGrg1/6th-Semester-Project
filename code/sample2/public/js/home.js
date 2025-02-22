@@ -150,7 +150,7 @@ function displayTrendingMovie(movie) {
         if (trailerUrl) {
             watchBtn.disabled = false; // Enable the button if a trailer is found
             watchBtn.addEventListener('click', () => {
-                window.open(trailerUrl, '_blank'); // Open the trailer in a new tab
+                window.location.href = `/movie/${movie.id}`;
             });
         } else {
             watchBtn.textContent = 'No Trailer Available'; // Update button text if no trailer
