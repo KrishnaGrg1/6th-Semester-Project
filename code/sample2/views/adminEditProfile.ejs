@@ -42,7 +42,20 @@
                             <%= user.fname %> <%= user.lname %> - <%= user.email %>
                         </option>
                     <% }) %>
+                   
                       </select>
+                      <div class="purchased-plan-details" id="purchasedPlanDetails">
+                        <% if (purchasedplans && daysLeft !== null){ %>
+                          <p><strong>Total Price:</strong> <span id="totalPrice"><%= (purchasedplans.totalPrice)/100 %></span></p>
+                          <p><strong>Payment Method:</strong> <span id="paymentMethod"><%= purchasedplans.paymentMethod %></span></p>
+                          <p><strong>Expiry Date:</strong> <span id="expiryDate"><%= (purchasedplans.expiryDate).toDateString() %></span></p>
+                          <p><strong>Created At:</strong> <span id="createdAt"><%= (purchasedplans.createdAt).toDateString() %></span></p>
+                          <p><strong>Days left:</strong> <span id="createdAt"><%= daysLeft %></span></p>
+                        <% } else { %>
+                          <p>No purchased plan found for this user.</p>
+                        <% } %>
+                      </div>
+                      
                     <button type="submit" class="btn">Edit User</button>
                 </form>
 

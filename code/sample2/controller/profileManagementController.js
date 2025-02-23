@@ -8,7 +8,8 @@ const viewProfileEdit = async (req, res) => {
     const loggedInUser = req.user;
     const userId = loggedInUser._id;
     const user = await UserModel.findById(userId);
-
+    const purchasedplans = await PurchasedPlan.findOne({ user: userId });
+    //const userToEdit = await UserModel.findById(userId).populate('purchasedPlan');
     if (!user) {
       return res.status(404).send("User not found");
     }
@@ -16,17 +17,45 @@ const viewProfileEdit = async (req, res) => {
     if (user.role === "user") {
       res.render("edit-profile", { loggedInUser, user, message: "" });
     } else if (user.role === "admin") {
+      // Fetch all users and their data
       const users = await UserModel.find();
       const selectedUserId = req.query.userId || userId;
       const userToEdit = await UserModel.findById(selectedUserId);
-
-      res.render("adminEditProfile", {
-        loggedInUser,
-        user,
-        users,
-        userToEdit,
-        message: "",
+      const userPurchasedPlan = await PurchasedPlan.findOne({
+        user: userToEdit._id
       });
+
+      if (userPurchasedPlan) {
+        const today = new Date(); // Current date
+        const expiryDate = new Date(userPurchasedPlan.expiryDate); // Expiry date from the database
+        
+        // Calculate the difference in milliseconds
+        const timeDifference = expiryDate.getTime() - today.getTime();
+
+        // Convert milliseconds to days
+        const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+        res.render("adminEditProfile", {
+          loggedInUser,
+          user,
+          users,
+          userToEdit,
+          purchasedplans: userPurchasedPlan, // Pass the selected user's purchased plan
+          daysLeft,
+          message: ""
+        });
+      } else {
+        // Handle case where the user does not have a purchased plan
+        res.render("adminEditProfile", {
+          loggedInUser,
+          user,
+          users,
+          userToEdit,
+          purchasedplans: null, // No purchased plan
+          daysLeft: null, // No days left since there's no purchased plan
+          message: "This user has no purchased plan."
+        });
+      }
     }
   } catch (err) {
     console.error(err);
@@ -34,50 +63,54 @@ const viewProfileEdit = async (req, res) => {
   }
 };
 
-const viewProfileDetails=async(req,res)=>{
-  try{
-   const loggedInUser = req.user;  // Logged-in user (admin)
-       const userId = loggedInUser._id;  // Get logged-in user's ID
-       const user = await UserModel.findById(userId);
+const viewProfileDetails = async (req, res) => {
+  try {
+    const loggedInUser = req.user; // Logged-in user (admin)
+    const userId = loggedInUser._id; // Get logged-in user's ID
+    const user = await UserModel.findById(userId);
 
-       if (!user) {
-           return res.status(404).send('User not found');
-       }
-       console.log(user)
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    console.log(user);
 
-       const purchasedplan=await PurchasedPlan.findOne({user:userId})
-       
-       if(!purchasedplan){
-           return res.render('profiledetails', {
-               user,
-               purchasedplan: {
-                 purchaseDate: null,
-                 expiryDate: null,
-                 plan_name: null,
-               },
-               subscriptionPlan: 0,
-               daysLeft: 0, // No days left if no plan exists
-             });
-       }
-       const subscriptionPlan=await SubscriptionPlan.findOne({_id:purchasedplan.plan_id});
-       console.log(subscriptionPlan.plan_name);
-       const today = new Date(); // Current date
-       const expiryDate = new Date(purchasedplan.expiryDate); // Expiry date from the database
-   
-       // Calculate the difference in milliseconds
-       const timeDifference = expiryDate - today;
-   
-       // Convert milliseconds to days
-       const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
-       res.render('profiledetails',{
-           user,purchasedplan,subscriptionPlan,daysLeft
-       })
+    const purchasedplan = await PurchasedPlan.findOne({ user: userId });
+
+    if (!purchasedplan) {
+      return res.render("profiledetails", {
+        user,
+        purchasedplan: {
+          purchaseDate: null,
+          expiryDate: null,
+          plan_name: null
+        },
+        subscriptionPlan: 0,
+        daysLeft: 0 // No days left if no plan exists
+      });
+    }
+    const subscriptionPlan = await SubscriptionPlan.findOne({
+      _id: purchasedplan.plan_id
+    });
+    console.log(subscriptionPlan.plan_name);
+    const today = new Date(); // Current date
+    const expiryDate = new Date(purchasedplan.expiryDate); // Expiry date from the database
+
+    // Calculate the difference in milliseconds
+    const timeDifference = expiryDate - today;
+
+    // Convert milliseconds to days
+    const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+    res.render("profiledetails", {
+      user,
+      purchasedplan,
+      subscriptionPlan,
+      daysLeft
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
   }
-  catch (err) {
-   console.error(err);
-   res.status(500).send('Internal Server Error');
-}
-}
+};
 
 const updateUserProfile = async (req, res) => {
   try {
@@ -86,20 +119,32 @@ const updateUserProfile = async (req, res) => {
 
     const user = await UserModel.findById(userId);
     if (!user) {
-      return res.status(404).render("edit-profile", { message: "User not found", loggedInUser: req.user, user: req.user });
+      return res.status(404).render("edit-profile", {
+        message: "User not found",
+        loggedInUser: req.user,
+        user: req.user
+      });
     }
 
     // Verify current password
     const isMatch = await bcrypt.compare(currentpassword, user.password);
     if (!isMatch) {
-      return res.render("edit-profile", { message: "Incorrect current password", loggedInUser: req.user, user: req.user });
+      return res.render("edit-profile", {
+        message: "Incorrect current password",
+        loggedInUser: req.user,
+        user: req.user
+      });
     }
 
     // Check if the email is being changed
     if (email !== user.email) {
       const existingUser = await UserModel.findOne({ email });
       if (existingUser) {
-        return res.render("edit-profile", { message: "Email already in use", loggedInUser: req.user, user: req.user });
+        return res.render("edit-profile", {
+          message: "Email already in use",
+          loggedInUser: req.user,
+          user: req.user
+        });
       }
     }
 
@@ -118,10 +163,13 @@ const updateUserProfile = async (req, res) => {
     res.redirect("/profiledetails?success=Profile updated successfully");
   } catch (err) {
     console.error("Error updating profile:", err);
-    res.status(500).render("edit-profile", { message: "Something went wrong. Please try again.", loggedInUser: req.user, user: req.user });
+    res.status(500).render("edit-profile", {
+      message: "Something went wrong. Please try again.",
+      loggedInUser: req.user,
+      user: req.user
+    });
   }
 };
-
 
 const updateAdminProfile = async (req, res) => {
   if (req.user.role !== "admin") {
@@ -144,7 +192,7 @@ const updateAdminProfile = async (req, res) => {
         loggedInUser: req.user,
         users: await UserModel.find(),
         userToEdit: user,
-        message: "Email already in use",
+        message: "Email already in use"
       });
     }
 
@@ -154,7 +202,12 @@ const updateAdminProfile = async (req, res) => {
       hashedPassword = await bcrypt.hash(password, 10);
     }
 
-    await UserModel.findByIdAndUpdate(userId, { fname, lname, email, password: hashedPassword });
+    await UserModel.findByIdAndUpdate(userId, {
+      fname,
+      lname,
+      email,
+      password: hashedPassword
+    });
 
     res.redirect(`/edit-profile?userId=${userId}`);
   } catch (err) {
@@ -167,7 +220,7 @@ const profileManagementController = {
   viewProfileEdit,
   updateUserProfile,
   updateAdminProfile,
-  viewProfileDetails,
+  viewProfileDetails
 };
 
 export default profileManagementController;
