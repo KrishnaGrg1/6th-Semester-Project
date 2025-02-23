@@ -42,6 +42,7 @@ const viewPlaylist = async (req, res) => {
         if (!user) {
             return res.status(404).send('User not found');
         }
+       
 
         const playlist = user.playlist || [];
         res.render('playlist', { user: { playlist,user } });

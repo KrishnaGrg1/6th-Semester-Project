@@ -7,7 +7,6 @@ body {
     color: #cccccc;
     overflow-x: hidden;
   /* min-width: 1280px; */
-
     
   }
   
@@ -16,8 +15,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    
-    
   }
   
   .search-container {
@@ -1201,8 +1198,6 @@ body {
 .rating span{
  font-size: 2rem;
 }
-
-
 
 
 .metadata-item h4 {
