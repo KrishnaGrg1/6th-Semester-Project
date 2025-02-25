@@ -15,7 +15,6 @@
 
     <div class="main-content">
         <div class="welcome-section">
-            <h2>Welcome Back</h2>
             <p>Edit User Profile</p>
         </div>
 
@@ -44,17 +43,7 @@
                     <% }) %>
                    
                       </select>
-                      <div class="purchased-plan-details" id="purchasedPlanDetails">
-                        <% if (purchasedplans && daysLeft !== null){ %>
-                          <p><strong>Total Price:</strong> <span id="totalPrice"><%= (purchasedplans.totalPrice)/100 %></span></p>
-                          <p><strong>Payment Method:</strong> <span id="paymentMethod"><%= purchasedplans.paymentMethod %></span></p>
-                          <p><strong>Expiry Date:</strong> <span id="expiryDate"><%= (purchasedplans.expiryDate).toDateString() %></span></p>
-                          <p><strong>Created At:</strong> <span id="createdAt"><%= (purchasedplans.createdAt).toDateString() %></span></p>
-                          <p><strong>Days left:</strong> <span id="createdAt"><%= daysLeft %></span></p>
-                        <% } else { %>
-                          <p>No purchased plan found for this user.</p>
-                        <% } %>
-                      </div>
+                      
                       
                     <button type="submit" class="btn">Edit User</button>
                 </form>
@@ -75,7 +64,46 @@
                     <input type="password" name="password" id="password" class="input-field"   placeholder="New password">
                     <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
                 </div>
-
+                <!-- Purchased Plan Details (Moved Below Password with Labels) -->
+                <div class="purchased-plan-details" id="purchasedPlanDetails">
+                    <div class="purchasePlan">
+                        <label for="totalPrice" class="form-label">Total Price:</label>
+                        <% if (purchasedplans && daysLeft !== null){ %>
+                            <input type="text" name="totalPrice" class="input-field" value="<%= (purchasedplans.totalPrice)/100 %>" readonly>
+                        <% } else { %>
+                            <p>No purchased plan found for this user.</p>
+                        <% } %>
+                    </div>
+                   
+                    <div class="purchasePlan">
+                        <label for="paymentMethod" class="form-label">Payment Method:</label>
+                        <% if (purchasedplans && daysLeft !== null){ %>
+                            <input type="text" name="paymentMethod" class="input-field" value="<%= purchasedplans.paymentMethod %>" readonly>
+                        <% } %>
+                    </div>
+                    
+                    <div class="purchasePlan">
+                        <label for="expiryDate" class="form-label">Expiry Date:</label>
+                        <% if (purchasedplans && daysLeft !== null){ %>
+                            <input type="text" name="expiryDate" class="input-field" value="<%= (purchasedplans.expiryDate).toDateString() %>" readonly>
+                        <% } %>
+                    </div>
+                   
+                    <div class="purchasePlan">
+                        <label for="createdAt" class="form-label">Created At:</label>
+                        <% if (purchasedplans && daysLeft !== null){ %>
+                            <input type="text" name="createdAt" class="input-field" value="<%= (purchasedplans.createdAt).toDateString() %>" readonly>
+                        <% } %>
+                    </div>
+                    
+                    <div class="purchasePlan">
+                        <label for="daysLeft" class="form-label">Days Left:</label>
+                        <% if (purchasedplans && daysLeft !== null){ %>
+                            <input type="text" name="daysLeft" class="input-field" value="<%= daysLeft %>" readonly>
+                        <% } %>
+                    </div>
+                </div>
+                
                     
                     <button type="submit" class="btn">Update Profile</button>
                 </form>
