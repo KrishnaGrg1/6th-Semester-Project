@@ -6,7 +6,8 @@
 }
 
 body {
-    background: linear-gradient(to right, #1a0f0f, #4a2c2c);
+    background: rgb(59, 11, 12);
+    background: linear-gradient(0deg, rgba(59, 11, 12, 1) 10%, rgba(26, 6, 23, 1) 57%);
     color: white;
     min-height: 100vh;
     font-size: 16px;

@@ -2,6 +2,9 @@ import bcrypt from "bcrypt";
 import UserModel from "../models/model.js";
 import PurchasedPlan from "../models/purchase.js";
 import SubscriptionPlan from "../models/subscriptionPlan.js";
+import Payment from "../models/payment.js";
+import { config } from "dotenv";
+config();
 
 const viewProfileEdit = async (req, res) => {
   try {
@@ -28,7 +31,7 @@ const viewProfileEdit = async (req, res) => {
       if (userPurchasedPlan) {
         const today = new Date(); // Current date
         const expiryDate = new Date(userPurchasedPlan.expiryDate); // Expiry date from the database
-        
+
         // Calculate the difference in milliseconds
         const timeDifference = expiryDate.getTime() - today.getTime();
 
@@ -216,11 +219,78 @@ const updateAdminProfile = async (req, res) => {
   }
 };
 
+const totalmovies = async () => {
+  const API_KEY = "576de2fd895bd4c93d0593bdd3e50ec9";
+  console.log("Api: ", API_KEY);
+
+  const BASE_URL = "https://api.themoviedb.org/3/discover/movie"; // Add endpoint to get movies
+
+  // Fetch the movie data from TMDB API
+  const response = await fetch(
+    `${BASE_URL}?api_key=${API_KEY}&language=en-US&page=1`
+  );
+
+  if (response.ok) {
+    // Parse the response data
+    const data = await response.json();
+
+    // Access the total number of results
+    const totalMovies = data.total_results;
+    console.log("Total Movies: ", totalMovies);
+    return totalMovies;
+  } else {
+    console.error("Error fetching data from TMDB:", response.statusText);
+    return 0;
+  }
+};
+
+const viewAdminDashboard = async (req, res) => {
+  try {
+    const userRole = req.user?.role || "user"; // Default to 'user' if no role found
+    const totalUsers = await UserModel.countDocuments({});
+    const paidUsers = await Payment.countDocuments({ status: "success" });
+
+    const payments = await Payment.find({ status: "success" });
+
+    // Calculate the total income by reducing the array
+    const totalIncome = payments.reduce(
+      (acc, payment) => acc + payment.amount,
+      0
+    );
+
+    const totalPlansSold = await PurchasedPlan.countDocuments({
+      status: "completed"
+    });
+
+    const currentDate = new Date();
+
+    const activeSubscriptions = await PurchasedPlan.countDocuments({
+      status: "completed",
+      expiryDate: { $gt: currentDate } // expiryDate is greater than current date
+    });
+
+    const totalMovies = await totalmovies();
+
+    return res.render("admindashboard", {
+      totalUsers,
+      paidUsers,
+      totalIncome,
+      activeSubscriptions,
+      totalMovies,
+      totalPlansSold
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 const profileManagementController = {
   viewProfileEdit,
   updateUserProfile,
   updateAdminProfile,
-  viewProfileDetails
+  viewProfileDetails,
+  viewAdminDashboard
 };
 
 export default profileManagementController;

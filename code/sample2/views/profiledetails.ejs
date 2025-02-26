@@ -180,8 +180,12 @@
     <!-- Navigation Links -->
     <nav class="nav">
       <a href="profiledetails">Profile Details</a>
+      <% if (user.role === 'admin') { %> <!-- Check if the user is an admin -->
+        <a href="admindashboard">Dashboard</a>
+      <% } %> 
       <a href="edit-profile">Edit Profile</a>
     </nav>
+    
   </header>
 
   <!-- Main Content -->

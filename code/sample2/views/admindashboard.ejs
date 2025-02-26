@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="stylesheet" href="css/admindashboard.css">
 </head>
 <body>
-    
+  <!-- Header Section -->
+  <header class="header">
+    <!-- Logo -->
+    <a href="home">
+      <img class="fimg" src="/assets/popcornlogo.png" alt="Popcornbox" class="logo" />
+    </a>
+    <!-- Navigation Links -->
+    <nav class="nav">
+      <a href="admindashboard">Dashboard</a>
+      <a href="profiledetails">Profile Details</a>
+      <a href="edit-profile">Edit Profile</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main">
+    <div class="container">
+      <div class="dashboard-box">
+        <!-- Total Users Metric -->
+        <div class="metric-box">
+          <h3>Total Users</h3>
+          <p><%= totalUsers %></p>
+         
+        </div>
+
+        <!-- Paid Users Metric -->
+        <div class="metric-box">
+          <h3>Paid Users</h3>
+          <p><%= paidUsers %></p>
+          
+        </div>
+
+        <!-- Total Movies Metric -->
+        <div class="metric-box">
+          <h3>Total Movies</h3>
+          <p><%= totalMovies %></p>
+         
+        </div>
+
+        <!-- Total Income Metric -->
+        <div class="metric-box">
+          <h3>Total Income</h3>
+          <p>Rs.<%= totalIncome/100 %></p>
+          
+        </div>
+
+        <!-- Additional Metrics -->
+        <div class="metric-box">
+          <h3>Total Plans Sold</h3>
+          <p><%= totalPlansSold %></p>
+          
+        </div>
+
+        <div class="metric-box">
+          <h3>Total Active Subscriptions</h3>
+          <p><%= activeSubscriptions %></p>
+         
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
