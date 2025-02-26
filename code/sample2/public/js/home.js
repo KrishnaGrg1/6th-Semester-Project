@@ -128,7 +128,7 @@ function displayTrendingMovie(movie) {
 
     const title = movie.title || movie.name;
     const releaseDate = movie.release_date || movie.first_air_date;
-    const movieOverview = movie.overview ? movie.overview + '...' : 'No overview available';
+    const movieOverview = movie.overview ? (movie.overview.length > 300 ? movie.overview.substring(0, 300) + '...' : movie.overview) : 'No overview available';
 
     movieItem.innerHTML = `
         <h3>${title}</h3>
