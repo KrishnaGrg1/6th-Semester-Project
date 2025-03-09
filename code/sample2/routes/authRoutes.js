@@ -18,11 +18,7 @@ authRouter.post("/login", authController.login);
 
 authRouter.post("/forget-password", authController.forgetPassword);
 
-
-
 authRouter.post('/verify-otp', authController.verifyOtp);  // To verify OTP and update password
-
-
 
 authRouter.get("/forget-password", (req, res) => {
   res.render("forget-password", { message: "" });
