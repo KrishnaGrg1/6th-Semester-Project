@@ -1,6 +1,6 @@
 # 6th-Semester-Project - PopCornBox
 
-This is the 6th Semester Project showcasing a web application with various features, including subscription plans, user authentication, and payment gateway integration. The project has been deployed and is available at https://6th-semester-project-production.up.railway.app/
+This is the 6th Semester Project showcasing a web application with various features, including subscription plans, user authentication, and payment gateway integration. The project has been deployed and is available at [https://popcornbox.up.railway.app/]
 
 # Project Overview
 
