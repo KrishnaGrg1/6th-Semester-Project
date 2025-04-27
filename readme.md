@@ -30,7 +30,7 @@ The platform allows users to:
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **Payment Gateway**: Khalti API
-- **Hosting**: Render 
+- **Hosting**: Render:backend,Railway:frontend
 - **MoveAI**: tmdbapi
 - **UI/UX**: Figma
 
